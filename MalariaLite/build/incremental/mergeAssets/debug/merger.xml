@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar" >
+        <source path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\build\exploded-bundles\MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar\assets" />
+    </dataSet>
+    <dataSet config="main" >
+        <source path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\assets" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\debug\assets" />
+    </dataSet>
+
+</merger>

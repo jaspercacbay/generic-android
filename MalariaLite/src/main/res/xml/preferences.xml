@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference
+        android:key="@string/settings_pref"
+        android:title="@string/settings_title"
+        android:summary="@string/settings_summary">
+        <intent
+            android:action="android.settings.LOCALE_SETTINGS"
+            />
+    </Preference>
+    <ListPreference
+        android:key="@string/language_pref"
+        android:title="@string/language_title"
+        android:summary="@string/language_summary"
+        android:defaultValue="en"
+        android:entries="@array/language"
+        android:entryValues="@array/language_values"
+        />
+    <PreferenceCategory
+        android:title="@string/category_title_2"
+        android:key="category_2">
+        <EditTextPreference
+            android:key="@string/connection_pref"
+            android:title="Server address"
+            android:summary="@string/connection_summary"
+            android:dialogTitle="@string/connection_dialog_title"
+            android:defaultValue="@string/server_address" />
+    </PreferenceCategory>
+</PreferenceScreen>

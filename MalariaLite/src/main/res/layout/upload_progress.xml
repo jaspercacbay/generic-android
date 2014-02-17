@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_gravity="left"
+        android:src="@drawable/icon"
+        android:background="#ffffff" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/status_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/upload_notification_message"
+            android:textSize="20dp" />
+
+        <ProgressBar
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:id="@+id/status_progress"
+            android:layout_width="fill_parent"
+            android:layout_height="15dp"
+            android:progressDrawable="@drawable/abs__progress_horizontal_holo_dark"
+            android:indeterminate="false"
+            android:indeterminateOnly="false"
+            android:clickable="false" />
+    </LinearLayout>
+
+</LinearLayout>

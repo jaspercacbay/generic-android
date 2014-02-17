@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+        >
+
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/relativeLayout"
+            />
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4">
+
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/relativeLayout2"
+                />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center">
+
+            <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/camera"
+                    android:id="@+id/imageView"/>
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:text="@string/new_entry"
+                    android:id="@+id/button"
+                    android:layout_gravity="center"
+                    android:onClick="submitNewReport"
+                    android:textStyle="bold"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/relativeLayout3"
+            />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center">
+
+            <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/queue"
+                    android:id="@+id/imageView2"
+                    android:layout_gravity="left|center_vertical"/>
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:text="@string/queued_entries"
+                    android:id="@+id/button2"
+                    android:layout_gravity="center"
+                    android:onClick="viewQueueLog"
+                    android:textStyle="bold"/>
+        </LinearLayout>
+
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/relativeLayout4"
+                />
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center">
+
+            <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/sent"
+                    android:id="@+id/imageView3"
+                    android:layout_gravity="center"/>
+
+            <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:text="@string/sent_entries"
+                    android:id="@+id/button3"
+                    android:layout_gravity="center"
+                    android:onClick="viewSentLog"
+                    android:textStyle="bold"/>
+        </LinearLayout>
+
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/relativeLayout5"
+                />
+    </LinearLayout>
+
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"/>
+</LinearLayout><!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/layout/activity_main.xml -->

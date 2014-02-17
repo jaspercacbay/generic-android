@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        /*maven {
+            url 'repo1.maven.org/maven2';
+        }*/
+        mavenCentral()
+        //maven { url "http://us.maven.org/maven2/" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.5.+'
+    }
+}
+
+apply plugin: 'android'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:13.0.0'
+    compile files ('libs/android-async-http-1.4.3.jar')
+    compile files ('libs/java-xmlbuilder-0.6.jar')
+    compile files ('libs/httpclient-4.2.5.jar')
+    compile files ('libs/httpcore-4.2.4.jar')
+    compile files ('libs/httpmime-4.2.5.jar')
+    compile project(':libraries:ActionBarSherlock:actionbarsherlock')
+}
+6
+android {
+    compileSdkVersion 17
+    buildToolsVersion "17.0.0"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 17
+    }
+}

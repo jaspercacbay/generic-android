@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <ScrollView
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:id="@+id/second_flip"
+        android:fillViewport="true">
+
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/first_flip3"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:weightSum="8">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textView"
+                android:layout_weight="1"
+                android:textSize="50dp"
+                android:gravity="center"
+                android:text="Information"
+                android:typeface="serif" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/parasite"
+                android:layout_weight="2"
+                android:textSize="30dp"
+                android:hint="Parasite" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text|textImeMultiLine|textMultiLine|textLongMessage"
+                android:ems="10"
+                android:id="@+id/description"
+                android:layout_weight="5"
+                android:textSize="30dp"
+                android:hint="@string/description"
+                android:scrollbars="vertical"
+                android:lines="3"
+                android:maxLines="4"
+                android:minLines="2"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout><!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/layout/test.xml -->

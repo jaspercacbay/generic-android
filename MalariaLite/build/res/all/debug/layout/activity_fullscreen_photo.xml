@@ -1,0 +1,13 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FullscreenPhotoActivity">
+
+    <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/fullscreen_imageView"
+        />
+</RelativeLayout>
+<!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/layout/activity_fullscreen_photo.xml -->

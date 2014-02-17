@@ -1,0 +1,51 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.cajama.malarialite">
+
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="17"/>
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" xmlns:tools="http://schemas.android.com/tools" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.DELETE_PACKAGES" xmlns:tools="http://schemas.android.com/tools" tools:ignore="ProtectedPermissions"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-feature android:name="android.hardware.camera"/>
+    <uses-feature android:name="android.hardware.camera.autofocus"/>
+
+    <application android:allowBackup="true" android:icon="@drawable/icon" android:label="@string/app_name" android:theme="@style/Theme.Sherlock.Light">
+
+        <activity android:label="@string/app_name" android:name="com.cajama.malarialite.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/title_activity_new_report" android:name="com.cajama.malarialite.newreport.NewReportActivity" android:uiOptions="splitActionBarWhenNarrow">
+        </activity>
+        <activity android:label="@string/title_activity_fullscreen_photo" android:name="com.cajama.malarialite.newreport.FullscreenPhotoActivity">
+        </activity>
+        <activity android:label="@string/title_activity_queue_log" android:name="com.cajama.malarialite.entryLogs.QueueLogActivity">
+        </activity>
+        <activity android:label="@string/title_activity_sent_log" android:name="com.cajama.malarialite.entryLogs.SentLogActivity">
+        </activity>
+        <activity android:label="@string/title_activity_picture" android:name="com.cajama.malarialite.newreport.Picture">
+        </activity>
+        <activity android:label="InputDialog" android:name="com.cajama.background.DialogActivity" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:label="Settings" android:name="com.cajama.malarialite.SettingsActivity"/>
+        <service android:name="com.cajama.background.FinalSendingService"/>
+        <service android:name="com.cajama.background.SyncService"/>
+        <service android:name="com.cajama.background.UpdateService"/>
+        <receiver android:label="ConnectionBroadcastReceiver" android:name="com.cajama.background.ConnectionBroadcastReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

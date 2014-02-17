@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values-tl/strings.xml -->
+    <string-array name="case_array">
+        <item>Hindi komplikado</item>
+        <item>Malala</item>
+    </string-array>
+    <string-array name="gender_array">
+        <item>Lalaki</item>
+        <item>Babae</item>
+    </string-array>
+    <string-array name="language">
+        <item>Ingles (United States)</item>
+        <item>Filipino</item>
+        <item>Cebuano</item>
+    </string-array>
+    <string-array name="language_values">
+        <item>en</item>
+        <item>tl</item>
+        <item>tl-rPH</item>
+    </string-array>
+    <string-array name="region_array">
+        <item>NCR (National Capital Region)</item>
+        <item>CAR (Cordillera Administrative Region)</item>
+        <item>Region I (Ilocos Region)</item>
+        <item>Region II (Cagayan Valley)</item>
+        <item>Region III (Central Luzon)</item>
+        <item>Region IV-A (CALABARZON)</item>
+        <item>Region IV-B (MIMAROPA)</item>
+        <item>Region V (Bicol Region)</item>
+        <item>Region VI (Western Visayas)</item>
+        <item>Region VII (Central Visayas)</item>
+        <item>Region VIII (Eastern Visayas)</item>
+        <item>Region IX (Zamboanga Peninsula)</item>
+        <item>Region X (Northern Mindanao)</item>
+        <item>Region XI (Davao Region)</item>
+        <item>Region XII (Soccsksargen)</item>
+        <item>Region XIII (Caraga)</item>
+        <item>ARMM (Autonomous Region in Muslim Mindanao)</item>
+    </string-array>
+    <string-array name="species_array">
+        <item>Plasmodium falciparum</item>
+        <item>Plasmodium vivax</item>
+        <item>Plasmodium ovale</item>
+        <item>Plasmodium malariae</item>
+        <item>None</item>
+    </string-array>
+
+    <string name="Password">Password</string>
+    <string name="Username">Username</string>
+    <string name="action_settings">Settings</string>
+    <string name="add_new_photo">Maglagay ng Bagong Larawan</string>
+    <string name="address">Tirahan</string>
+    <string name="age">Edad</string>
+    <string name="api_apk">api/apk/</string>
+    <string name="api_db">api/db/</string>
+    <string name="api_key">api/key/</string>
+    <string name="api_retry">api/retype/</string>
+    <string name="api_send">api/send/</string>
+    <string name="app_name">MalariaLite</string>
+    <string name="back">Bumalik</string>
+    <string name="birthday">Kaarawan</string>
+    <string name="cancel">Bawiin</string>
+    <string name="case_malaria">Kaso</string>
+    <string name="category_title_1">WIKA</string>
+    <string name="category_title_2">PAGKONEKTA</string>
+    <string name="checkbox_text"></string>
+    <string name="connection_dialog_title">Magbigay ng tamang Server Address</string>
+    <string name="connection_pref">connection_address</string>
+    <string name="connection_summary">Ilagay saan kokonekta ang app</string>
+    <string name="date_created">Petsa ng Pagkakagawa</string>
+    <string name="date_sent">Petsa ng Pagpapadala</string>
+    <string name="delete">Burahin</string>
+    <string name="delete_photo">Burahin ang Larawan</string>
+    <string name="description">Description</string>
+    <string name="diagnosis">Pagsusuri</string>
+    <string name="drugs_given">Mga Ibinigay na Gamot</string>
+    <string name="empty_photos_message">I-click ang camera icon para kumuha ng bagong larawan.</string>
+    <string name="entry_name">Ngalan ng Ulat</string>
+    <string name="exam_result">Resulta ng Exam</string>
+    <string name="get_treatment">Kunin ang Paggamot</string>
+    <string name="given_name">Given Name</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="home">Simula</string>
+    <string name="info_label">Information</string>
+    <string name="language_pref">language</string>
+    <string name="language_summary">Pumili ng gustong wika</string>
+    <string name="language_title">Locale</string>
+    <string name="last_name">Last Name</string>
+    <string name="latitude">Latitude</string>
+    <string name="login">Login</string>
+    <string name="longitude">Longitude</string>
+    <string name="middle_name">Middle Name</string>
+    <string name="new_entry">Bagong Ulat</string>
+    <string name="new_report_cancel_warning">Ang ulat na ito ay mabubura. Lahat ng progreso kasama ang mga larawan ay mawawala. Bumalik sa menu?</string>
+    <string name="next">Susunod</string>
+    <string name="no_input">Walang input</string>
+    <string name="num_photos">Bilang ng Larawan</string>
+    <string name="ok">Oo</string>
+    <string name="password">Password</string>
+    <string name="patient_details">Detalye ng Pasyente</string>
+    <string name="photo_delete_warning">Ang larawan na ito ay mabubura. Ang aksyon na ito ay hindi na mababawi. Burahin?</string>
+    <string name="progressBarText">Pinoproseso… </string>
+    <string name="queued_entries">Nakapilang Ulat</string>
+    <string name="region">Rehiyon</string>
+    <string name="remarks">Pagmamasid</string>
+    <string name="sent_entries">Naipadalang Ulat</string>
+    <string name="server_address">http://192.168.43.91/</string>
+    <string name="settings_pref">open_settings_page</string>
+    <string name="settings_summary">Buksan ang System Settings at baguhin ang locale</string>
+    <string name="settings_title">Settings</string>
+    <string name="sex">Kasarian</string>
+    <string name="slide_number">Slide Number</string>
+    <string name="slide_photos">Larawan ng Slide</string>
+    <string name="submit">Ipadala</string>
+    <string name="submit_new_report">Magpadala ng Bagong Report</string>
+    <string name="summary">Kabuuan</string>
+    <string name="take_photo">Kumuha ng Larawan</string>
+    <string name="time_created">Oras ng Pagkakagawa</string>
+    <string name="time_sent">Oras ng Pagpapadala</string>
+    <string name="title_activity_fullscreen_photo"></string>
+    <string name="title_activity_log_in">LogInActivity</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_new_report">Magpadala ng Bagong Report</string>
+    <string name="title_activity_new_report_patient_details">Bagong Ulat</string>
+    <string name="title_activity_picture">PictureActivity</string>
+    <string name="title_activity_queue_log">Queued Entries</string>
+    <string name="title_activity_sent_log">Sent Entries</string>
+    <string name="treatment">Paraan ng Paggamot</string>
+    <string name="upload_notification_message">Uploading...</string>
+    <string name="username">Username</string>
+    <string name="warning">Babala</string>
+
+</resources>

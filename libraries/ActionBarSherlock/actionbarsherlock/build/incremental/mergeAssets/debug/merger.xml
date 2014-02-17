@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\libraries\ActionBarSherlock\actionbarsherlock\assets" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\libraries\ActionBarSherlock\actionbarsherlock\src\debug\assets" />
+    </dataSet>
+
+</merger>

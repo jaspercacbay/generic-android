@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FullscreenPhotoActivity">
+    <android.view.SurfaceView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/preview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
+    </android.view.SurfaceView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="3"
+        android:id="@+id/photocountdown"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textIsSelectable="false"
+        android:textSize="200sp"
+        android:visibility="invisible"
+        android:textColor="#00FF00"
+        android:alpha="0.8" />
+</RelativeLayout><!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/layout/activity_picture.xml -->
