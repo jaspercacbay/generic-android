@@ -2,9 +2,11 @@ package com.cajama.malarialite;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
@@ -23,21 +25,27 @@ import com.cajama.malarialite.newreport.NewReportActivity;
 
 import android.os.Handler;
 
+import java.io.File;
+
 public class MainActivity extends Activity {
 
-    private static final int UPDATE_SETTINGS = 1001;
+    public static final int UPDATE_SETTINGS = 1001;
+    public static final int INIT_SETTINGS = 1000;
     final Activity ctx = this;
     private Handler messageHandler = new Handler();
-    boolean isCancelDialogOpen = false, isDeleteDialogOpen = false;
+    boolean isCancelDialogOpen = false;
+    SharedPreferences firstTimePref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent startSyncDB = new Intent(this, SyncService.class);
-        startService(startSyncDB);
-        Intent startUpload = new Intent(this, FinalSendingService.class);
-        startService(startUpload);
+        File f = new File(String.valueOf(getExternalFilesDir(null)));
+        Log.d("main", String.valueOf(getExternalFilesDir(null)));
+        if (!f.exists()) {
+            Log.d("main", "not exists");
+            f.mkdirs();
+        }
         /*Intent startUpdate = new Intent(this, UpdateService.class);
         startService(startUpdate);*/
     }
@@ -62,9 +70,18 @@ public class MainActivity extends Activity {
 
     public void submitNewReport(View view) {
         //turnGPSOn();
+        File db = new File(getExternalFilesDir(null), "db.db");
         if (checkGps()) {
-            Intent intent = new Intent(this, NewReportActivity.class);
-            startActivity(intent);
+            if (db != null && db.exists()) {
+                Log.d("main", "db exists");
+                Intent intent = new Intent(this, NewReportActivity.class);
+                startActivity(intent);
+            }
+            else {
+                Log.d("main", "db is null");
+                Intent intent = new Intent(this, SyncService.class);
+                startService(intent);
+            }
         }
     }
 
@@ -95,7 +112,18 @@ public class MainActivity extends Activity {
 
     @Override
     public void onActivityResult(int request, int result, Intent data) {
-        messageHandler.postDelayed(recreate, 0);
+        /*if (request == UPDATE_SETTINGS)*/ messageHandler.postDelayed(recreate, 0);
+        /*else if (request == INIT_SETTINGS) {
+            if (result == 1) {
+                SharedPreferences.Editor editor = firstTimePref.edit();
+                editor.putBoolean("firstTime", false);
+                editor.commit();
+            }
+            else {
+                Intent intent = new Intent(this, Initialize.class);
+                startActivityForResult(intent, INIT_SETTINGS);
+            }
+        }*/
     }
 
     private Runnable recreate = new Runnable() {
@@ -109,6 +137,29 @@ public class MainActivity extends Activity {
             Log.w("Handler...", "Recreate requested.");
         }
     };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        /*firstTimePref = getSharedPreferences("firstTime", Context.MODE_PRIVATE);
+        boolean firstTime = firstTimePref.getBoolean("firstTime", true);
+        if (firstTime) {
+            System.out.println("first time!");
+            Intent init = new Intent(this, Initialize.class);
+            startActivityForResult(init, INIT_SETTINGS);
+        }
+        else {
+            System.out.println("not!");
+            Intent startSyncDB = new Intent(this, SyncService.class);
+            startService(startSyncDB);
+            Intent startUpload = new Intent(this, FinalSendingService.class);
+            startService(startUpload);
+        }*/
+        Intent startSyncDB = new Intent(this, SyncService.class);
+        startService(startSyncDB);
+        Intent startUpload = new Intent(this, FinalSendingService.class);
+        startService(startUpload);
+    }
 
     private boolean checkGps() {
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);

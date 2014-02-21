@@ -38,9 +38,9 @@
         </activity>
         <activity android:label="InputDialog" android:name="com.cajama.background.DialogActivity" android:theme="@android:style/Theme.Dialog"/>
         <activity android:label="Settings" android:name="com.cajama.malarialite.SettingsActivity"/>
+        <activity android:label="Initiate" android:name="com.cajama.malarialite.Initialize"/>
         <service android:name="com.cajama.background.FinalSendingService"/>
         <service android:name="com.cajama.background.SyncService"/>
-        <service android:name="com.cajama.background.UpdateService"/>
         <receiver android:label="ConnectionBroadcastReceiver" android:name="com.cajama.background.ConnectionBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>

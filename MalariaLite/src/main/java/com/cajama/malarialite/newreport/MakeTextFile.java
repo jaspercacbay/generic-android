@@ -43,7 +43,8 @@ public class MakeTextFile {
                     "latitude",
                     "longitude",
                     "species",
-                    "description"
+                    "description",
+                    "flags"
             };
         } else {
             tags = new String[] {

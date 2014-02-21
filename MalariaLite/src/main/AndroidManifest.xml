@@ -40,6 +40,7 @@
         </activity>
         <activity android:label="InputDialog" android:name="com.cajama.background.DialogActivity" android:theme="@android:style/Theme.Dialog"/>
         <activity android:label="Settings" android:name=".SettingsActivity" />
+        <activity android:label="Initiate" android:name=".Initialize" />
         <service android:name="com.cajama.background.FinalSendingService"/>
         <service android:name="com.cajama.background.SyncService" />
         <receiver android:name="com.cajama.background.ConnectionBroadcastReceiver" android:label="ConnectionBroadcastReceiver">

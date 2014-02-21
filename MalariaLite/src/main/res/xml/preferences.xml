@@ -26,5 +26,10 @@
             android:summary="@string/connection_summary"
             android:dialogTitle="@string/connection_dialog_title"
             android:defaultValue="@string/server_address" />
+        <CheckBoxPreference
+            android:title="Enable Test Flag"
+            android:defaultValue="true"
+            android:summary="Toggle for test data flag"
+            android:key="test_data_flag" />
     </PreferenceCategory>
 </PreferenceScreen>

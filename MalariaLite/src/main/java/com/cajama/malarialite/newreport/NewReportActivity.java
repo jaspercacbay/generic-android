@@ -18,6 +18,8 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.CheckBoxPreference;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.format.Time;
 import android.util.Log;
@@ -40,6 +42,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.cajama.android.customviews.DateDisplayPicker;
 import com.cajama.background.DataBaseHelper;
 import com.cajama.background.FinalSendingService;
+import com.cajama.background.SyncService;
 import com.cajama.malarialite.R;
 
 import java.io.File;
@@ -59,6 +62,8 @@ public class NewReportActivity extends SherlockActivity {
     ImageAdapter images;
     private static final int CAMERA_REQUEST = 1888;
     private static final int PHOTO_REQUEST = 4214;
+    private static final int GPS_RESULT = 477;
+    private static final int SYNC_RESULT = 7962;
 	private static final String TAG = "NewReportActivity";
 	private Uri fileUri;
     private String imageFilePath, required = "is a required field.";
@@ -260,23 +265,7 @@ public class NewReportActivity extends SherlockActivity {
                         VF.showNext();
                     }
                     else {
-                        pd.show();
-                        new Thread() {
-                            public void run() {
-                                try{
-                                    int timeElapsed=0;
-                                    while (true) {
-                                        timeElapsed+=3;
-                                        sleep(3000);
-                                        if(getLoc.getLocation()!=null || timeElapsed >= 30) break;
-                                    }
-                                } catch (Exception e) {
-                                    Log.e("tag", e.getMessage());
-                                }
-                                pd.dismiss();
-                            }
-                        }.start();
-                        if (getLoc.getLocation()!=null) VF.showNext();
+                        waitForResult(GPS_RESULT);
                     }
                 }
                 else if(VF.getDisplayedChild() != VF.getChildCount()-1) {
@@ -303,6 +292,54 @@ public class NewReportActivity extends SherlockActivity {
         }
     }
 
+    private void waitForResult(final int code) {
+        pd.show();
+        new Thread() {
+            public void run() {
+                try{
+                    int timeElapsed=0;
+                    while (true) {
+                        timeElapsed+=3;
+                        sleep(3000);
+                        if (code == GPS_RESULT) {
+                            if(getLoc.getLocation()!=null || timeElapsed >= 30) break;
+                        }
+                        else if (code == SYNC_RESULT) {
+                            File temp = new File(getExternalFilesDir(null), "db.db");
+                            if (temp.exists() || timeElapsed >= 30) break;
+                        }
+                    }
+                } catch (Exception e) {
+                    Log.e("tag", e.getMessage());
+                }
+                pd.dismiss();
+                if (code == GPS_RESULT) if (getLoc.getLocation()!=null) VF.showNext();
+                else if (code == SYNC_RESULT) {
+                    File temp = new File(getExternalFilesDir(null), "db.db");
+                    if (temp.exists()) VF.showNext();
+                }
+                                /*else {
+                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                                    alertDialogBuilder
+                                            .setTitle("Reminder (Paalala)")
+                                            .setMessage("Getting current location seems to be taking too long.\nPlease make sure that your internet connection is working.\nAlso, try to find an open area ")
+                                            .setCancelable(false)
+                                            .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog,int id) {
+                                                    isCancelDialogOpen = false;
+                                                }
+                                            });
+
+                                    if (!isCancelDialogOpen) {
+                                        isCancelDialogOpen = true;
+                                        AlertDialog alertDialog = alertDialogBuilder.create();
+                                        alertDialog.show();
+                                    }
+                                }*/
+            }
+        }.start();
+    }
+
     private boolean checkRequiredFields(int display) {
         switch (display) {
             /*case 2:
@@ -316,11 +353,16 @@ public class NewReportActivity extends SherlockActivity {
             case 2:
                 EditText username = (EditText) findViewById(R.id.username);
                 EditText password = (EditText) findViewById(R.id.password);
+                File temp = new File(getExternalFilesDir(null), "db.db");
                 if (username.getText().toString().trim().length() == 0) {
                     requiredToast.setText("Username " + required);
                 }
                 else if (password.getText().toString().trim().length() == 0) {
                     requiredToast.setText("Password " + required);
+                }
+                else if (!temp.exists()) {
+                    Intent intent = new Intent(this, SyncService.class);
+                    startService(intent);
                 }
                 else return true;
                 requiredToast.show();
@@ -595,8 +637,8 @@ public class NewReportActivity extends SherlockActivity {
 
         //latitude
         if (location == null) {
-            latitude = "14.6483576";
-            longitude = "121.0684836";
+            latitude = "";
+            longitude = "";
         }
         else {
             latitude = String.valueOf(location.getLatitude());
@@ -611,14 +653,17 @@ public class NewReportActivity extends SherlockActivity {
         //parasite
         EditText editText2 = (EditText) findViewById(R.id.parasite);
         parasite = checkEmpty(editText2.getText().toString());
-        entries.add(putEntry("Parasite", parasite));
+        entries.add(putEntry("Diagnosis", parasite));
         entryList.add(parasite);
 
         //description
         EditText editText = (EditText) findViewById(R.id.description);
         description = checkEmpty(editText.getText().toString());
-        entries.add(putEntry("Description", description));
+        entries.add(putEntry("Remarks", description));
         entryList.add(description);
+
+        boolean testFlag = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("test_data_flag", true);
+        entryList.add(String.valueOf(testFlag));
 
         return entries;
     }
@@ -674,6 +719,7 @@ public class NewReportActivity extends SherlockActivity {
             }
             else if (intent.getStringExtra("update") !=  null && intent.getStringExtra("update").equals("update")) {
                 generateSummary();
+                getLoc.removeUpdates();
             }
         }
     };
@@ -681,6 +727,7 @@ public class NewReportActivity extends SherlockActivity {
     @Override
     public void onResume() {
         super.onResume();
+        getLoc.checkGps();
         registerReceiver(broadcastReceiver, new IntentFilter(AssembleData.BROADCAST_FINISH));
         registerReceiver(broadcastReceiver, new IntentFilter(GetLocation.BROADCAST_ACTION_LOCATION));
     }
@@ -688,6 +735,7 @@ public class NewReportActivity extends SherlockActivity {
     @Override
     public void onPause() {
         super.onPause();
+        getLoc.removeUpdates();
         unregisterReceiver(broadcastReceiver);
     }
 

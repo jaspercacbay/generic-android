@@ -4710,6 +4710,11 @@ true
                 qualifiers="hdpi"
                 type="drawable" />
             <file
+                name="device_access_camera_g"
+                path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\drawable-hdpi\device_access_camera_g.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
                 name="device_access_data_usage"
                 path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\drawable-hdpi\device_access_data_usage.png"
                 qualifiers="hdpi"
@@ -5460,6 +5465,11 @@ true
                 qualifiers="mdpi"
                 type="drawable" />
             <file
+                name="device_access_camera_g"
+                path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\drawable-mdpi\device_access_camera_g.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
                 name="device_access_data_usage"
                 path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\drawable-mdpi\device_access_data_usage.png"
                 qualifiers="mdpi"
@@ -6175,6 +6185,11 @@ true
                 qualifiers="xhdpi"
                 type="drawable" />
             <file
+                name="device_access_camera_g"
+                path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\drawable-xhdpi\device_access_camera_g.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
                 name="device_access_data_usage"
                 path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\drawable-xhdpi\device_access_data_usage.png"
                 qualifiers="xhdpi"
@@ -6545,6 +6560,11 @@ true
                 qualifiers=""
                 type="layout" />
             <file
+                name="activity_initialize"
+                path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\layout\activity_initialize.xml"
+                qualifiers=""
+                type="layout" />
+            <file
                 name="activity_login1"
                 path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\layout\activity_login1.xml"
                 qualifiers=""
@@ -6562,6 +6582,11 @@ true
             <file
                 name="activity_new_report"
                 path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\layout\activity_new_report.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_new_report_lite"
+                path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\layout\activity_new_report_lite.xml"
                 qualifiers=""
                 type="layout" />
             <file
@@ -6675,11 +6700,11 @@ true
             <file
                 path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\values\strings.xml"
                 qualifiers="" >
-                <string name="server_address" >http://befreicafsan.pythonanywhere.com/
-                </string>
-                <string name="description" >Description
+                <string name="server_address" >http://malaria.pythonanywhere.com/
                 </string>
                 <string name="title_activity_picture" >PictureActivity
+                </string>
+                <string name="description" >Remarks
                 </string>
                 <string name="time_sent" >Time Sent
                 </string>
@@ -6719,13 +6744,13 @@ true
                 </string>
                 <string name="remarks" >Remarks
                 </string>
-                <string name="case_malaria" >Case
-                </string>
-                <string name="sent_entries" >Sent Entries\n(Naipadalang Entries)
-                </string>
                 <string name="age" >Age\n(Edad)
                 </string>
                 <string name="date_sent" >Date Sent
+                </string>
+                <string name="sent_entries" >Sent Entries\n(Naipadalang Entries)
+                </string>
+                <string name="case_malaria" >Case
                 </string>
                 <string name="title_activity_log_in" >LogInActivity
                 </string>
@@ -7169,7 +7194,7 @@ ARMM (Autonomous Region in Muslim Mindanao)
                 </string>
                 <string name="category_title_1" >WIKA
                 </string>
-                <string name="description" >Description
+                <string name="description" >Remarks
                 </string>
                 <string name="title_activity_picture" >PictureActivity
                 </string>
@@ -7292,7 +7317,7 @@ Babae
                 </string>
                 <string name="next" >Susunod
                 </string>
-                <string name="server_address" >http://192.168.43.91/
+                <string name="server_address" >http://malaria.pythonanywhere.com/
                 </string>
                 <string name="api_send" >api/send/
                 </string>
@@ -7325,26 +7350,6 @@ Babae
                 path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\xml\preferences.xml"
                 qualifiers=""
                 type="xml" />
-            <file
-                name="activity_new_report_lite"
-                path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\layout\activity_new_report_lite.xml"
-                qualifiers=""
-                type="layout" />
-            <file
-                name="device_access_camera_g"
-                path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\drawable-xhdpi\device_access_camera_g.png"
-                qualifiers="xhdpi"
-                type="drawable" />
-            <file
-                name="device_access_camera_g"
-                path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\drawable-hdpi\device_access_camera_g.png"
-                qualifiers="hdpi"
-                type="drawable" />
-            <file
-                name="device_access_camera_g"
-                path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\src\main\res\drawable-mdpi\device_access_camera_g.png"
-                qualifiers="mdpi"
-                type="drawable" />
         </source>
         <source path="C:\Users\Jasper\AndroidStudioProjects\Malaria-Android2 - Lite\MalariaLite\build\res\rs\debug" />
     </dataSet>

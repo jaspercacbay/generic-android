@@ -99,10 +99,10 @@
     <string name="home">Simula</string>
     <string name="password">Password</string>
     <string name="address">Tirahan</string>
-    <string name="description">Description</string>
+    <string name="description">Remarks</string>
     <string name="title_activity_picture">PictureActivity</string>
 
-    <string name="server_address">http://192.168.43.91/</string>
+    <string name="server_address">http://malaria.pythonanywhere.com/</string>
     <!--<string name="server_address">http://10.40.93.115/</string>-->
     <string name="api_key">api/key/</string>
     <string name="api_send">api/send/</string>

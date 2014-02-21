@@ -24,7 +24,6 @@ import java.util.HashMap;
 
 public class SentLogActivity extends Activity {
     final String TAG = "SentLogActivity";
-    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,17 +76,15 @@ public class SentLogActivity extends Activity {
     };
 
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
-        startService(intent);
         registerReceiver(broadcastReceiver, new IntentFilter(FinalSendingService.BROADCAST_ACTION_SENT));
     }
 
     @Override
-    public void onPause() {
+    protected void onPause() {
         super.onPause();
         unregisterReceiver(broadcastReceiver);
-        stopService(intent);
     }
 
     @Override
@@ -102,12 +99,13 @@ public class SentLogActivity extends Activity {
     }
 
     @Override
-    public void onStop(){
+    protected void onStop(){
         Log.v("stop", "STOP");
         super.onStop();
     }
 
-    public void onDestroy() {
+    @Override
+    protected void onDestroy() {
         super.onDestroy();
         Log.v("stop","onDESTROY");
         finish();

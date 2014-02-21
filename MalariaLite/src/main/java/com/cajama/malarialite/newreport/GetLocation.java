@@ -81,13 +81,13 @@ public class GetLocation {//implements LocationListener {
         checkGps();
     }
 
-    private void checkGps() {
+    public void checkGps() {
         enabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         if (!enabled) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(myContext);
             alertDialogBuilder
-                    .setTitle(R.string.warning)
-                    .setMessage("This action needs the GPS Settings to be enabled. Do you want to enable GPS settings?")
+                    .setTitle("Warning (Babala)")
+                    .setMessage("This action needs GPS Settings to be enabled.\n(Kailangan ang GPS Settings para sa aksyon na ito.)")
                     .setCancelable(false)
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog,int id) {
@@ -114,6 +114,9 @@ public class GetLocation {//implements LocationListener {
         if (currentBestLocation == null) {
             // A new location is always better than no location
             return true;
+        }
+        else if (location == null) {
+            return false;
         }
 
         // Check whether the new location fix is newer or older
@@ -162,7 +165,7 @@ public class GetLocation {//implements LocationListener {
 
     public Location getLocation() {
         //locationManager.removeUpdates(locationListener);
-        return currentBestNetwork;
+        return (isBetterLocation(currentBestNetwork, currentBestGPS) ? currentBestNetwork : currentBestGPS);
     }
 
     public void removeUpdates() {

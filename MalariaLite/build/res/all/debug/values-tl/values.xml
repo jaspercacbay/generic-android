@@ -73,7 +73,7 @@
     <string name="date_sent">Petsa ng Pagpapadala</string>
     <string name="delete">Burahin</string>
     <string name="delete_photo">Burahin ang Larawan</string>
-    <string name="description">Description</string>
+    <string name="description">Remarks</string>
     <string name="diagnosis">Pagsusuri</string>
     <string name="drugs_given">Mga Ibinigay na Gamot</string>
     <string name="empty_photos_message">I-click ang camera icon para kumuha ng bagong larawan.</string>
@@ -106,7 +106,7 @@
     <string name="region">Rehiyon</string>
     <string name="remarks">Pagmamasid</string>
     <string name="sent_entries">Naipadalang Ulat</string>
-    <string name="server_address">http://192.168.43.91/</string>
+    <string name="server_address">http://malaria.pythonanywhere.com/</string>
     <string name="settings_pref">open_settings_page</string>
     <string name="settings_summary">Buksan ang System Settings at baguhin ang locale</string>
     <string name="settings_title">Settings</string>

@@ -580,7 +580,7 @@
     <string name="date_sent">Date Sent</string>
     <string name="delete">Delete\n(Burahin)</string>
     <string name="delete_photo">Delete Photo\n(Burahin ang Photo)</string>
-    <string name="description">Description</string>
+    <string name="description">Remarks</string>
     <string name="diagnosis">Diagnosis</string>
     <string name="drugs_given">Drugs given</string>
     <string name="empty_photos_message">Click the camera icon to add a new photo.\n(Pindutin ang camera icon para kumuha ng bagong photo.)</string>
@@ -613,7 +613,7 @@
     <string name="region">Region</string>
     <string name="remarks">Remarks</string>
     <string name="sent_entries">Sent Entries\n(Naipadalang Entries)</string>
-    <string name="server_address">http://befreicafsan.pythonanywhere.com/</string>
+    <string name="server_address">http://malaria.pythonanywhere.com/</string>
     <string name="settings_pref">open_settings_page</string>
     <string name="settings_summary">Open System Settings and change locale</string>
     <string name="settings_title">Settings</string>
