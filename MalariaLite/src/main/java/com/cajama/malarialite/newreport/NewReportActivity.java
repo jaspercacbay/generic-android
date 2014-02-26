@@ -11,16 +11,11 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.preference.CheckBoxPreference;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
 import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
@@ -31,7 +26,6 @@ import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -39,9 +33,7 @@ import android.widget.ViewFlipper;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.cajama.android.customviews.DateDisplayPicker;
 import com.cajama.background.DataBaseHelper;
-import com.cajama.background.FinalSendingService;
 import com.cajama.background.SyncService;
 import com.cajama.malarialite.R;
 
@@ -744,7 +736,11 @@ public class NewReportActivity extends SherlockActivity {
         @Override
         public void run()
         {
-            assembleData.start();
+            try {
+                assembleData.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             Intent sendService = new Intent("com.cajama.background.FinalSendingService");
             sendService.putExtra("send", "send");
             sendBroadcast(sendService);

@@ -48,12 +48,20 @@ public class TestUploadAsyncTask extends AsyncTask<File, Integer, String> {
     @Override
     protected String doInBackground(File... files) {
         int reportsToSend = files.length;
+        HttpPost post;
         nc.setTicker("Uploading " + reportsToSend + " reports!");
+
         for (int i = 0; i < reportsToSend; i++) {
+            if (files[i].getName().endsWith(".zip")) {
             lastPercent = 0;
             currentFile = files[i];
+
+
+            post = new HttpPost(this.server.concat("api/init/"));
+
+
             HttpClient client = new DefaultHttpClient();
-            HttpPost post = new HttpPost(this.server);
+
             nc.setContentTitle(currentFile.getName());
             try {
                 CustomMultiPartEntity custom = new CustomMultiPartEntity(new CustomMultiPartEntity.ProgressListener() {
@@ -106,6 +114,74 @@ public class TestUploadAsyncTask extends AsyncTask<File, Integer, String> {
 
             } catch (Exception e) {
                 e.printStackTrace();
+            }
+            }
+        }
+
+        for (int i = 0; i < reportsToSend; i++) {
+            if (files[i].getName().endsWith("part")) {
+                lastPercent = 0;
+                currentFile = files[i];
+
+
+                post = new HttpPost(this.server.concat("api/chunk/"));
+
+
+                HttpClient client = new DefaultHttpClient();
+
+                nc.setContentTitle(currentFile.getName());
+                try {
+                    CustomMultiPartEntity custom = new CustomMultiPartEntity(new CustomMultiPartEntity.ProgressListener() {
+                        @Override
+                        public void transferred(long num) {
+                            int currentPercent = (int) ((num / (float) totalSize)*100);
+                            if (currentPercent > lastPercent) {
+                                publishProgress(currentPercent);
+                                lastPercent = currentPercent;
+                            }
+                        }
+                    });
+                    ContentBody cbFile = new FileBody(currentFile, "text/plain");
+                    ContentBody cbFilename = new StringBody(currentFile.getName());
+                    ContentBody cbName = new StringBody("file");
+
+                    custom.addPart("name", cbName);
+                    custom.addPart("filename", cbFilename);
+                    custom.addPart("file", cbFile);
+
+                    totalSize = custom.getContentLength();
+                    System.out.println(totalSize);
+
+                    post.setEntity(custom);
+                    HttpResponse response = client.execute(post);
+                    InputStream inputStream = response.getEntity().getContent();
+                    BufferedReader r = new BufferedReader(new InputStreamReader(inputStream));
+                    StringBuilder sb = new StringBuilder();
+                    String serverResponse;
+
+                    while ( (serverResponse = r.readLine()) != null ) {
+                        sb.append(serverResponse);
+                    }
+
+                    serverResponse = sb.toString().trim();
+                    System.out.println(serverResponse);
+
+                    if (serverResponse.equals("OK") ) {
+                        currentFile.delete();
+                        onAsyncResult.onResult(1, currentFile.getName());
+                    }
+                    else if (sb.toString().trim().startsWith("RETYPE")) {
+                        currentFile.delete();
+                        onAsyncResult.onResult(-1, currentFile.getName());
+                    }
+                    else {
+                        System.out.println("failed: " + currentFile.getName());
+                        onAsyncResult.onResult(0, "failed");
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
         return "done";

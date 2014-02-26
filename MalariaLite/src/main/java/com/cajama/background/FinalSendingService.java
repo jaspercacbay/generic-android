@@ -7,12 +7,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -35,6 +32,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.MessageDigest;
@@ -120,7 +118,7 @@ public class FinalSendingService extends Service {
 
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(getApplicationContext().NOTIFICATION_SERVICE);
 
-        asyncTask = new TestUploadAsyncTask(PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)).concat(getString(R.string.api_send)), getApplicationContext());
+        asyncTask = new TestUploadAsyncTask(PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)), getApplicationContext());
         asyncTask.setNotificationManager(notificationManager);
         asyncTask.setBuilder(mBuilder);
         asyncTask.setOnResultListener(onAsyncResult);
@@ -217,7 +215,15 @@ public class FinalSendingService extends Service {
         if (reportsDirectory.listFiles().length > 0) {
             Log.d(TAG, "# of files to send: " + String.valueOf(reportsDirectory.listFiles().length));
             if (asyncTask.getStatus() == AsyncTask.Status.PENDING) {
-                reports = reportsDirectory.listFiles();
+                FilenameFilter filter = new FilenameFilter() {
+                    public boolean accept(File directory, String fileName) {
+                        return fileName.endsWith(".zip");
+                    }
+                };
+                reports = reportsDirectory.listFiles(filter);
+                if (reports.length == 0) {
+                    reports = reportsDirectory.listFiles();
+                }
                 asyncTask.execute(reports);
             }
             else if (asyncTask.getStatus() == AsyncTask.Status.RUNNING) {
@@ -225,7 +231,7 @@ public class FinalSendingService extends Service {
             }
             else if (asyncTask.getStatus() == AsyncTask.Status.FINISHED) {
                 Log.d(TAG, "task finished!");
-                asyncTask = new TestUploadAsyncTask(PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)).concat(getString(R.string.api_send)), getApplicationContext());
+                asyncTask = new TestUploadAsyncTask(PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)), getApplicationContext());
                 asyncTask.setNotificationManager(notificationManager);
                 asyncTask.setBuilder(mBuilder);
                 asyncTask.setOnResultListener(onAsyncResult);

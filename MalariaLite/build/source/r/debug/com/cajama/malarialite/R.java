@@ -9,9 +9,6 @@ package com.cajama.malarialite;
 
 public final class R {
     public static final class array {
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values/strings.xml 
- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values-tl/strings.xml 
-         */
         public static final int case_array=0x7f050000;
         public static final int gender_array=0x7f050001;
         public static final int language=0x7f050002;
@@ -167,8 +164,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
         public static final int activityChooserViewStyle=0x7f01005f;
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values/values.xml 
-         <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
@@ -685,11 +681,7 @@ containing a value of this type.
         public static final int windowSplitActionBar=0x7f01005d;
     }
     public static final class bool {
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-w480dp/values.xml 
-         */
         public static final int abs__action_bar_embed_tabs=0x7f060000;
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-sw600dp/values.xml 
-         */
         public static final int abs__action_bar_expanded_action_views_exclusive=0x7f060001;
         public static final int abs__config_actionMenuItemAllCaps=0x7f060002;
         public static final int abs__config_allowActionMenuItemTextWithIcon=0x7f060003;
@@ -709,13 +701,6 @@ containing a value of this type.
         public static final int abs__primary_text_holo_light=0x7f070009;
     }
     public static final class dimen {
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-land/values.xml 
- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-large-hdpi-1024x600/values.xml 
- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-large-mdpi-1024x600/values.xml 
- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-large-land-hdpi-1024x600/values.xml 
- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-large-land-mdpi-1024x600/values.xml 
- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-xlarge/values.xml 
-         */
         public static final int abs__action_bar_default_height=0x7f090000;
         public static final int abs__action_bar_icon_vertical_padding=0x7f090001;
         public static final int abs__action_bar_subtitle_bottom_margin=0x7f090002;
@@ -731,9 +716,6 @@ containing a value of this type.
         public static final int abs__dropdownitem_text_padding_right=0x7f09000a;
         public static final int abs__search_view_preferred_width=0x7f09000b;
         public static final int abs__search_view_text_min_width=0x7f09000c;
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values/dimens.xml 
- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values-sw720dp-land/dimens.xml 
-         */
         public static final int activity_horizontal_margin=0x7f09000d;
         public static final int activity_vertical_margin=0x7f09000e;
     }
@@ -1011,8 +993,6 @@ containing a value of this type.
         public static final int abs__action_bar_subtitle=0x7f080011;
         public static final int abs__action_bar_title=0x7f080010;
         public static final int abs__action_context_bar=0x7f080021;
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values/values.xml 
-         */
         public static final int abs__action_menu_divider=0x7f08000a;
         public static final int abs__action_menu_presenter=0x7f08000b;
         public static final int abs__action_mode_bar=0x7f080025;
@@ -1129,10 +1109,6 @@ containing a value of this type.
         public static final int wrap_content=0x7f080009;
     }
     public static final class integer {
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-w360dp/values.xml 
- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-w500dp/values.xml 
- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-w600dp/values.xml 
-         */
         public static final int abs__max_action_buttons=0x7f0a0000;
     }
     public static final class layout {
@@ -1190,12 +1166,8 @@ containing a value of this type.
         public static final int sent_log=0x7f0d0007;
     }
     public static final class string {
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values/strings.xml 
-         */
         public static final int Password=0x7f0b0000;
         public static final int Username=0x7f0b0001;
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values/values.xml 
-         */
         public static final int abs__action_bar_home_description=0x7f0b0002;
         public static final int abs__action_bar_up_description=0x7f0b0003;
         public static final int abs__action_menu_overflow_description=0x7f0b0004;
@@ -1209,8 +1181,6 @@ containing a value of this type.
         public static final int abs__searchview_description_voice=0x7f0b000c;
         public static final int abs__shareactionprovider_share_with=0x7f0b000d;
         public static final int abs__shareactionprovider_share_with_application=0x7f0b000e;
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values/strings.xml 
-         */
         public static final int action_settings=0x7f0b000f;
         public static final int add_new_photo=0x7f0b0010;
         public static final int address=0x7f0b0011;
@@ -1295,28 +1265,19 @@ containing a value of this type.
         public static final int warning=0x7f0b0060;
     }
     public static final class style {
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values/styles.xml 
-
+        /** 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         
- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values-v11/styles.xml 
  API 11 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f0c0000;
         /**  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0c0001;
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values-large/styles.xml 
-         */
         public static final int LoginFormContainer=0x7f0c0002;
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values/values.xml 
-         */
         public static final int Sherlock___TextAppearance_Small=0x7f0c0003;
-        /**  From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-v11/values.xml 
- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-v14/values.xml 
-         */
         public static final int Sherlock___Theme=0x7f0c0004;
         public static final int Sherlock___Theme_DarkActionBar=0x7f0c0005;
         public static final int Sherlock___Theme_Light=0x7f0c0006;

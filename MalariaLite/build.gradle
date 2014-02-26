@@ -7,7 +7,7 @@ buildscript {
         //maven { url "http://us.maven.org/maven2/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.5.+'
+        classpath 'com.android.tools.build:gradle:0.7.+'
     }
 }
 
@@ -24,6 +24,7 @@ dependencies {
     compile files ('libs/httpclient-4.2.5.jar')
     compile files ('libs/httpcore-4.2.4.jar')
     compile files ('libs/httpmime-4.2.5.jar')
+    compile files ('libs/guava-16.0.1.jar')
     compile project(':libraries:ActionBarSherlock:actionbarsherlock')
 }
 6
@@ -34,5 +35,10 @@ android {
     defaultConfig {
         minSdkVersion 8
         targetSdkVersion 17
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
     }
 }
