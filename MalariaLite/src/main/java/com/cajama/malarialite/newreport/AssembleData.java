@@ -12,8 +12,16 @@ import android.widget.TextView;
 
 import com.cajama.malarialite.encryption.AES;
 import com.cajama.malarialite.encryption.RSA;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.Hashing;
+import com.google.common.io.Files;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.RandomAccessFile;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -67,12 +75,75 @@ public class AssembleData {
         return travelData;
     }
 
+    private String[] getThirdZipArray(String asdf) {
+        String[] travelData = new String[3];
+        travelData[0] = c.getExternalFilesDir(null).getPath() + "/" + asdf;
+        travelData[1] = c.getExternalFilesDir(null).getPath() + "/" + ACCOUNT_TXT_FILENAME;
+        travelData[2] = c.getExternalFilesDir(null).getPath() + "/" + "cipher_listahan";
+        return travelData;
+    }
+
+    public void readWrite(RandomAccessFile raf, BufferedOutputStream bw, long numBytes) throws IOException {
+        byte[] buf = new byte[(int) numBytes];
+        int val = raf.read(buf);
+        if(val != -1) {
+            bw.write(buf);
+        }
+    }
+
+    public String splitFile(String fname) throws Exception {
+        RandomAccessFile raf = new RandomAccessFile(c.getExternalFilesDir(null).getPath() + "/" + fname, "r");
+        long sourceSize = raf.length();
+
+
+        int maxReadBufferSize = 128 * 1024; //128KB chunks
+        int numSplits = (int) (Math.floor(sourceSize / maxReadBufferSize) + 1);
+        long remainingBytes = sourceSize % (numSplits-1);
+        File tobedisgested;
+        HashCode md5;
+        String md5Hex;
+
+        Files.touch(new File(c.getExternalFilesDir(null), fname + ".txt"));
+        PrintWriter writer = new PrintWriter(c.getExternalFilesDir(null).getPath() + "/" + fname + ".txt", "UTF-8");
+
+        for(int destIx=1; destIx <=numSplits; destIx++) {
+            Files.touch(new File(c.getExternalFilesDir(null), fname+ ".part"+destIx));
+            BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%03d", destIx)+".part"));
+
+            readWrite(raf, bw, maxReadBufferSize);
+            bw.close();
+
+            tobedisgested = new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%03d", destIx)+".part");
+            md5 = Files.hash(tobedisgested, Hashing.md5());
+            md5Hex = md5.toString();
+
+            writer.println(fname+String.format("%03d", destIx)+".part"+" "+md5Hex);
+        }
+
+        if(remainingBytes > 0) {
+            Files.touch(new File(c.getExternalFilesDir(null), fname+ ".part"+numSplits+1));
+            BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%03d", numSplits+1)+".part"));
+            readWrite(raf, bw, remainingBytes);
+            bw.close();
+
+            tobedisgested = new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%03d", numSplits+1)+".part");
+            md5 = Files.hash(tobedisgested, Hashing.md5());
+            md5Hex = md5.toString();
+
+            writer.println(fname+String.format("%03d", numSplits+1)+".part"+" "+md5Hex);
+        }
+
+        raf.close();
+        writer.close();
+        return fname + ".txt";
+    }
+
     public void setView (ProgressBar progressBar, TextView textView) {
         this.progressBar = progressBar;
         this.textView = textView;
     }
 
-    public void start() {
+    public void start() throws Exception {
 
         //create patient details file
         File entryFile = new File (c.getExternalFilesDir(null), PATIENT_TXT_FILENAME);
@@ -126,7 +197,7 @@ public class AssembleData {
             Log.v("ENCRYPTION", "Private key:" + Base64.encodeToString(skByte,Base64.DEFAULT));
             accountData.set(1, rsa.encryptRSA(skByte));
 
-            Log.v("ENCRYPTION","End RSA");
+            Log.v("ENCRYPTION","End RSA");//hich i would like to read in Java and split this file into n (user input) number of files through the code dynamically.
 
             //RSA decryption test
             //Log.v("ENCRYPTION", rsa.decryptRSA(Base64.decode(accountData.get(1),Base64.DEFAULT)));
@@ -142,9 +213,24 @@ public class AssembleData {
         //compress patient zip file and private key text file to a 2nd zip file
         Time today = new Time(Time.getCurrentTimezone());
         today.setToNow();
-        File zipFile2 = new File (c.getExternalFilesDir("ZipFiles"), today.format("%m%d%Y_%H%M%S")+"_"+ USERNAME + ".zip");
+
+        String nowname = today.format("%m%d%Y_%H%M%S")+"_"+ USERNAME + ".zip";
+
+        File zipFile2 = new File (c.getExternalFilesDir(null), nowname);
         Compress secondZip = new Compress(getSecondZipArray(),zipFile2.getPath());
         secondZip.zip();
+
+        String listahanname = splitFile(nowname);
+
+        File listahan = new File(c.getExternalFilesDir(null), listahanname);
+        File AESFile2 = new File(c.getExternalFilesDir(null),"cipher_listahan");
+        aes.encryptAES(listahan, AESFile2);
+
+        File zipFile3 = new File (c.getExternalFilesDir("ZipFiles"), nowname);
+        Compress thirdZip = new Compress(getThirdZipArray(listahanname),zipFile3.getPath());
+        thirdZip.zip();
+
+
 
         handler.removeCallbacks(finish);
         handler.postDelayed(finish, 1000);
