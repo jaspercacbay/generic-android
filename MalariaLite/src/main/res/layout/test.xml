@@ -8,7 +8,7 @@
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"
         android:orientation="vertical"
-        android:id="@+id/second_flip"
+        android:id="@+id/region_flip"
         android:fillViewport="true">
 
         <LinearLayout android:layout_width="fill_parent"
@@ -19,41 +19,31 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
             android:paddingBottom="@dimen/activity_vertical_margin"
-            android:weightSum="8">
+            android:weightSum="6">
 
-            <TextView
-                android:layout_width="fill_parent"
+            <Spinner
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/textView"
-                android:layout_weight="1"
-                android:textSize="50dp"
-                android:gravity="center"
-                android:text="Information"
-                android:typeface="serif" />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:id="@+id/parasite"
+                android:id="@+id/region"
+                android:layout_gravity="center_horizontal"
                 android:layout_weight="2"
-                android:textSize="30dp"
-                android:hint="Parasite" />
+                android:spinnerMode="dialog" />
 
-            <EditText
-                android:layout_width="fill_parent"
+            <Spinner
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text|textImeMultiLine|textMultiLine|textLongMessage"
-                android:ems="10"
-                android:id="@+id/description"
-                android:layout_weight="5"
-                android:textSize="30dp"
-                android:hint="@string/description"
-                android:scrollbars="vertical"
-                android:lines="3"
-                android:maxLines="4"
-                android:minLines="2"/>
+                android:id="@+id/province"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="2"
+                android:spinnerMode="dialog" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/municipality"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="2"
+                android:spinnerMode="dialog" />
         </LinearLayout>
 
     </ScrollView>

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-w480dp/values.xml -->
+    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/MalariaLite/build/exploded-bundles/GenericAndroidLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-w480dp/values.xml -->
+    <eat-comment />
+
     <bool name="abs__action_bar_embed_tabs">true</bool>
     <bool name="abs__config_allowActionMenuItemTextWithIcon">true</bool>
     <bool name="abs__split_action_bar_is_narrow">false</bool>

@@ -235,6 +235,15 @@ public class FinalSendingService extends Service {
                 asyncTask.setNotificationManager(notificationManager);
                 asyncTask.setBuilder(mBuilder);
                 asyncTask.setOnResultListener(onAsyncResult);
+                FilenameFilter filter = new FilenameFilter() {
+                    public boolean accept(File directory, String fileName) {
+                        return fileName.endsWith(".zip");
+                    }
+                };
+                reports = reportsDirectory.listFiles(filter);
+                if (reports.length == 0) {
+                    reports = reportsDirectory.listFiles();
+                }
                 asyncTask.execute(reports);
             }
         }
@@ -276,7 +285,7 @@ public class FinalSendingService extends Service {
     }*/
 
     public void append_report(int resultCode, String message) throws IOException {
-        if (resultCode == 1) {
+        if (resultCode == 1 || resultCode == 2) {
             FileWriter fileWriter = new FileWriter(sentList, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             String[] split = message.split("_");
@@ -288,6 +297,7 @@ public class FinalSendingService extends Service {
             handler2.removeCallbacks(sendUpdatesToSent);
             handler2.postDelayed(sendUpdatesToSent, 1000);
             //sendNext();
+            if (resultCode == 2) System.out.println(message + " was received before, di mo lang nakuha OK ni server!");
         }
         else if (resultCode == -1) {
             startDialog(-1);

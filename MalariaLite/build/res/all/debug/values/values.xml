@@ -1,7 +1,1992 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/MalariaLite/src/main/res/values/strings.xml -->
+    <eat-comment />
+
+    <string-array name="ARMM_Basilan">
+        <item>Akbar</item>
+        <item>Al-Barka</item>
+        <item>City Of Lamitan</item>
+        <item>Hadji Mohammad Ajul</item>
+        <item>Hadji Muhtamad</item>
+        <item>Lantawan</item>
+        <item>Maluso</item>
+        <item>Sumisip</item>
+        <item>Tipo-Tipo</item>
+        <item>Tuburan</item>
+        <item>Ungkaya Pukan</item>
+    </string-array>
+    <string-array name="ARMM___Autonomous_Region_of_Muslim_Mindanao">
+        <item>Basilan</item>
+        <item>Lanao del Sur</item>
+        <item>Maguindanao</item>
+        <item>Sulu</item>
+        <item>Tawi-tawi</item>
+    </string-array>
+    <string-array name="Abra">
+        <item>Bangued</item>
+        <item>Boliney</item>
+        <item>Bucay</item>
+        <item>Bucloc</item>
+        <item>Daguioman</item>
+        <item>Danglas</item>
+        <item>Dolores</item>
+        <item>La Paz</item>
+        <item>Lacub</item>
+        <item>Lagangilang</item>
+        <item>Lagayan</item>
+        <item>Langiden</item>
+        <item>Licuan-Baay (Licuan)</item>
+        <item>Luba</item>
+        <item>Malibcong</item>
+        <item>Manabo</item>
+        <item>Penarrubia</item>
+        <item>Pidigan</item>
+        <item>Pilar</item>
+        <item>Sallapadan</item>
+        <item>San Isidro</item>
+        <item>San Juan</item>
+        <item>San Quintin</item>
+        <item>Tayum</item>
+        <item>Tineg</item>
+        <item>Tubo</item>
+        <item>Villaviciosa</item>
+    </string-array>
+    <string-array name="Agusan_del_Norte">
+        <item>Buenavista</item>
+        <item>Carmen</item>
+        <item>City Of Cabadbaran</item>
+        <item>Jabonga</item>
+        <item>Kitcharao</item>
+        <item>Las Nieves</item>
+        <item>Magallanes</item>
+        <item>Nasipit</item>
+        <item>Remedios T. Romualdez</item>
+        <item>Santiago</item>
+        <item>Tubay</item>
+    </string-array>
+    <string-array name="Agusan_del_Sur">
+        <item>Bunawan</item>
+        <item>City Of Bayugan</item>
+        <item>Esperanza</item>
+        <item>La Paz</item>
+        <item>Loreto</item>
+        <item>Prosperidad</item>
+        <item>Rosario</item>
+        <item>San Francisco</item>
+        <item>San Luis</item>
+        <item>Santa Josefa</item>
+        <item>Sibagat</item>
+        <item>Talacogon</item>
+        <item>Trento</item>
+        <item>Veruela</item>
+    </string-array>
+    <string-array name="Aklan">
+        <item>Altavas</item>
+        <item>Balete</item>
+        <item>Banga</item>
+        <item>Batan</item>
+        <item>Buruanga</item>
+        <item>Ibajay</item>
+        <item>Kalibo</item>
+        <item>Lezo</item>
+        <item>Libacao</item>
+        <item>Madalag</item>
+        <item>Makato</item>
+        <item>Malay</item>
+        <item>Malinao</item>
+        <item>Nabas</item>
+        <item>New Washington</item>
+        <item>Numancia</item>
+        <item>Tangalan</item>
+    </string-array>
+    <string-array name="Albay">
+        <item>Bacacay</item>
+        <item>Camalig</item>
+        <item>City Of Ligao</item>
+        <item>City Of Tabaco</item>
+        <item>Daraga (Locsin)</item>
+        <item>Guinobatan</item>
+        <item>Jovellar</item>
+        <item>Legazpi City</item>
+        <item>Libon</item>
+        <item>Malilipot</item>
+        <item>Malinao</item>
+        <item>Manito</item>
+        <item>Oas</item>
+        <item>Pio Duran</item>
+        <item>Polangui</item>
+        <item>Rapu-Rapu</item>
+        <item>Santo Domingo (Libog)</item>
+        <item>Tiwi</item>
+    </string-array>
+    <string-array name="Angeles_City">
+        <item>Angeles City</item>
+    </string-array>
+    <string-array name="Antique">
+        <item>Anini-Y</item>
+        <item>Barbaza</item>
+        <item>Belison</item>
+        <item>Bugasong</item>
+        <item>Caluya</item>
+        <item>Culasi</item>
+        <item>Hamtic</item>
+        <item>Laua-An</item>
+        <item>Libertad</item>
+        <item>Pandan</item>
+        <item>Patnongon</item>
+        <item>San Jose</item>
+        <item>San Remigio</item>
+        <item>Sebaste</item>
+        <item>Sibalom</item>
+        <item>Tibiao</item>
+        <item>Tobias Fornier (Dao)</item>
+        <item>Valderrama</item>
+    </string-array>
+    <string-array name="Apayao">
+        <item>Calanasan (Bayag)</item>
+        <item>Conner</item>
+        <item>Flora</item>
+        <item>Kabugao</item>
+        <item>Luna</item>
+        <item>Pudtol</item>
+        <item>Santa Marcela</item>
+    </string-array>
+    <string-array name="Aurora">
+        <item>Baler</item>
+        <item>Casiguran</item>
+        <item>Dilasag</item>
+        <item>Dinalungan</item>
+        <item>Dingalan</item>
+        <item>Dipaculao</item>
+        <item>Maria Aurora</item>
+        <item>San Luis</item>
+    </string-array>
+    <string-array name="Bacolod_City">
+        <item>Bacolod City</item>
+    </string-array>
+    <string-array name="Baguio_City">
+        <item>Baguio City</item>
+    </string-array>
+    <string-array name="Bataan">
+        <item>Abucay</item>
+        <item>Bagac</item>
+        <item>City Of Balanga</item>
+        <item>Dinalupihan</item>
+        <item>Hermosa</item>
+        <item>Limay</item>
+        <item>Mariveles</item>
+        <item>Morong</item>
+        <item>Orani</item>
+        <item>Orion</item>
+        <item>Pilar</item>
+        <item>Samal</item>
+    </string-array>
+    <string-array name="Batanes">
+        <item>Basco</item>
+        <item>Itbayat</item>
+        <item>Ivana</item>
+        <item>Mahatao</item>
+        <item>Sabtang</item>
+        <item>Uyugan</item>
+    </string-array>
+    <string-array name="Batangas">
+        <item>Agoncillo</item>
+        <item>Alitagtag</item>
+        <item>Balayan</item>
+        <item>Balete</item>
+        <item>Batangas City</item>
+        <item>Bauan</item>
+        <item>Calaca</item>
+        <item>Calatagan</item>
+        <item>City Of Tanauan</item>
+        <item>Cuenca</item>
+        <item>Ibaan</item>
+        <item>Laurel</item>
+        <item>Lemery</item>
+        <item>Lian</item>
+        <item>Lipa City</item>
+        <item>Lobo</item>
+        <item>Mabini</item>
+        <item>Malvar</item>
+        <item>Mataasnakahoy</item>
+        <item>Nasugbu</item>
+        <item>Padre Garcia</item>
+        <item>Rosario</item>
+        <item>San Jose</item>
+        <item>San Juan</item>
+        <item>San Luis</item>
+        <item>San Nicolas</item>
+        <item>San Pascual</item>
+        <item>Santa Teresita</item>
+        <item>Santo Tomas</item>
+        <item>Taal</item>
+        <item>Talisay</item>
+        <item>Taysan</item>
+        <item>Tingloy</item>
+        <item>Tuy</item>
+    </string-array>
+    <string-array name="Benguet">
+        <item>Atok</item>
+        <item>Bakun</item>
+        <item>Bokod</item>
+        <item>Buguias</item>
+        <item>Itogon</item>
+        <item>Kabayan</item>
+        <item>Kapangan</item>
+        <item>Kibungan</item>
+        <item>La Trinidad</item>
+        <item>Mankayan</item>
+        <item>Sablan</item>
+        <item>Tuba</item>
+        <item>Tublay</item>
+    </string-array>
+    <string-array name="Biliran">
+        <item>Almeria</item>
+        <item>Biliran</item>
+        <item>Cabucgayan</item>
+        <item>Caibiran</item>
+        <item>Culaba</item>
+        <item>Kawayan</item>
+        <item>Maripipi</item>
+        <item>Naval</item>
+    </string-array>
+    <string-array name="Bohol">
+        <item>Alburquerque</item>
+        <item>Alicia</item>
+        <item>Anda</item>
+        <item>Antequera</item>
+        <item>Baclayon</item>
+        <item>Balilihan</item>
+        <item>Batuan</item>
+        <item>Bien Unido</item>
+        <item>Bilar</item>
+        <item>Buenavista</item>
+        <item>Calape</item>
+        <item>Candijay</item>
+        <item>Carmen</item>
+        <item>Catigbian</item>
+        <item>Clarin</item>
+        <item>Corella</item>
+        <item>Cortes</item>
+        <item>Dagohoy</item>
+        <item>Danao</item>
+        <item>Dauis</item>
+        <item>Dimiao</item>
+        <item>Duero</item>
+        <item>Garcia Hernandez</item>
+        <item>Guindulman</item>
+        <item>Inabanga</item>
+        <item>Jagna</item>
+        <item>Jetafe</item>
+        <item>Lila</item>
+        <item>Loay</item>
+        <item>Loboc</item>
+        <item>Loon</item>
+        <item>Mabini</item>
+        <item>Maribojoc</item>
+        <item>Panglao</item>
+        <item>Pilar</item>
+        <item>Pres. Carlos P. Garcia (Pitogo)</item>
+        <item>Sagbayan (Borja)</item>
+        <item>San Isidro</item>
+        <item>San Miguel</item>
+        <item>Sevilla</item>
+        <item>Sierra Bullones</item>
+        <item>Sikatuna</item>
+        <item>Tagbilaran City</item>
+        <item>Talibon</item>
+        <item>Trinidad</item>
+        <item>Tubigon</item>
+        <item>Ubay</item>
+        <item>Valencia</item>
+    </string-array>
+    <string-array name="Bukidnon">
+        <item>Baungon</item>
+        <item>Cabanglasan</item>
+        <item>City Of Malaybalay</item>
+        <item>City Of Valencia</item>
+        <item>Damulog</item>
+        <item>Dangcagan</item>
+        <item>Don Carlos</item>
+        <item>Impasug-Ong</item>
+        <item>Kadingilan</item>
+        <item>Kalilangan</item>
+        <item>Kibawe</item>
+        <item>Kitaotao</item>
+        <item>Lantapan</item>
+        <item>Libona</item>
+        <item>Malitbog</item>
+        <item>Manolo Fortich</item>
+        <item>Maramag</item>
+        <item>Pangantucan</item>
+        <item>Quezon</item>
+        <item>San Fernando</item>
+        <item>Sumilao</item>
+        <item>Talakag</item>
+    </string-array>
+    <string-array name="Bulacan">
+        <item>Angat</item>
+        <item>Balagtas (Bigaa)</item>
+        <item>Baliuag</item>
+        <item>Bocaue</item>
+        <item>Bulacan</item>
+        <item>Bustos</item>
+        <item>Calumpit</item>
+        <item>City Of Malolos</item>
+        <item>City Of Meycauayan</item>
+        <item>City Of San Jose Del Monte</item>
+        <item>Dona Remedios Trinidad</item>
+        <item>Guiguinto</item>
+        <item>Hagonoy</item>
+        <item>Marilao</item>
+        <item>Norzagaray</item>
+        <item>Obando</item>
+        <item>Pandi</item>
+        <item>Paombong</item>
+        <item>Plaridel</item>
+        <item>Pulilan</item>
+        <item>San Ildefonso</item>
+        <item>San Miguel</item>
+        <item>San Rafael</item>
+        <item>Santa Maria</item>
+    </string-array>
+    <string-array name="Butuan_City">
+        <item>Butuan City</item>
+    </string-array>
+    <string-array name="CAR___Cordillera_Administrative_Region">
+        <item>Abra</item>
+        <item>Apayao</item>
+        <item>Baguio City</item>
+        <item>Benguet</item>
+        <item>Ifugao</item>
+        <item>Kalinga</item>
+        <item>Mountain Province</item>
+    </string-array>
+    <string-array name="Cagayan">
+        <item>Abulug</item>
+        <item>Alcala</item>
+        <item>Allacapan</item>
+        <item>Amulung</item>
+        <item>Aparri</item>
+        <item>Baggao</item>
+        <item>Ballesteros</item>
+        <item>Buguey</item>
+        <item>Calayan</item>
+        <item>Camalaniugan</item>
+        <item>Claveria</item>
+        <item>Enrile</item>
+        <item>Gattaran</item>
+        <item>Gonzaga</item>
+        <item>Iguig</item>
+        <item>Lal-Lo</item>
+        <item>Lasam</item>
+        <item>Pamplona</item>
+        <item>Penablanca</item>
+        <item>Piat</item>
+        <item>Rizal</item>
+        <item>Sanchez-Mira</item>
+        <item>Santa Ana</item>
+        <item>Santa Praxedes</item>
+        <item>Santa Teresita</item>
+        <item>Santo Nino (Faire)</item>
+        <item>Solana</item>
+        <item>Tuao</item>
+        <item>Tuguegarao City</item>
+    </string-array>
+    <string-array name="Cagayan_de_Oro_City">
+        <item>Cagayan De Oro City</item>
+    </string-array>
+    <string-array name="Camarines_Norte">
+        <item>Basud</item>
+        <item>Capalonga</item>
+        <item>Daet</item>
+        <item>Jose Panganiban</item>
+        <item>Labo</item>
+        <item>Mercedes</item>
+        <item>Paracale</item>
+        <item>San Lorenzo Ruiz (Imelda)</item>
+        <item>San Vicente</item>
+        <item>Santa Elena</item>
+        <item>Talisay</item>
+        <item>Vinzons</item>
+    </string-array>
+    <string-array name="Camarines_Sur">
+        <item>Baao</item>
+        <item>Balatan</item>
+        <item>Bato</item>
+        <item>Bombon</item>
+        <item>Buhi</item>
+        <item>Bula</item>
+        <item>Cabusao</item>
+        <item>Calabanga</item>
+        <item>Camaligan</item>
+        <item>Canaman</item>
+        <item>Caramoan</item>
+        <item>Del Gallego</item>
+        <item>Gainza</item>
+        <item>Garchitorena</item>
+        <item>Goa</item>
+        <item>Iriga City</item>
+        <item>Lagonoy</item>
+        <item>Libmanan</item>
+        <item>Lupi</item>
+        <item>Magarao</item>
+        <item>Milaor</item>
+        <item>Minalabac</item>
+        <item>Nabua</item>
+        <item>Naga City</item>
+        <item>Ocampo</item>
+        <item>Pamplona</item>
+        <item>Pasacao</item>
+        <item>Pili</item>
+        <item>Presentacion (Parubcan)</item>
+        <item>Ragay</item>
+        <item>Sagnay</item>
+        <item>San Fernando</item>
+        <item>San Jose</item>
+        <item>Sipocot</item>
+        <item>Siruma</item>
+        <item>Tigaon</item>
+        <item>Tinambac</item>
+    </string-array>
+    <string-array name="Camiguin">
+        <item>Catarman</item>
+        <item>Guinsiliban</item>
+        <item>Mahinog</item>
+        <item>Mambajao</item>
+        <item>Sagay</item>
+    </string-array>
+    <string-array name="Capiz">
+        <item>Cuartero</item>
+        <item>Dao</item>
+        <item>Dumalag</item>
+        <item>Dumarao</item>
+        <item>Ivisan</item>
+        <item>Jamindan</item>
+        <item>Ma-Ayon</item>
+        <item>Mambusao</item>
+        <item>Panay</item>
+        <item>Panitan</item>
+        <item>Pilar</item>
+        <item>Pontevedra</item>
+        <item>President Roxas</item>
+        <item>Roxas City</item>
+        <item>Sapi-An</item>
+        <item>Sigma</item>
+        <item>Tapaz</item>
+    </string-array>
+    <string-array name="Catanduanes">
+        <item>Bagamanoc</item>
+        <item>Baras</item>
+        <item>Bato</item>
+        <item>Caramoran</item>
+        <item>Gigmoto</item>
+        <item>Pandan</item>
+        <item>Panganiban (Payo)</item>
+        <item>San Andres (Calolbon)</item>
+        <item>San Miguel</item>
+        <item>Viga</item>
+        <item>Virac</item>
+    </string-array>
+    <string-array name="Cavite">
+        <item>Alfonso</item>
+        <item>Amadeo</item>
+        <item>Bacoor</item>
+        <item>Carmona</item>
+        <item>Cavite City</item>
+        <item>City Of Dasmarinas</item>
+        <item>Gen. Mariano Alvarez</item>
+        <item>General Emilio Aguinaldo</item>
+        <item>General Trias</item>
+        <item>Imus</item>
+        <item>Indang</item>
+        <item>Kawit</item>
+        <item>Magallanes</item>
+        <item>Maragondon</item>
+        <item>Mendez (Mendez-Nunez)</item>
+        <item>Naic</item>
+        <item>Noveleta</item>
+        <item>Rosario</item>
+        <item>Silang</item>
+        <item>Tagaytay City</item>
+        <item>Tanza</item>
+        <item>Ternate</item>
+        <item>Trece Martires City</item>
+    </string-array>
+    <string-array name="Cebu">
+        <item>Alcantara</item>
+        <item>Alcoy</item>
+        <item>Alegria</item>
+        <item>Aloguinsan</item>
+        <item>Argao</item>
+        <item>Asturias</item>
+        <item>Badian</item>
+        <item>Balamban</item>
+        <item>Bantayan</item>
+        <item>Barili</item>
+        <item>Boljoon</item>
+        <item>Borbon</item>
+        <item>Carmen</item>
+        <item>Catmon</item>
+        <item>City Of Bogo</item>
+        <item>City Of Carcar</item>
+        <item>City Of Naga</item>
+        <item>City Of Talisay</item>
+        <item>Compostela</item>
+        <item>Consolacion</item>
+        <item>Cordoba</item>
+        <item>Daanbantayan</item>
+        <item>Dalaguete</item>
+        <item>Danao City</item>
+        <item>Dumanjug</item>
+        <item>Ginatilan</item>
+        <item>Liloan</item>
+        <item>Madridejos</item>
+        <item>Malabuyoc</item>
+        <item>Medellin</item>
+        <item>Minglanilla</item>
+        <item>Moalboal</item>
+        <item>Oslob</item>
+        <item>Pilar</item>
+        <item>Pinamungahan</item>
+        <item>Poro</item>
+        <item>Ronda</item>
+        <item>Samboan</item>
+        <item>San Fernando</item>
+        <item>San Francisco</item>
+        <item>San Remigio</item>
+        <item>Santa Fe</item>
+        <item>Santander</item>
+        <item>Sibonga</item>
+        <item>Sogod</item>
+        <item>Tabogon</item>
+        <item>Tabuelan</item>
+        <item>Toledo City</item>
+        <item>Tuburan</item>
+        <item>Tudela</item>
+    </string-array>
+    <string-array name="Cebu_City">
+        <item>Cebu City</item>
+    </string-array>
+    <string-array name="Compostela_Valley">
+        <item>Compostela</item>
+        <item>Laak (San Vicente)</item>
+        <item>Mabini (Dona Alicia)</item>
+        <item>Maco</item>
+        <item>Maragusan (San Mariano)</item>
+        <item>Mawab</item>
+        <item>Monkayo</item>
+        <item>Montevista</item>
+        <item>Nabunturan</item>
+        <item>New Bataan</item>
+        <item>Pantukan</item>
+    </string-array>
+    <string-array name="Cotabato_City">
+        <item>Cotabato City</item>
+    </string-array>
+    <string-array name="Cotabato_North_C">
+        <item>Alamada</item>
+        <item>Aleosan</item>
+        <item>Antipas</item>
+        <item>Arakan</item>
+        <item>Banisilan</item>
+        <item>Carmen</item>
+        <item>City Of Kidapawan</item>
+        <item>Kabacan</item>
+        <item>Libungan</item>
+        <item>M\'Lang</item>
+        <item>Magpet</item>
+        <item>Makilala</item>
+        <item>Matalam</item>
+        <item>Midsayap</item>
+        <item>Pigkawayan</item>
+        <item>Pikit</item>
+        <item>President Roxas</item>
+        <item>Tulunan</item>
+    </string-array>
+    <string-array name="Davao_City">
+        <item>Davao City</item>
+    </string-array>
+    <string-array name="Davao_Oriental">
+        <item>Baganga</item>
+        <item>Banaybanay</item>
+        <item>Boston</item>
+        <item>Caraga</item>
+        <item>Cateel</item>
+        <item>City Of Mati</item>
+        <item>Governor Generoso</item>
+        <item>Lupon</item>
+        <item>Manay</item>
+        <item>San Isidro</item>
+        <item>Tarragona</item>
+    </string-array>
+    <string-array name="Davao_del_Norte">
+        <item>Asuncion (Saug)</item>
+        <item>Braulio E. Dujali</item>
+        <item>Carmen</item>
+        <item>City Of Panabo</item>
+        <item>City Of Tagum</item>
+        <item>Island Garden City Of Samal</item>
+        <item>Kapalong</item>
+        <item>New Corella</item>
+        <item>San Isidro</item>
+        <item>Santo Tomas</item>
+        <item>Talaingod</item>
+    </string-array>
+    <string-array name="Davao_del_Sur">
+        <item>Bansalan</item>
+        <item>City Of Digos</item>
+        <item>Don Marcelino</item>
+        <item>Hagonoy</item>
+        <item>Jose Abad Santos (Trinidad)</item>
+        <item>Kiblawan</item>
+        <item>Magsaysay</item>
+        <item>Malalag</item>
+        <item>Malita</item>
+        <item>Matanao</item>
+        <item>Padada</item>
+        <item>Santa Cruz</item>
+        <item>Santa Maria</item>
+        <item>Sarangani</item>
+        <item>Sulop</item>
+    </string-array>
+    <string-array name="Dinagat_Islands">
+        <item>Basilisa (Rizal)</item>
+        <item>Cagdianao</item>
+        <item>Dinagat</item>
+        <item>Libjo (Albor)</item>
+        <item>Loreto</item>
+        <item>San Jose</item>
+        <item>Tubajon</item>
+    </string-array>
+    <string-array name="Eastern_Samar">
+        <item>Arteche</item>
+        <item>Balangiga</item>
+        <item>Balangkayan</item>
+        <item>Can-Avid</item>
+        <item>City Of Borongan</item>
+        <item>Dolores</item>
+        <item>General Macarthur</item>
+        <item>Giporlos</item>
+        <item>Guiuan</item>
+        <item>Hernani</item>
+        <item>Jipapad</item>
+        <item>Lawaan</item>
+        <item>Llorente</item>
+        <item>Maslog</item>
+        <item>Maydolong</item>
+        <item>Mercedes</item>
+        <item>Oras</item>
+        <item>Quinapondan</item>
+        <item>Salcedo</item>
+        <item>San Julian</item>
+        <item>San Policarpo</item>
+        <item>Sulat</item>
+        <item>Taft</item>
+    </string-array>
+    <string-array name="First_District">
+        <item>Binondo</item>
+        <item>Ermita</item>
+        <item>Intramuros</item>
+        <item>Malate</item>
+        <item>Paco</item>
+        <item>Pandacan</item>
+        <item>Port Area</item>
+        <item>Quiapo</item>
+        <item>Sampaloc</item>
+        <item>San Miguel</item>
+        <item>San Nicolas</item>
+        <item>Santa Ana</item>
+        <item>Santa Cruz</item>
+        <item>Tondo I / II</item>
+    </string-array>
+    <string-array name="Fourth_District">
+        <item>Las Pinas, City of</item>
+        <item>Makati, City of</item>
+        <item>Muntinlupa, City of</item>
+        <item>Paranaque, City of</item>
+        <item>Pasay City</item>
+        <item>Pateros</item>
+        <item>Taguig City</item>
+    </string-array>
+    <string-array name="General_Santos_City">
+        <item>General Santos City (Dadiangas)</item>
+    </string-array>
+    <string-array name="Guimaras">
+        <item>Buenavista</item>
+        <item>Jordan</item>
+        <item>Nueva Valencia</item>
+        <item>San Lorenzo</item>
+        <item>Sibunag</item>
+    </string-array>
+    <string-array name="Ifugao">
+        <item>Aguinaldo</item>
+        <item>Alfonso Lista (Potia)</item>
+        <item>Asipulo</item>
+        <item>Banaue</item>
+        <item>Hingyon</item>
+        <item>Hungduan</item>
+        <item>Kiangan</item>
+        <item>Lagawe</item>
+        <item>Lamut</item>
+        <item>Mayoyao</item>
+        <item>Tinoc</item>
+    </string-array>
+    <string-array name="Iligan_City">
+        <item>Iligan City</item>
+    </string-array>
+    <string-array name="Ilocos_Norte">
+        <item>Adams</item>
+        <item>Bacarra</item>
+        <item>Badoc</item>
+        <item>Bangui</item>
+        <item>Banna (Espiritu)</item>
+        <item>Burgos</item>
+        <item>Carasi</item>
+        <item>City Of Batac</item>
+        <item>Currimao</item>
+        <item>Dingras</item>
+        <item>Dumalneg</item>
+        <item>Laoag City</item>
+        <item>Marcos</item>
+        <item>Nueva Era</item>
+        <item>Pagudpud</item>
+        <item>Paoay</item>
+        <item>Pasuquin</item>
+        <item>Piddig</item>
+        <item>Pinili</item>
+        <item>San Nicolas</item>
+        <item>Sarrat</item>
+        <item>Solsona</item>
+        <item>Vintar</item>
+    </string-array>
+    <string-array name="Ilocos_Sur">
+        <item>Alilem</item>
+        <item>Banayoyo</item>
+        <item>Bantay</item>
+        <item>Burgos</item>
+        <item>Cabugao</item>
+        <item>Caoayan</item>
+        <item>Cervantes</item>
+        <item>City Of Candon</item>
+        <item>City Of Vigan</item>
+        <item>Galimuyod</item>
+        <item>Gregorio Del Pilar (Concepcion)</item>
+        <item>Lidlidda</item>
+        <item>Magsingal</item>
+        <item>Nagbukel</item>
+        <item>Narvacan</item>
+        <item>Quirino (Angkaki)</item>
+        <item>Salcedo (Baugen)</item>
+        <item>San Emilio</item>
+        <item>San Esteban</item>
+        <item>San Ildefonso</item>
+        <item>San Juan (Lapog)</item>
+        <item>San Vicente</item>
+        <item>Santa</item>
+        <item>Santa Catalina</item>
+        <item>Santa Cruz</item>
+        <item>Santa Lucia</item>
+        <item>Santa Maria</item>
+        <item>Santiago</item>
+        <item>Santo Domingo</item>
+        <item>Sigay</item>
+        <item>Sinait</item>
+        <item>Sugpon</item>
+        <item>Suyo</item>
+        <item>Tagudin</item>
+    </string-array>
+    <string-array name="Iloilo">
+        <item>Ajuy</item>
+        <item>Alimodian</item>
+        <item>Anilao</item>
+        <item>Badiangan</item>
+        <item>Balasan</item>
+        <item>Banate</item>
+        <item>Barotac Nuevo</item>
+        <item>Barotac Viejo</item>
+        <item>Batad</item>
+        <item>Bingawan</item>
+        <item>Cabatuan</item>
+        <item>Calinog</item>
+        <item>Carles</item>
+        <item>City Of Passi</item>
+        <item>Concepcion</item>
+        <item>Dingle</item>
+        <item>Duenas</item>
+        <item>Dumangas</item>
+        <item>Estancia</item>
+        <item>Guimbal</item>
+        <item>Igbaras</item>
+        <item>Janiuay</item>
+        <item>Lambunao</item>
+        <item>Leganes</item>
+        <item>Lemery</item>
+        <item>Leon</item>
+        <item>Maasin</item>
+        <item>Miagao</item>
+        <item>Mina</item>
+        <item>New Lucena</item>
+        <item>Oton</item>
+        <item>Pavia</item>
+        <item>Pototan</item>
+        <item>San Dionisio</item>
+        <item>San Enrique</item>
+        <item>San Joaquin</item>
+        <item>San Miguel</item>
+        <item>San Rafael</item>
+        <item>Santa Barbara</item>
+        <item>Sara</item>
+        <item>Tigbauan</item>
+        <item>Tubungan</item>
+        <item>Zarraga</item>
+    </string-array>
+    <string-array name="Iloilo_City">
+        <item>Iloilo City</item>
+    </string-array>
+    <string-array name="Isabela">
+        <item>Alicia</item>
+        <item>Angadanan</item>
+        <item>Aurora</item>
+        <item>Benito Soliven</item>
+        <item>Burgos</item>
+        <item>Cabagan</item>
+        <item>Cabatuan</item>
+        <item>City Of Cauayan</item>
+        <item>City Of Santiago</item>
+        <item>Cordon</item>
+        <item>Delfin Albano (Magsaysay)</item>
+        <item>Dinapigue</item>
+        <item>Divilacan</item>
+        <item>Echague</item>
+        <item>Gamu</item>
+        <item>Ilagan</item>
+        <item>Jones</item>
+        <item>Luna</item>
+        <item>Maconacon</item>
+        <item>Mallig</item>
+        <item>Naguilian</item>
+        <item>Palanan</item>
+        <item>Quezon</item>
+        <item>Quirino</item>
+        <item>Ramon</item>
+        <item>Reina Mercedes</item>
+        <item>Roxas</item>
+        <item>San Agustin</item>
+        <item>San Guillermo</item>
+        <item>San Isidro</item>
+        <item>San Manuel</item>
+        <item>San Mariano</item>
+        <item>San Mateo</item>
+        <item>San Pablo</item>
+        <item>Santa Maria</item>
+        <item>Santo Tomas</item>
+        <item>Tumauini</item>
+    </string-array>
+    <string-array name="Kalinga">
+        <item>Balbalan</item>
+        <item>City Of Tabuk</item>
+        <item>Lubuagan</item>
+        <item>Pasil</item>
+        <item>Pinukpuk</item>
+        <item>Rizal (Liwan)</item>
+        <item>Tanudan</item>
+        <item>Tinglayan</item>
+    </string-array>
+    <string-array name="La_Union">
+        <item>Agoo</item>
+        <item>Aringay</item>
+        <item>Bacnotan</item>
+        <item>Bagulin</item>
+        <item>Balaoan</item>
+        <item>Bangar</item>
+        <item>Bauang</item>
+        <item>Burgos</item>
+        <item>Caba</item>
+        <item>City Of San Fernando</item>
+        <item>Luna</item>
+        <item>Naguilian</item>
+        <item>Pugo</item>
+        <item>Rosario</item>
+        <item>San Gabriel</item>
+        <item>San Juan</item>
+        <item>Santo Tomas</item>
+        <item>Santol</item>
+        <item>Sudipen</item>
+        <item>Tubao</item>
+    </string-array>
+    <string-array name="Laguna">
+        <item>Alaminos</item>
+        <item>Bay</item>
+        <item>Cabuyao</item>
+        <item>Calauan</item>
+        <item>Cavinti</item>
+        <item>City Of Binan</item>
+        <item>City Of Calamba</item>
+        <item>City Of Santa Rosa</item>
+        <item>Famy</item>
+        <item>Kalayaan</item>
+        <item>Liliw</item>
+        <item>Los Banos</item>
+        <item>Luisiana</item>
+        <item>Lumban</item>
+        <item>Mabitac</item>
+        <item>Magdalena</item>
+        <item>Majayjay</item>
+        <item>Nagcarlan</item>
+        <item>Paete</item>
+        <item>Pagsanjan</item>
+        <item>Pakil</item>
+        <item>Pangil</item>
+        <item>Pila</item>
+        <item>Rizal</item>
+        <item>San Pablo City</item>
+        <item>San Pedro</item>
+        <item>Santa Cruz</item>
+        <item>Santa Maria</item>
+        <item>Siniloan</item>
+        <item>Victoria</item>
+    </string-array>
+    <string-array name="Lanao_del_Norte">
+        <item>Bacolod</item>
+        <item>Baloi</item>
+        <item>Baroy</item>
+        <item>Kapatagan</item>
+        <item>Kauswagan</item>
+        <item>Kolambugan</item>
+        <item>Lala</item>
+        <item>Linamon</item>
+        <item>Magsaysay</item>
+        <item>Maigo</item>
+        <item>Matungao</item>
+        <item>Munai</item>
+        <item>Nunungan</item>
+        <item>Pantao Ragat</item>
+        <item>Pantar</item>
+        <item>Poona Piagapo</item>
+        <item>Salvador</item>
+        <item>Sapad</item>
+        <item>Sultan Naga Dimaporo (Karomatan)</item>
+        <item>Tagoloan</item>
+        <item>Tangcal</item>
+        <item>Tubod</item>
+    </string-array>
+    <string-array name="Lanao_del_Sur">
+        <item>Bacolod-Kalawi (Bacolod Grande)</item>
+        <item>Balabagan</item>
+        <item>Balindong (Watu)</item>
+        <item>Bayang</item>
+        <item>Binidayan</item>
+        <item>Buadiposo-Buntong</item>
+        <item>Bubong</item>
+        <item>Bumbaran</item>
+        <item>Butig</item>
+        <item>Calanogas</item>
+        <item>Ditsaan-Ramain</item>
+        <item>Ganassi</item>
+        <item>Kapai</item>
+        <item>Kapatagan</item>
+        <item>Lumba-Bayabao (Maguing)</item>
+        <item>Lumbaca-Unayan</item>
+        <item>Lumbatan</item>
+        <item>Lumbayanague</item>
+        <item>Madalum</item>
+        <item>Madamba</item>
+        <item>Maguing</item>
+        <item>Malabang</item>
+        <item>Marantao</item>
+        <item>Marawi City</item>
+        <item>Marogong</item>
+        <item>Masiu</item>
+        <item>Mulondo</item>
+        <item>Pagayawan (Tatarikan)</item>
+        <item>Piagapo</item>
+        <item>Picong (Sultan Gumander)</item>
+        <item>Poona Bayabao (Gata)</item>
+        <item>Pualas</item>
+        <item>Saguiaran</item>
+        <item>Sultan Dumalondong</item>
+        <item>Tagoloan Ii</item>
+        <item>Tamparan</item>
+        <item>Taraka</item>
+        <item>Tubaran</item>
+        <item>Tugaya</item>
+        <item>Wao</item>
+    </string-array>
+    <string-array name="Lapu_Lapu_City">
+        <item>Lapu-Lapu City (Opon)</item>
+    </string-array>
+    <string-array name="Leyte">
+        <item>Abuyog</item>
+        <item>Alangalang</item>
+        <item>Albuera</item>
+        <item>Babatngon</item>
+        <item>Barugo</item>
+        <item>Bato</item>
+        <item>Burauen</item>
+        <item>Calubian</item>
+        <item>Capoocan</item>
+        <item>Carigara</item>
+        <item>City Of Baybay</item>
+        <item>Dagami</item>
+        <item>Dulag</item>
+        <item>Hilongos</item>
+        <item>Hindang</item>
+        <item>Inopacan</item>
+        <item>Isabel</item>
+        <item>Jaro</item>
+        <item>Javier (Bugho)</item>
+        <item>Julita</item>
+        <item>Kananga</item>
+        <item>La Paz</item>
+        <item>Leyte</item>
+        <item>Macarthur</item>
+        <item>Mahaplag</item>
+        <item>Matag-Ob</item>
+        <item>Matalom</item>
+        <item>Mayorga</item>
+        <item>Merida</item>
+        <item>Ormoc City</item>
+        <item>Palo</item>
+        <item>Palompon</item>
+        <item>Pastrana</item>
+        <item>San Isidro</item>
+        <item>San Miguel</item>
+        <item>Santa Fe</item>
+        <item>Tabango</item>
+        <item>Tabontabon</item>
+        <item>Tacloban City</item>
+        <item>Tanauan</item>
+        <item>Tolosa</item>
+        <item>Tunga</item>
+        <item>Villaba</item>
+    </string-array>
+    <string-array name="Lucena_City">
+        <item>Lucena City</item>
+    </string-array>
+    <string-array name="Maguindanao">
+        <item>Ampatuan</item>
+        <item>Barira</item>
+        <item>Buldon</item>
+        <item>Buluan</item>
+        <item>Datu Abdullah Sangki</item>
+        <item>Datu Anggal Midtimbang</item>
+        <item>Datu Blah T. Sinsuat</item>
+        <item>Datu Odin Sinsuat (Dinaig)</item>
+        <item>Datu Paglas</item>
+        <item>Datu Piang</item>
+        <item>Datu Saudi-Ampatuan</item>
+        <item>Datu Unsay</item>
+        <item>Gen. S. K. Pendatun</item>
+        <item>Guindulungan</item>
+        <item>Kabuntalan (Tumbao)</item>
+        <item>Mamasapano</item>
+        <item>Mangudadatu</item>
+        <item>Matanog</item>
+        <item>Northern Kabuntalan</item>
+        <item>Pagagawan</item>
+        <item>Pagalungan</item>
+        <item>Paglat</item>
+        <item>Pandag</item>
+        <item>Parang</item>
+        <item>Rajah Buayan</item>
+        <item>Shariff Aguak (Maganoy)</item>
+        <item>South Upi</item>
+        <item>Sultan Kudarat (Nuling)</item>
+        <item>Sultan Mastura</item>
+        <item>Sultan Sa Barongis (Lambayong)</item>
+        <item>Talayan</item>
+        <item>Talitay</item>
+        <item>Upi</item>
+    </string-array>
+    <string-array name="Mandaue_City">
+        <item>Mandaue City</item>
+    </string-array>
+    <string-array name="Marinduque">
+        <item>Boac</item>
+        <item>Buenavista</item>
+        <item>Gasan</item>
+        <item>Mogpog</item>
+        <item>Santa Cruz</item>
+        <item>Torrijos</item>
+    </string-array>
+    <string-array name="Masbate">
+        <item>Aroroy</item>
+        <item>Baleno</item>
+        <item>Balud</item>
+        <item>Batuan</item>
+        <item>Cataingan</item>
+        <item>Cawayan</item>
+        <item>City Of Masbate</item>
+        <item>Claveria</item>
+        <item>Dimasalang</item>
+        <item>Esperanza</item>
+        <item>Mandaon</item>
+        <item>Milagros</item>
+        <item>Mobo</item>
+        <item>Monreal</item>
+        <item>Palanas</item>
+        <item>Pio V. Corpuz (Limbuhan)</item>
+        <item>Placer</item>
+        <item>San Fernando</item>
+        <item>San Jacinto</item>
+        <item>San Pascual</item>
+        <item>Uson</item>
+    </string-array>
+    <string-array name="Misamis_Occidental">
+        <item>Aloran</item>
+        <item>Baliangao</item>
+        <item>Bonifacio</item>
+        <item>Calamba</item>
+        <item>Clarin</item>
+        <item>Concepcion</item>
+        <item>Don Victoriano Chiongbian (Don Mariano Marcos)</item>
+        <item>Jimenez</item>
+        <item>Lopez Jaena</item>
+        <item>Oroquieta City</item>
+        <item>Ozamis City</item>
+        <item>Panaon</item>
+        <item>Plaridel</item>
+        <item>Sapang Dalaga</item>
+        <item>Sinacaban</item>
+        <item>Tangub City</item>
+        <item>Tudela</item>
+    </string-array>
+    <string-array name="Misamis_Oriental">
+        <item>Alubijid</item>
+        <item>Balingasag</item>
+        <item>Balingoan</item>
+        <item>Binuangan</item>
+        <item>City Of El Salvador</item>
+        <item>Claveria</item>
+        <item>Gingoog City</item>
+        <item>Gitagum</item>
+        <item>Initao</item>
+        <item>Jasaan</item>
+        <item>Kinoguitan</item>
+        <item>Lagonglong</item>
+        <item>Laguindingan</item>
+        <item>Libertad</item>
+        <item>Lugait</item>
+        <item>Magsaysay (Linugos)</item>
+        <item>Manticao</item>
+        <item>Medina</item>
+        <item>Naawan</item>
+        <item>Opol</item>
+        <item>Salay</item>
+        <item>Sugbongcogon</item>
+        <item>Tagoloan</item>
+        <item>Talisayan</item>
+        <item>Villanueva</item>
+    </string-array>
+    <string-array name="Mountain_Province">
+        <item>Barlig</item>
+        <item>Bauko</item>
+        <item>Besao</item>
+        <item>Bontoc</item>
+        <item>Natonin</item>
+        <item>Paracelis</item>
+        <item>Sabangan</item>
+        <item>Sadanga</item>
+        <item>Sagada</item>
+        <item>Tadian</item>
+    </string-array>
+    <string-array name="NCR___National_Capital_Region_Metro_Manila">
+        <item>First District</item>
+        <item>Second District</item>
+        <item>Third District</item>
+        <item>Fourth District</item>
+    </string-array>
+    <string-array name="Negros_Occidental">
+        <item>Bago City</item>
+        <item>Binalbagan</item>
+        <item>Cadiz City</item>
+        <item>Calatrava</item>
+        <item>Candoni</item>
+        <item>Cauayan</item>
+        <item>City Of Escalante</item>
+        <item>City Of Himamaylan</item>
+        <item>City Of Kabankalan</item>
+        <item>City Of Sipalay</item>
+        <item>City Of Talisay</item>
+        <item>City Of Victorias</item>
+        <item>Enrique B. Magalona (Saravia)</item>
+        <item>Hinigaran</item>
+        <item>Hinoba-An (Asia)</item>
+        <item>Ilog</item>
+        <item>Isabela</item>
+        <item>La Carlota City</item>
+        <item>La Castellana</item>
+        <item>Manapla</item>
+        <item>Moises Padilla (Magallon)</item>
+        <item>Murcia</item>
+        <item>Pontevedra</item>
+        <item>Pulupandan</item>
+        <item>Sagay City</item>
+        <item>Salvador Benedicto</item>
+        <item>San Carlos City</item>
+        <item>San Enrique</item>
+        <item>Silay City</item>
+        <item>Toboso</item>
+        <item>Valladolid</item>
+    </string-array>
+    <string-array name="Negros_Oriental">
+        <item>Amlan (Ayuquitan)</item>
+        <item>Ayungon</item>
+        <item>Bacong</item>
+        <item>Bais City</item>
+        <item>Basay</item>
+        <item>Bindoy (Payabon)</item>
+        <item>Canlaon City</item>
+        <item>City Of Bayawan (Tulong)</item>
+        <item>City Of Guihulngan</item>
+        <item>City Of Tanjay</item>
+        <item>Dauin</item>
+        <item>Dumaguete City</item>
+        <item>Jimalalud</item>
+        <item>La Libertad</item>
+        <item>Mabinay</item>
+        <item>Manjuyod</item>
+        <item>Pamplona</item>
+        <item>San Jose</item>
+        <item>Santa Catalina</item>
+        <item>Siaton</item>
+        <item>Sibulan</item>
+        <item>Tayasan</item>
+        <item>Valencia (Luzurriaga)</item>
+        <item>Vallehermoso</item>
+        <item>Zamboanguita</item>
+    </string-array>
+    <string-array name="Northern_Samar">
+        <item>Allen</item>
+        <item>Biri</item>
+        <item>Bobon</item>
+        <item>Capul</item>
+        <item>Catarman</item>
+        <item>Catubig</item>
+        <item>Gamay</item>
+        <item>Laoang</item>
+        <item>Lapinig</item>
+        <item>Las Navas</item>
+        <item>Lavezares</item>
+        <item>Lope De Vega</item>
+        <item>Mapanas</item>
+        <item>Mondragon</item>
+        <item>Palapag</item>
+        <item>Pambujan</item>
+        <item>Rosario</item>
+        <item>San Antonio</item>
+        <item>San Isidro</item>
+        <item>San Jose</item>
+        <item>San Roque</item>
+        <item>San Vicente</item>
+        <item>Silvino Lobos</item>
+        <item>Victoria</item>
+    </string-array>
+    <string-array name="Nueva_Ecija">
+        <item>Aliaga</item>
+        <item>Bongabon</item>
+        <item>Cabanatuan City</item>
+        <item>Cabiao</item>
+        <item>Carranglan</item>
+        <item>City Of Gapan</item>
+        <item>Cuyapo</item>
+        <item>Gabaldon (Bitulok &amp; Sabani)</item>
+        <item>General Mamerto Natividad</item>
+        <item>General Tinio (Papaya)</item>
+        <item>Guimba</item>
+        <item>Jaen</item>
+        <item>Laur</item>
+        <item>Licab</item>
+        <item>Llanera</item>
+        <item>Lupao</item>
+        <item>Nampicuan</item>
+        <item>Palayan City</item>
+        <item>Pantabangan</item>
+        <item>Penaranda</item>
+        <item>Quezon</item>
+        <item>Rizal</item>
+        <item>San Antonio</item>
+        <item>San Isidro</item>
+        <item>San Jose City</item>
+        <item>San Leonardo</item>
+        <item>Santa Rosa</item>
+        <item>Santo Domingo</item>
+        <item>Science City Of Munoz</item>
+        <item>Talavera</item>
+        <item>Talugtug</item>
+        <item>Zaragoza</item>
+    </string-array>
+    <string-array name="Nueva_Vizcaya">
+        <item>Alfonso Castaneda</item>
+        <item>Ambaguio</item>
+        <item>Aritao</item>
+        <item>Bagabag</item>
+        <item>Bambang</item>
+        <item>Bayombong</item>
+        <item>Diadi</item>
+        <item>Dupax Del Norte</item>
+        <item>Dupax Del Sur</item>
+        <item>Kasibu</item>
+        <item>Kayapa</item>
+        <item>Quezon</item>
+        <item>Santa Fe</item>
+        <item>Solano</item>
+        <item>Villaverde</item>
+    </string-array>
+    <string-array name="Occidental_Mindoro">
+        <item>Abra De Ilog</item>
+        <item>Calintaan</item>
+        <item>Looc</item>
+        <item>Lubang</item>
+        <item>Magsaysay</item>
+        <item>Mamburao</item>
+        <item>Paluan</item>
+        <item>Rizal</item>
+        <item>Sablayan</item>
+        <item>San Jose</item>
+        <item>Santa Cruz</item>
+    </string-array>
+    <string-array name="Olangapo_City">
+        <item>Olongapo City</item>
+    </string-array>
+    <string-array name="Oriental_Mindoro">
+        <item>Baco</item>
+        <item>Bansud</item>
+        <item>Bongabong</item>
+        <item>Bulalacao (San Pedro)</item>
+        <item>City Of Calapan</item>
+        <item>Gloria</item>
+        <item>Mansalay</item>
+        <item>Naujan</item>
+        <item>Pinamalayan</item>
+        <item>Pola</item>
+        <item>Puerto Galera</item>
+        <item>Roxas</item>
+        <item>San Teodoro</item>
+        <item>Socorro</item>
+        <item>Victoria</item>
+    </string-array>
+    <string-array name="Palawan">
+        <item>Aborlan</item>
+        <item>Agutaya</item>
+        <item>Araceli</item>
+        <item>Balabac</item>
+        <item>Bataraza</item>
+        <item>Brooke\'s Point</item>
+        <item>Busuanga</item>
+        <item>Cagayancillo</item>
+        <item>Coron</item>
+        <item>Culion</item>
+        <item>Cuyo</item>
+        <item>Dumaran</item>
+        <item>El Nido (Bacuit)</item>
+        <item>Kalayaan</item>
+        <item>Linapacan</item>
+        <item>Magsaysay</item>
+        <item>Narra</item>
+        <item>Quezon</item>
+        <item>Rizal (Marcos)</item>
+        <item>Roxas</item>
+        <item>San Vicente</item>
+        <item>Sofronio Espanola</item>
+        <item>Taytay</item>
+    </string-array>
+    <string-array name="Pampanga">
+        <item>Apalit</item>
+        <item>Arayat</item>
+        <item>Bacolor</item>
+        <item>Candaba</item>
+        <item>City Of San Fernando</item>
+        <item>Floridablanca</item>
+        <item>Guagua</item>
+        <item>Lubao</item>
+        <item>Mabalacat</item>
+        <item>Macabebe</item>
+        <item>Magalang</item>
+        <item>Masantol</item>
+        <item>Mexico</item>
+        <item>Minalin</item>
+        <item>Porac</item>
+        <item>San Luis</item>
+        <item>San Simon</item>
+        <item>Santa Ana</item>
+        <item>Santa Rita</item>
+        <item>Santo Tomas</item>
+        <item>Sasmuan (Sexmoan)</item>
+    </string-array>
+    <string-array name="Pangasinan">
+        <item>Agno</item>
+        <item>Aguilar</item>
+        <item>Alcala</item>
+        <item>Anda</item>
+        <item>Asingan</item>
+        <item>Balungao</item>
+        <item>Bani</item>
+        <item>Basista</item>
+        <item>Bautista</item>
+        <item>Bayambang</item>
+        <item>Binalonan</item>
+        <item>Binmaley</item>
+        <item>Bolinao</item>
+        <item>Bugallon</item>
+        <item>Burgos</item>
+        <item>Calasiao</item>
+        <item>City Of Alaminos</item>
+        <item>City Of Urdaneta</item>
+        <item>Dagupan City</item>
+        <item>Dasol</item>
+        <item>Infanta</item>
+        <item>Labrador</item>
+        <item>Laoac</item>
+        <item>Lingayen</item>
+        <item>Mabini</item>
+        <item>Malasiqui</item>
+        <item>Manaoag</item>
+        <item>Mangaldan</item>
+        <item>Mangatarem</item>
+        <item>Mapandan</item>
+        <item>Natividad</item>
+        <item>Pozzorubio</item>
+        <item>Rosales</item>
+        <item>San Carlos City</item>
+        <item>San Fabian</item>
+        <item>San Jacinto</item>
+        <item>San Manuel</item>
+        <item>San Nicolas</item>
+        <item>San Quintin</item>
+        <item>Santa Barbara</item>
+        <item>Santa Maria</item>
+        <item>Santo Tomas</item>
+        <item>Sison</item>
+        <item>Sual</item>
+        <item>Tayug</item>
+        <item>Umingan</item>
+        <item>Urbiztondo</item>
+        <item>Villasis</item>
+    </string-array>
+    <string-array name="Puerto_Princesa_City">
+        <item>Puerto Princesa City</item>
+    </string-array>
+    <string-array name="Quezon">
+        <item>Agdangan</item>
+        <item>Alabat</item>
+        <item>Atimonan</item>
+        <item>Buenavista</item>
+        <item>Burdeos</item>
+        <item>Calauag</item>
+        <item>Candelaria</item>
+        <item>Catanauan</item>
+        <item>City Of Tayabas</item>
+        <item>Dolores</item>
+        <item>General Luna</item>
+        <item>General Nakar</item>
+        <item>Guinayangan</item>
+        <item>Gumaca</item>
+        <item>Infanta</item>
+        <item>Jomalig</item>
+        <item>Lopez</item>
+        <item>Lucban</item>
+        <item>Macalelon</item>
+        <item>Mauban</item>
+        <item>Mulanay</item>
+        <item>Padre Burgos</item>
+        <item>Pagbilao</item>
+        <item>Panukulan</item>
+        <item>Patnanungan</item>
+        <item>Perez</item>
+        <item>Pitogo</item>
+        <item>Plaridel</item>
+        <item>Polillo</item>
+        <item>Quezon</item>
+        <item>Real</item>
+        <item>Sampaloc</item>
+        <item>San Andres</item>
+        <item>San Antonio</item>
+        <item>San Francisco (Aurora)</item>
+        <item>San Narciso</item>
+        <item>Sariaya</item>
+        <item>Tagkawayan</item>
+        <item>Tiaong</item>
+        <item>Unisan</item>
+    </string-array>
+    <string-array name="Quirino">
+        <item>Aglipay</item>
+        <item>Cabarroguis</item>
+        <item>Diffun</item>
+        <item>Maddela</item>
+        <item>Nagtipunan</item>
+        <item>Saguday</item>
+    </string-array>
+    <string-array name="Region_Basilan">
+        <item>City Of Isabela</item>
+    </string-array>
+    <string-array name="Region_III_Central_Luzon">
+        <item>Angeles City</item>
+        <item>Aurora</item>
+        <item>Bataan</item>
+        <item>Bulacan</item>
+        <item>Nueva Ecija</item>
+        <item>Olangapo City</item>
+        <item>Pampanga</item>
+        <item>Tarlac</item>
+        <item>Zambales</item>
+    </string-array>
+    <string-array name="Region_II_Cagayan_Valley">
+        <item>Batanes</item>
+        <item>Cagayan</item>
+        <item>Isabela</item>
+        <item>Nueva Vizcaya</item>
+        <item>Quirino</item>
+    </string-array>
+    <string-array name="Region_IV_A_Calabarzon">
+        <item>Batangas</item>
+        <item>Cavite</item>
+        <item>Laguna</item>
+        <item>Lucena City</item>
+        <item>Quezon</item>
+        <item>Rizal</item>
+    </string-array>
+    <string-array name="Region_IV_B_Mimaropa">
+        <item>Marinduque</item>
+        <item>Occidental Mindoro</item>
+        <item>Oriental Mindoro</item>
+        <item>Palawan</item>
+        <item>Puerto Princesa City</item>
+        <item>Romblon</item>
+    </string-array>
+    <string-array name="Region_IX_Zamboanga_Peninsula">
+        <item>Basilan</item>
+        <item>Zamboanga City</item>
+        <item>Zamboanga Sibugay</item>
+        <item>Zamboanga del Norte</item>
+        <item>Zamboanga del Sur</item>
+    </string-array>
+    <string-array name="Region_I_Ilocos_Region">
+        <item>Ilocos Norte</item>
+        <item>Ilocos Sur</item>
+        <item>La Union</item>
+        <item>Pangasinan</item>
+    </string-array>
+    <string-array name="Region_VIII_Eastern_Visayas">
+        <item>Biliran</item>
+        <item>Eastern Samar</item>
+        <item>Leyte</item>
+        <item>Northern Samar</item>
+        <item>Samar (Western)</item>
+        <item>Southern Leyte</item>
+    </string-array>
+    <string-array name="Region_VII_Central_Visayas">
+        <item>Bohol</item>
+        <item>Cebu City</item>
+        <item>Cebu</item>
+        <item>Lapu-Lapu City</item>
+        <item>Mandaue City</item>
+        <item>Negros Oriental</item>
+        <item>Siquijor</item>
+    </string-array>
+    <string-array name="Region_VI_Western_Visayas">
+        <item>Aklan</item>
+        <item>Antique</item>
+        <item>Bacolod City</item>
+        <item>Capiz</item>
+        <item>Guimaras</item>
+        <item>Iloilo City</item>
+        <item>Iloilo</item>
+        <item>Negros Occidental</item>
+    </string-array>
+    <string-array name="Region_V_Bicol">
+        <item>Albay</item>
+        <item>Camarines Norte</item>
+        <item>Camarines Sur</item>
+        <item>Catanduanes</item>
+        <item>Masbate</item>
+        <item>Sorsogon</item>
+    </string-array>
+    <string-array name="Region_XIII_Caraga">
+        <item>Agusan del Norte</item>
+        <item>Agusan del Sur</item>
+        <item>Butuan City</item>
+        <item>Dinagat Islands</item>
+        <item>Surigao del Norte</item>
+        <item>Surigao del Sur</item>
+    </string-array>
+    <string-array name="Region_XII_Soccsksargen">
+        <item>Cotabato (North C.)</item>
+        <item>Cotabato City</item>
+        <item>General Santos City</item>
+        <item>Sarangani</item>
+        <item>South Cotabato</item>
+        <item>Sultan Kudarat</item>
+    </string-array>
+    <string-array name="Region_XI_Davao_Region">
+        <item>Compostela Valley</item>
+        <item>Davao City</item>
+        <item>Davao del Norte</item>
+        <item>Davao del Sur</item>
+        <item>Davao Oriental</item>
+    </string-array>
+    <string-array name="Region_X_Northern_Mindanao">
+        <item>Bukidnon</item>
+        <item>Cagayan de Oro City</item>
+        <item>Camiguin</item>
+        <item>Iligan City</item>
+        <item>Lanao del Norte</item>
+        <item>Misamis Occidental</item>
+        <item>Misamis Oriental</item>
+    </string-array>
+    <string-array name="Rizal">
+        <item>Angono</item>
+        <item>Baras</item>
+        <item>Binangonan</item>
+        <item>Cainta</item>
+        <item>Cardona</item>
+        <item>City Of Antipolo</item>
+        <item>Jala-Jala</item>
+        <item>Morong</item>
+        <item>Pililla</item>
+        <item>Rodriguez (Montalban)</item>
+        <item>San Mateo</item>
+        <item>Tanay</item>
+        <item>Taytay</item>
+        <item>Teresa</item>
+    </string-array>
+    <string-array name="Romblon">
+        <item>Alcantara</item>
+        <item>Banton</item>
+        <item>Cajidiocan</item>
+        <item>Calatrava</item>
+        <item>Concepcion</item>
+        <item>Corcuera</item>
+        <item>Ferrol</item>
+        <item>Looc</item>
+        <item>Magdiwang</item>
+        <item>Odiongan</item>
+        <item>Romblon</item>
+        <item>San Agustin</item>
+        <item>San Andres</item>
+        <item>San Fernando</item>
+        <item>San Jose</item>
+        <item>Santa Fe</item>
+        <item>Santa Maria (Imelda)</item>
+    </string-array>
+    <string-array name="Samar_Western">
+        <item>Almagro</item>
+        <item>Basey</item>
+        <item>Calbayog City</item>
+        <item>Calbiga</item>
+        <item>City Of Catbalogan</item>
+        <item>Daram</item>
+        <item>Gandara</item>
+        <item>Hinabangan</item>
+        <item>Jiabong</item>
+        <item>Marabut</item>
+        <item>Matuguinao</item>
+        <item>Motiong</item>
+        <item>Pagsanghan</item>
+        <item>Paranas (Wright)</item>
+        <item>Pinabacdao</item>
+        <item>San Jorge</item>
+        <item>San Jose De Buan</item>
+        <item>San Sebastian</item>
+        <item>Santa Margarita</item>
+        <item>Santa Rita</item>
+        <item>Santo Nino</item>
+        <item>Tagapul-An</item>
+        <item>Talalora</item>
+        <item>Tarangnan</item>
+        <item>Villareal</item>
+        <item>Zumarraga</item>
+    </string-array>
+    <string-array name="Sarangani">
+        <item>Alabel</item>
+        <item>Glan</item>
+        <item>Kiamba</item>
+        <item>Maasim</item>
+        <item>Maitum</item>
+        <item>Malapatan</item>
+        <item>Malungon</item>
+    </string-array>
+    <string-array name="Second_District">
+        <item>Mandaluyong, City of</item>
+        <item>Marikina, City of</item>
+        <item>Pasig, City of</item>
+        <item>Quezon City</item>
+        <item>San Juan, City of</item>
+    </string-array>
+    <string-array name="Siquijor">
+        <item>Enrique Villanueva</item>
+        <item>Larena</item>
+        <item>Lazi</item>
+        <item>Maria</item>
+        <item>San Juan</item>
+        <item>Siquijor</item>
+    </string-array>
+    <string-array name="Sorsogon">
+        <item>Barcelona</item>
+        <item>Bulan</item>
+        <item>Bulusan</item>
+        <item>Casiguran</item>
+        <item>Castilla</item>
+        <item>City Of Sorsogon</item>
+        <item>Donsol</item>
+        <item>Gubat</item>
+        <item>Irosin</item>
+        <item>Juban</item>
+        <item>Magallanes</item>
+        <item>Matnog</item>
+        <item>Pilar</item>
+        <item>Prieto Diaz</item>
+        <item>Santa Magdalena</item>
+    </string-array>
+    <string-array name="South_Cotabato">
+        <item>Banga</item>
+        <item>City Of Koronadal</item>
+        <item>Lake Sebu</item>
+        <item>Norala</item>
+        <item>Polomolok</item>
+        <item>Santo Nino</item>
+        <item>Surallah</item>
+        <item>T\'Boli</item>
+        <item>Tampakan</item>
+        <item>Tantangan</item>
+        <item>Tupi</item>
+    </string-array>
+    <string-array name="Southern_Leyte">
+        <item>Anahawan</item>
+        <item>Bontoc</item>
+        <item>City Of Maasin</item>
+        <item>Hinunangan</item>
+        <item>Hinundayan</item>
+        <item>Libagon</item>
+        <item>Liloan</item>
+        <item>Limasawa</item>
+        <item>Macrohon</item>
+        <item>Malitbog</item>
+        <item>Padre Burgos</item>
+        <item>Pintuyan</item>
+        <item>Saint Bernard</item>
+        <item>San Francisco</item>
+        <item>San Juan (Cabalian)</item>
+        <item>San Ricardo</item>
+        <item>Silago</item>
+        <item>Sogod</item>
+        <item>Tomas Oppus</item>
+    </string-array>
+    <string-array name="Sultan_Kudarat">
+        <item>Bagumbayan</item>
+        <item>City Of Tacurong</item>
+        <item>Columbio</item>
+        <item>Esperanza</item>
+        <item>Isulan</item>
+        <item>Kalamansig</item>
+        <item>Lambayong (Mariano Marcos)</item>
+        <item>Lebak</item>
+        <item>Lutayan</item>
+        <item>Palimbang</item>
+        <item>President Quirino</item>
+        <item>Sen. Ninoy Aquino</item>
+    </string-array>
+    <string-array name="Sulu">
+        <item>Hadji Panglima Tahil (Marunggas)</item>
+        <item>Indanan</item>
+        <item>Jolo</item>
+        <item>Kalingalan Caluang</item>
+        <item>Lugus</item>
+        <item>Luuk</item>
+        <item>Maimbung</item>
+        <item>Old Panamao</item>
+        <item>Omar</item>
+        <item>Pandami</item>
+        <item>Panglima Estino (New Panamao)</item>
+        <item>Pangutaran</item>
+        <item>Parang</item>
+        <item>Pata</item>
+        <item>Patikul</item>
+        <item>Siasi</item>
+        <item>Talipao</item>
+        <item>Tapul</item>
+        <item>Tongkil</item>
+    </string-array>
+    <string-array name="Surigao_del_Norte">
+        <item>Alegria</item>
+        <item>Bacuag</item>
+        <item>Burgos</item>
+        <item>Claver</item>
+        <item>Dapa</item>
+        <item>Del Carmen</item>
+        <item>General Luna</item>
+        <item>Gigaquit</item>
+        <item>Mainit</item>
+        <item>Malimono</item>
+        <item>Pilar</item>
+        <item>Placer</item>
+        <item>San Benito</item>
+        <item>San Francisco (Anao-Aon)</item>
+        <item>San Isidro</item>
+        <item>Santa Monica (Sapao)</item>
+        <item>Sison</item>
+        <item>Socorro</item>
+        <item>Surigao City</item>
+        <item>Tagana-An</item>
+        <item>Tubod</item>
+    </string-array>
+    <string-array name="Surigao_del_Sur">
+        <item>Barobo</item>
+        <item>Bayabas</item>
+        <item>Cagwait</item>
+        <item>Cantilan</item>
+        <item>Carmen</item>
+        <item>Carrascal</item>
+        <item>City Of Bislig</item>
+        <item>City Of Tandag</item>
+        <item>Cortes</item>
+        <item>Hinatuan</item>
+        <item>Lanuza</item>
+        <item>Lianga</item>
+        <item>Lingig</item>
+        <item>Madrid</item>
+        <item>Marihatag</item>
+        <item>San Agustin</item>
+        <item>San Miguel</item>
+        <item>Tagbina</item>
+        <item>Tago</item>
+    </string-array>
+    <string-array name="Tarlac">
+        <item>Anao</item>
+        <item>Bamban</item>
+        <item>Camiling</item>
+        <item>Capas</item>
+        <item>City Of Tarlac</item>
+        <item>Concepcion</item>
+        <item>Gerona</item>
+        <item>La Paz</item>
+        <item>Mayantoc</item>
+        <item>Moncada</item>
+        <item>Paniqui</item>
+        <item>Pura</item>
+        <item>Ramos</item>
+        <item>San Clemente</item>
+        <item>San Jose</item>
+        <item>San Manuel</item>
+        <item>Santa Ignacia</item>
+        <item>Victoria</item>
+    </string-array>
+    <string-array name="Tawi_tawi">
+        <item>Bongao</item>
+        <item>Languyan</item>
+        <item>Mapun (Cagayan De Tawi-Tawi)</item>
+        <item>Panglima Sugala (Balimbing)</item>
+        <item>Sapa-Sapa</item>
+        <item>Sibutu</item>
+        <item>Simunul</item>
+        <item>Sitangkai</item>
+        <item>South Ubian</item>
+        <item>Tandubas</item>
+        <item>Turtle Islands</item>
+    </string-array>
+    <string-array name="Third_District">
+        <item>Caloocan City</item>
+        <item>Malabon, City of</item>
+        <item>Navotas, City of</item>
+        <item>Valenzuela, City of</item>
+    </string-array>
+    <string-array name="Zambales">
+        <item>Botolan</item>
+        <item>Cabangan</item>
+        <item>Candelaria</item>
+        <item>Castillejos</item>
+        <item>Iba</item>
+        <item>Masinloc</item>
+        <item>Palauig</item>
+        <item>San Antonio</item>
+        <item>San Felipe</item>
+        <item>San Marcelino</item>
+        <item>San Narciso</item>
+        <item>Santa Cruz</item>
+        <item>Subic</item>
+    </string-array>
+    <string-array name="Zamboanga_City">
+        <item>Zamboanga City</item>
+    </string-array>
+    <string-array name="Zamboanga_Sibugay">
+        <item>Alicia</item>
+        <item>Buug</item>
+        <item>Diplahan</item>
+        <item>Imelda</item>
+        <item>Ipil</item>
+        <item>Kabasalan</item>
+        <item>Mabuhay</item>
+        <item>Malangas</item>
+        <item>Naga</item>
+        <item>Olutanga</item>
+        <item>Payao</item>
+        <item>Roseller Lim</item>
+        <item>Siay</item>
+        <item>Talusan</item>
+        <item>Titay</item>
+        <item>Tungawan</item>
+    </string-array>
+    <string-array name="Zamboanga_del_Norte">
+        <item>Bacungan (Leon T. Postigo)</item>
+        <item>Baliguian</item>
+        <item>Dapitan City</item>
+        <item>Dipolog City</item>
+        <item>Godod</item>
+        <item>Gutalac</item>
+        <item>Jose Dalman (Ponot)</item>
+        <item>Kalawit</item>
+        <item>Katipunan</item>
+        <item>La Libertad</item>
+        <item>Labason</item>
+        <item>Liloy</item>
+        <item>Manukan</item>
+        <item>Mutia</item>
+        <item>Pinan (New Pinan)</item>
+        <item>Polanco</item>
+        <item>Pres. Manuel A. Roxas</item>
+        <item>Rizal</item>
+        <item>Salug</item>
+        <item>Sergio Osmena Sr.</item>
+        <item>Siayan</item>
+        <item>Sibuco</item>
+        <item>Sibutad</item>
+        <item>Sindangan</item>
+        <item>Siocon</item>
+        <item>Sirawai</item>
+        <item>Tampilisan</item>
+    </string-array>
+    <string-array name="Zamboanga_del_Sur">
+        <item>Aurora</item>
+        <item>Bayog</item>
+        <item>Dimataling</item>
+        <item>Dinas</item>
+        <item>Dumalinao</item>
+        <item>Dumingag</item>
+        <item>Guipos</item>
+        <item>Josefina</item>
+        <item>Kumalarang</item>
+        <item>Labangan</item>
+        <item>Lakewood</item>
+        <item>Lapuyan</item>
+        <item>Mahayag</item>
+        <item>Margosatubig</item>
+        <item>Midsalip</item>
+        <item>Molave</item>
+        <item>Pagadian City</item>
+        <item>Pitogo</item>
+        <item>Ramon Magsaysay (Liargo)</item>
+        <item>San Miguel</item>
+        <item>San Pablo</item>
+        <item>Sominot (Don Mariano Marcos)</item>
+        <item>Tabina</item>
+        <item>Tambulig</item>
+        <item>Tigbao</item>
+        <item>Tukuran</item>
+        <item>Vincenzo A. Sagun</item>
+    </string-array>
     <string-array name="case_array">
         <item>Uncomplicated</item>
         <item>Severe</item>
@@ -21,14 +2006,12 @@
         <item>tl-rPH</item>
     </string-array>
     <string-array name="region_array">
-        <item>NCR (National Capital Region)</item>
-        <item>CAR (Cordillera Administrative Region)</item>
         <item>Region I (Ilocos Region)</item>
         <item>Region II (Cagayan Valley)</item>
         <item>Region III (Central Luzon)</item>
-        <item>Region IV-A (CALABARZON)</item>
-        <item>Region IV-B (MIMAROPA)</item>
-        <item>Region V (Bicol Region)</item>
+        <item>Region IV-A (Calabarzon)</item>
+        <item>Region IV-B (Mimaropa)</item>
+        <item>Region V (Bicol)</item>
         <item>Region VI (Western Visayas)</item>
         <item>Region VII (Central Visayas)</item>
         <item>Region VIII (Eastern Visayas)</item>
@@ -37,7 +2020,9 @@
         <item>Region XI (Davao Region)</item>
         <item>Region XII (Soccsksargen)</item>
         <item>Region XIII (Caraga)</item>
-        <item>ARMM (Autonomous Region in Muslim Mindanao)</item>
+        <item>ARMM - Autonomous Region of Muslim Mindanao</item>
+        <item>NCR - National Capital Region (Metro Manila)</item>
+        <item>CAR - Cordillera Administrative Region</item>
     </string-array>
     <string-array name="species_array">
         <item>Plasmodium falciparum</item>
@@ -46,7 +2031,9 @@
         <item>Plasmodium malariae</item>
         <item>None</item>
     </string-array>
-    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/MalariaLite/build/exploded-bundles/GenericAndroidLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values/values.xml -->
+    <eat-comment />
+
     <attr name="background" format="reference|color" />
     <attr name="backgroundSplit" format="reference|color" />
     <attr name="divider" format="reference" />
@@ -526,10 +2513,14 @@
     <dimen name="abs__dropdownitem_text_padding_right">8dip</dimen>
     <dimen name="abs__search_view_preferred_width">320dip</dimen>
     <dimen name="abs__search_view_text_min_width">160dip</dimen>
-    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/MalariaLite/src/main/res/values/dimens.xml -->
+    <eat-comment />
+
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/MalariaLite/build/exploded-bundles/GenericAndroidLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values/values.xml -->
+    <eat-comment />
+
     <item name="abs__action_menu_divider" type="id"/>
     <item name="abs__action_menu_presenter" type="id"/>
     <item name="abs__home" type="id"/>
@@ -538,10 +2529,14 @@
     <item name="abs__up" type="id"/>
 
     <integer name="abs__max_action_buttons">2</integer>
-    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/MalariaLite/src/main/res/values/strings.xml -->
+    <eat-comment />
+
     <string name="Password">Password</string>
     <string name="Username">Username</string>
-    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/MalariaLite/build/exploded-bundles/GenericAndroidLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values/values.xml -->
+    <eat-comment />
+
     <string name="abs__action_bar_home_description">Navigate home</string>
     <string name="abs__action_bar_up_description">Navigate up</string>
     <string name="abs__action_menu_overflow_description">More options</string>
@@ -555,7 +2550,9 @@
     <string name="abs__searchview_description_voice">Voice search</string>
     <string name="abs__shareactionprovider_share_with">Share with</string>
     <string name="abs__shareactionprovider_share_with_application">Share with <ns1:g id="application_name" example="Bluetooth">%s</ns1:g></string>
-    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/MalariaLite/src/main/res/values/strings.xml -->
+    <eat-comment />
+
     <string name="action_settings">Settings</string>
     <string name="add_new_photo">Add New Photo\n(Dagdag ng bagong Photo)</string>
     <string name="address">Address</string>
@@ -613,7 +2610,7 @@
     <string name="region">Region</string>
     <string name="remarks">Remarks</string>
     <string name="sent_entries">Sent Entries\n(Naipadalang Entries)</string>
-    <string name="server_address">http://malaria.pythonanywhere.com/</string>
+    <string name="server_address">http://remotemicroscopy.org/</string>
     <string name="settings_pref">open_settings_page</string>
     <string name="settings_summary">Open System Settings and change locale</string>
     <string name="settings_title">Settings</string>
@@ -638,7 +2635,9 @@
     <string name="upload_notification_message">Uploading...</string>
     <string name="username">Username</string>
     <string name="warning">Warning (Babala)</string>
-    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/MalariaLite/src/main/res/values/styles.xml -->
+    <eat-comment />
+
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
@@ -656,7 +2655,9 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">16dp</item>
     </style>
-    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values/values.xml -->
+    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/MalariaLite/build/exploded-bundles/GenericAndroidLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values/values.xml -->
+    <eat-comment />
+
     <style name="Sherlock.__TextAppearance.Small" parent="Widget">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>

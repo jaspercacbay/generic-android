@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="100" android:versionName="4.2.0" package="com.actionbarsherlock">
+<!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/libraries/ActionBarSherlock/actionbarsherlock/AndroidManifest.xml --><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="100" android:versionName="4.2.0" package="com.actionbarsherlock">
 
     <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="17"/>
 

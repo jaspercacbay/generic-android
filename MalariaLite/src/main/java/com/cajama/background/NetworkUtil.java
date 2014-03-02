@@ -14,6 +14,8 @@ import android.provider.Settings;
 
 import com.cajama.malarialite.R;
 
+import java.io.File;
+
 public class NetworkUtil {
 
     public static int TYPE_WIFI = 1;
@@ -47,5 +49,26 @@ public class NetworkUtil {
             status = "Not connected to Internet";
         }
         return status;
+    }
+
+    public static boolean dbExists(Context context) {
+        return new File(context.getExternalFilesDir(null), "db.db").exists();
+    }
+
+    public static AlertDialog createDialog(Context context, String title, String message, boolean cancellable, DialogInterface.OnClickListener cancel, DialogInterface.OnClickListener ok) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder
+                .setTitle(title)
+                .setMessage(message)
+                .setCancelable(cancellable);
+        if (cancel != null) builder.setNegativeButton("Cancel", cancel);
+        if (ok != null) builder.setPositiveButton("OK", ok);
+        return builder.create();
+    }
+
+    public static String checkWebAddress(String str) {
+        if (!str.startsWith("http://")) str = "http://" + str;
+        if (str.charAt(str.length()-1)!='/') str += "/";
+        return str;
     }
 }

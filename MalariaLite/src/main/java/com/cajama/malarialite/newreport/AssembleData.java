@@ -52,7 +52,7 @@ public class AssembleData {
         this.entryList=entryList;
         this.fileList = fileList;
         this.accountData = accountData;
-        this.USERNAME = USERNAME;
+        this.USERNAME = USERNAME.toLowerCase();
         intentFinish = new Intent(BROADCAST_FINISH);
     }
     private String[] getFirstZipArray(){
@@ -94,11 +94,18 @@ public class AssembleData {
     public String splitFile(String fname) throws Exception {
         RandomAccessFile raf = new RandomAccessFile(c.getExternalFilesDir(null).getPath() + "/" + fname, "r");
         long sourceSize = raf.length();
-
+        long remainingBytes;
 
         int maxReadBufferSize = 128 * 1024; //128KB chunks
         int numSplits = (int) (Math.floor(sourceSize / maxReadBufferSize) + 1);
-        long remainingBytes = sourceSize % (numSplits-1);
+        Log.d("assemble", String.valueOf(sourceSize));
+        Log.d("assemble", String.valueOf(numSplits));
+        if (numSplits > 1) {
+            remainingBytes = sourceSize % (numSplits-1);
+        } else {
+            remainingBytes = sourceSize;
+            numSplits = 0;
+        }
         File tobedisgested;
         HashCode md5;
         String md5Hex;
@@ -229,8 +236,6 @@ public class AssembleData {
         File zipFile3 = new File (c.getExternalFilesDir("ZipFiles"), nowname);
         Compress thirdZip = new Compress(getThirdZipArray(listahanname),zipFile3.getPath());
         thirdZip.zip();
-
-
 
         handler.removeCallbacks(finish);
         handler.postDelayed(finish, 1000);

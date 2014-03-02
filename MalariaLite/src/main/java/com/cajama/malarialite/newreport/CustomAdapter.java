@@ -1,6 +1,7 @@
 package com.cajama.malarialite.newreport;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
         LayoutInflater inflater= (LayoutInflater) c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row=inflater.inflate(t, parent, false);
         TextView label=(TextView)row.findViewById(R.id.weekofday);
+        label.setTextColor(Color.BLACK);
         label.setText(s[position]);
 
         return row;

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-v14/values.xml -->
+    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/MalariaLite/build/exploded-bundles/GenericAndroidLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-v14/values.xml -->
+    <eat-comment />
+
     <style name="Sherlock.__Theme" parent="android:Theme.Holo" />
 
     <style name="Sherlock.__Theme.DarkActionBar" parent="android:Theme.Holo.Light.DarkActionBar">

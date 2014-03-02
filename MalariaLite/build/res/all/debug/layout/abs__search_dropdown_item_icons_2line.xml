@@ -87,4 +87,4 @@
               android:layout_above="@android:id/text2" />
 
 </RelativeLayout>
-<!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/libraries/ActionBarSherlock/actionbarsherlock/res/layout/abs__search_dropdown_item_icons_2line.xml --><!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/layout/abs__search_dropdown_item_icons_2line.xml -->
+<!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/libraries/ActionBarSherlock/actionbarsherlock/res/layout/abs__search_dropdown_item_icons_2line.xml --><!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/MalariaLite/build/exploded-bundles/GenericAndroidLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/layout/abs__search_dropdown_item_icons_2line.xml -->

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/build/exploded-bundles/MalariaAndroid2LiteLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-w500dp/values.xml -->
+    <!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/MalariaLite/build/exploded-bundles/GenericAndroidLibrariesActionBarSherlockActionbarsherlockUnspecified.aar/res/values-w500dp/values.xml -->
+    <eat-comment />
+
     <integer name="abs__max_action_buttons">4</integer>
 
 </resources>
