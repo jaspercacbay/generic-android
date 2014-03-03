@@ -54,6 +54,17 @@ public class Picture extends SherlockActivity {
         path = ((Uri) intent.getParcelableExtra(android.provider.MediaStore.EXTRA_OUTPUT)).getPath();
         countdown = (TextView) findViewById(R.id.photocountdown);
         countdown.setVisibility(View.INVISIBLE);
+
+        /*preview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                camera.autoFocus(new Camera.AutoFocusCallback(){
+                    @Override
+                    public void onAutoFocus(boolean arg0, Camera arg1) {
+                    }
+                });
+            }
+        });*/
     }
     @Override
     protected void onResume() {
@@ -68,6 +79,9 @@ public class Picture extends SherlockActivity {
         params.setPictureSize(pictureSize.width, pictureSize.height);
         params.setJpegQuality(100);
         params.setPictureFormat(ImageFormat.JPEG);
+        if (Build.VERSION.SDK_INT >= 14) {
+            params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+        }
         camera.setParameters(params);
         initPreview(preview.getWidth(), preview.getHeight());
         startPreview();
