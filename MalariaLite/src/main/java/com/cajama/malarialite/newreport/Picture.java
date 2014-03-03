@@ -251,6 +251,9 @@ public class Picture extends SherlockActivity {
                 parameters.setPictureSize(pictureSize.width, pictureSize.height);
                 parameters.setJpegQuality(100);
                 parameters.setPictureFormat(ImageFormat.JPEG);
+                if (Build.VERSION.SDK_INT >= 14) {
+                    parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+                }
                 camera.setParameters(parameters);
                 cameraConfigured=true;
             }
