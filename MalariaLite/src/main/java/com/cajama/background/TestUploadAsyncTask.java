@@ -53,7 +53,7 @@ public class TestUploadAsyncTask extends AsyncTask<File, Integer, String> {
         nc.setTicker("Uploading " + reportsToSend + " reports!");
 
         for (int i = 0; i < reportsToSend; i++) {
-            if (files[i].getName().endsWith(".zip")) {
+            if (files[i].getName().endsWith(".zip") && files[i].exists()) {
                 lastPercent = 0;
                 currentFile = files[i];
                 post = new HttpPost(this.server.concat("api/init/"));
@@ -123,7 +123,7 @@ public class TestUploadAsyncTask extends AsyncTask<File, Integer, String> {
         }
 
         for (int i = 0; i < reportsToSend; i++) {
-            if (files[i].getName().endsWith("part")) {
+            if (files[i].getName().endsWith("part") && files[i].exists()) {
                 lastPercent = 0;
                 currentFile = files[i];
                 post = new HttpPost(this.server.concat("api/chunk/"));
