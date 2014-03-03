@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -18,12 +19,14 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.cajama.background.FinalSendingService;
+import com.cajama.background.NetworkUtil;
 import com.cajama.background.SyncService;
 import com.cajama.malarialite.entryLogs.QueueLogActivity;
 import com.cajama.malarialite.entryLogs.SentLogActivity;
 import com.cajama.malarialite.newreport.NewReportActivity;
 
 import android.os.Handler;
+import android.widget.Toast;
 
 import java.io.File;
 
@@ -35,6 +38,8 @@ public class MainActivity extends Activity {
     private Handler messageHandler = new Handler();
     boolean isCancelDialogOpen = false;
     SharedPreferences firstTimePref;
+    ProgressDialog pd;
+    Thread thread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,45 @@ public class MainActivity extends Activity {
             Log.d("main", "not exists");
             f.mkdirs();
         }
+        pd = new ProgressDialog(this);
+        pd.setMessage("Connecting...");
+        pd.setCancelable(false);
+        pd.setIndeterminate(true);
+        pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        pd.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                thread = new Thread() {
+                    public void run() {
+                        try {
+                            int timeElapsed = 0;
+                            while (true) {
+                                timeElapsed += 2;
+                                sleep(2000);
+                                Log.d("main" + ".pd.Thread", "sleep");
+                                if (NetworkUtil.dbExists(getApplicationContext()) || timeElapsed >= 20) this.interrupt();
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        pd.cancel();
+                    }
+                };
+                thread.start();
+            }
+        });
+        pd.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialogInterface) {
+                thread.interrupt();
+                if (NetworkUtil.dbExists(getApplicationContext())) {
+                    Toast.makeText(getApplicationContext(), "Connection Successful!", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Connection failed. Try again.", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
         /*Intent startUpdate = new Intent(this, UpdateService.class);
         startService(startUpdate);*/
     }
@@ -70,15 +114,40 @@ public class MainActivity extends Activity {
 
     public void submitNewReport(View view) {
         //turnGPSOn();
-        File db = new File(getExternalFilesDir(null), "db.db");
-        if (checkGps()) {
-            if (db != null && db.exists()) {
-                Log.d("main", "db exists");
+        if (NetworkUtil.dbExists(this)) {
+            Log.d("main" + ".submitNewReport", "db exists");
+            if (checkGps()) {
                 Intent intent = new Intent(this, NewReportActivity.class);
                 startActivity(intent);
             }
+        }
+        else {
+            Log.d("main" + "submitNewReport", "no db file");
+            if (NetworkUtil.getConnectivityStatus(this)==0) {
+                String message = "For first time use of this app, internet connection is required. Please connect to the Internet.\n(Sa unang gamit ng app na ito, kailangan ng Internet. Siguraduhin na naka-connect sa Internet.)\n\nWould you like to open settings menu?\n(Gusto mo bang buksan ang settings menu?)\n";
+                AlertDialog dialog = NetworkUtil.createDialog(this, getString(R.string.warning), message, false,
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                isCancelDialogOpen = false;
+                                Log.d("main" + ".submitNewReport()", "cancel dialog");
+                                dialogInterface.cancel();
+                            }
+                        }, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                isCancelDialogOpen = false;
+                                Log.d("main" + ".submitNewReport()", "pick wifi connection");
+                                startActivity(new Intent(WifiManager.ACTION_PICK_WIFI_NETWORK));
+                            }
+                        });
+                if (!isCancelDialogOpen) {
+                    isCancelDialogOpen = true;
+                    dialog.show();
+                }
+            }
             else {
-                Log.d("main", "db is null");
+                pd.show();
                 Intent intent = new Intent(this, SyncService.class);
                 startService(intent);
             }

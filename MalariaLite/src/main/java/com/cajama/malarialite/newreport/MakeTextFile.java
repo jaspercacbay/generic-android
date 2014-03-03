@@ -44,6 +44,9 @@ public class MakeTextFile {
                     "longitude",
                     "species",
                     "description",
+                    "region",
+                    "province",
+                    "municipality",
                     "flags"
             };
         } else {

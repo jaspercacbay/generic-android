@@ -70,7 +70,7 @@ public class Initialize extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        registerReceiver(receiver, new IntentFilter(SyncService.BROADCAST_INIT_SYNC));
+        registerReceiver(receiver, new IntentFilter(SyncService.BROADCAST_MAIN_SYNC));
     }
 
     @Override

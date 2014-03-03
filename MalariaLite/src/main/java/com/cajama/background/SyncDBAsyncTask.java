@@ -24,8 +24,8 @@ public class SyncDBAsyncTask extends AsyncTask<String, Void, String> {
     String TAG = "SyncDBAsyncTask";
     OnAsyncResult onAsyncResult;
     
-    public SyncDBAsyncTask(String url) {
-    	this.url = url;
+    public SyncDBAsyncTask(String url, String api) {
+    	this.url = NetworkUtil.checkWebAddress(url).concat(api);
         Log.d(TAG, url);
     }
 

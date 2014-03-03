@@ -28,10 +28,12 @@ public class SyncService extends Service {
     final String TAG = "SyncService";
     String message1;
     static SyncDBAsyncTask asyncTask;
-    public static final String BROADCAST_INIT_SYNC = "com.cajama.malarialite.Initialize";
+    //public static final String BROADCAST_INIT_SYNC = "com.cajama.malarialite.Initialize";
+    public static final String BROADCAST_MAIN_SYNC = "com.cajama.malarialite.MainActivity";
     //public static final String BROADCAST_SYNC_FINISH = "com.cajama.background.SyncService";
     private Handler handler = new Handler();
-    private Intent syncIntent = new Intent(BROADCAST_INIT_SYNC);
+    //private Intent syncIntent = new Intent(BROADCAST_INIT_SYNC);
+    private Intent syncMain = new Intent(BROADCAST_MAIN_SYNC);
     Context context;
     //private Intent syncFinish;
 
@@ -58,17 +60,22 @@ public class SyncService extends Service {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                syncIntent.putExtra("init", "init");
+                //syncIntent.putExtra("init", "init");
+                syncMain.putExtra("sync", "success");
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
+                Log.d(TAG, "New Date Modified: " + format.format(test.lastModified()));
                 //syncFinish.putExtra("finish", "success");
             }
             else if (resultCode == -1) {
                 message1 = "fail";
-                syncIntent.putExtra("init", "fail");
+                //syncIntent.putExtra("init", "fail");
+                syncMain.putExtra("sync", "fail");
                 //syncFinish.putExtra("finish", "fail");
             }
             else {
                 message1 = "db updated";
-                syncIntent.putExtra("init", "updated");
+                //syncIntent.putExtra("init", "updated");
+                syncMain.putExtra("sync", "updated");
                 //syncFinish.putExtra("finish", "updated");
             }
             Log.d(TAG, message1);
@@ -88,7 +95,7 @@ public class SyncService extends Service {
     public void onCreate() {
     	
     	Log.d(TAG, "SyncService onCreate()");
-    	asyncTask = new SyncDBAsyncTask(PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)).concat(getString(R.string.api_db)));
+    	asyncTask = new SyncDBAsyncTask(PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)), getString(R.string.api_db));
     	asyncTask.setOnResultListener(onAsyncResult);
     }
 
@@ -133,7 +140,7 @@ public class SyncService extends Service {
 	        else if(asyncTask.getStatus() == AsyncTask.Status.FINISHED){
 	        	Log.d(TAG, "asyncTask finished");
                 Log.d(TAG, "Date Modified: " + dateModified);
-                asyncTask = new SyncDBAsyncTask(PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)).concat(getString(R.string.api_db)));
+                asyncTask = new SyncDBAsyncTask(PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)), getString(R.string.api_db));
                 asyncTask.setOnResultListener(onAsyncResult);
                 asyncTask.execute(dateModified);
 	        }
@@ -141,7 +148,7 @@ public class SyncService extends Service {
 	    else {
 	        //Toast.makeText(getApplicationContext(), "No internet connection!", Toast.LENGTH_LONG).show();
 	        Log.d(TAG, "no internet connection");
-            syncIntent.putExtra("init", "no internet");
+            //syncIntent.putExtra("init", "no internet");
             handler.removeCallbacks(sync);
             handler.postDelayed(sync, 1000);
 	    }
@@ -150,7 +157,7 @@ public class SyncService extends Service {
     private Runnable sync = new Runnable() {
         @Override
         public void run() {
-            context.sendBroadcast(syncIntent);
+            context.sendBroadcast(syncMain);
         }
     };
 

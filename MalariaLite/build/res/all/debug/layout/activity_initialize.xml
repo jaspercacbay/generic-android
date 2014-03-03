@@ -34,4 +34,4 @@
         android:onClick="startSync"
         android:layout_gravity="center"
         android:layout_weight="0.5" />
-</LinearLayout><!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/Malaria-Android2%20-%20Lite/MalariaLite/src/main/res/layout/activity_initialize.xml -->
+</LinearLayout><!-- From: file:/C:/Users/Jasper/AndroidStudioProjects/generic-android/MalariaLite/src/main/res/layout/activity_initialize.xml -->

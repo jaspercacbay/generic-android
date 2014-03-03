@@ -26,6 +26,7 @@ import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -92,58 +93,46 @@ public class NewReportActivity extends SherlockActivity {
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressbar_Horizontal);
         progressBar.setVisibility(View.INVISIBLE);
 
-        /*Spinner spinner = (Spinner) findViewById(R.id.gender_spinner);
-        spinner.setAdapter(new CustomAdapter(NewReportActivity.this, R.layout.row, getResources().getStringArray(R.array.gender_array)));
 
-        final Spinner spinner2 = (Spinner) findViewById(R.id.species_spinner);
-        spinner2.setSelection(4);
-        final Spinner spinner3 = (Spinner) findViewById(R.id.case_spinner);
-        spinner2.setAdapter(new CustomAdapter(NewReportActivity.this, R.layout.diagnosis_row, getResources().getStringArray(R.array.species_array)));
 
-        AdapterView.OnItemSelectedListener listener1 = new AdapterView.OnItemSelectedListener() {
+        final Spinner region = (Spinner) findViewById(R.id.region);
+        final Spinner province = (Spinner) findViewById(R.id.province);
+        region.setAdapter(new CustomAdapter(NewReportActivity.this, R.layout.spinner_region, getResources().getStringArray(R.array.region_array)));
+        region.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (getResources().getStringArray(R.array.species_array)[i].equalsIgnoreCase("none")) {
-                    spinner3.setSelection(0);
-                    spinner2.setEnabled(false);
-                    spinner2.setClickable(false);
-                }
+                String str = (String) adapterView.getItemAtPosition(i);
+                int id = stringToResource(str, "array");
+                System.out.println(id);
+                province.setAdapter(new CustomAdapter(getApplicationContext(), R.layout.spinner_province, getResources().getStringArray(id)));
+                province.setEnabled(true);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        };
-        spinner2.setOnItemSelectedListener(listener1);
-        spinner3.setAdapter(new CustomAdapter(NewReportActivity.this, R.layout.row, getResources().getStringArray(R.array.case_array)));
+        });
 
-        AdapterView.OnItemSelectedListener listener = new AdapterView.OnItemSelectedListener() {
+        final Spinner municipality = (Spinner) findViewById(R.id.municipality);
+        province.setAdapter(new CustomAdapter(NewReportActivity.this, R.layout.spinner_province, getResources().getStringArray(R.array.Region_I_Ilocos_Region)));
+        //province.setSelection(0);
+        province.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (getResources().getStringArray(R.array.case_array)[i].equalsIgnoreCase("uncomplicated")) {
-                    spinner2.setSelection(4);
-                    spinner2.setEnabled(false);
-                    spinner2.setClickable(false);
-                }
-                else {
-                    spinner2.setEnabled(true);
-                    spinner2.setClickable(true);
-                    spinner2.setSelection(0);
-                }
+                String str = (String) adapterView.getItemAtPosition(i);
+                if (str.equalsIgnoreCase("basilan")) str = region.getSelectedItem().toString().split(" ")[0] + "_" + str;
+                int id = stringToResource(str, "array");
+                municipality.setAdapter(new CustomAdapter(getApplicationContext(), R.layout.spinner_municipality, getResources().getStringArray(id)));
+                municipality.setEnabled(true);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-        };
-        spinner3.setOnItemSelectedListener(listener);
-        spinner3.setSelection(1);
-
-        Spinner spinner4 = (Spinner) findViewById(R.id.region_spinner);
-        spinner4.setAdapter(new CustomAdapter(NewReportActivity.this, R.layout.row, getResources().getStringArray(R.array.region_array)));
-        */
+        });
+        municipality.setAdapter(new CustomAdapter(NewReportActivity.this, R.layout.spinner_municipality, getResources().getStringArray(R.array.Ilocos_Norte)));
 
         VF = (ViewFlipper) findViewById(R.id.viewFlipperLite);
         getSupportActionBar().setSubtitle("Step 1 of " + VF.getChildCount());
@@ -168,9 +157,28 @@ public class NewReportActivity extends SherlockActivity {
         step_subtitles = new String[]{
                 res.getString(R.string.slide_photos),
                 res.getString(R.string.diagnosis),
+                res.getString(R.string.region),
                 res.getString(R.string.summary),
                 res.getString(R.string.submit)
         };
+
+        File pics = new File(getExternalFilesDir(null), "Pictures");
+        if (pics.exists()) {
+            for (File f : pics.listFiles()) System.out.println(f.getName() + " " + f.delete());
+            System.out.println(pics.delete());
+        }
+    }
+
+    private int stringToResource(String str, String resource) {
+        System.out.println("selected: " + str);
+        str = str.replaceAll(" ", "_");
+        str = str.replaceAll("-", "_");
+        str = str.replaceAll("\\(", "");
+        str = str.replaceAll("\\)", "");
+        str = str.replaceAll("\\.", "");
+        //str = str.replaceAll("-", "");
+        System.out.println("formatted: " + str);
+        return getResources().getIdentifier(str, resource, getPackageName());
     }
 
     @Override
@@ -250,7 +258,7 @@ public class NewReportActivity extends SherlockActivity {
                 invalidateOptionsMenu();
                 return true;
             case R.id.action_next:
-                if(VF.getDisplayedChild() == 1){
+                if(VF.getDisplayedChild() == 2){
                     if (getLoc.getLocation() != null) {
                         generateSummary();
                         //buildSummary();
@@ -274,6 +282,7 @@ public class NewReportActivity extends SherlockActivity {
             	Intent cameraIntent = new Intent(this, Picture.class);
                 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
                 imageFilePath = getExternalFilesDir(Environment.DIRECTORY_PICTURES) +  "/" + timeStamp + "_slide.jpg";
+                System.out.println("action photo: " + imageFilePath);
 
                 cameraIntent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(imageFilePath)));
                 startActivityForResult(cameraIntent, CAMERA_REQUEST);
@@ -346,7 +355,7 @@ public class NewReportActivity extends SherlockActivity {
                 EditText username = (EditText) findViewById(R.id.username);
                 EditText password = (EditText) findViewById(R.id.password);
                 File temp = new File(getExternalFilesDir(null), "db.db");
-                if (username.getText().toString().trim().length() == 0) {
+                if (username.getText().toString().trim().toLowerCase().length() == 0) {
                     requiredToast.setText("Username " + required);
                 }
                 else if (password.getText().toString().trim().length() == 0) {
@@ -654,6 +663,21 @@ public class NewReportActivity extends SherlockActivity {
         entries.add(putEntry("Remarks", description));
         entryList.add(description);
 
+        Spinner region = (Spinner) findViewById(R.id.region);
+        String reg = checkEmpty(region.getSelectedItem().toString());
+        entries.add(putEntry("Region", reg));
+        entryList.add(reg);
+
+        Spinner province = (Spinner) findViewById(R.id.province);
+        String prov = checkEmpty(province.getSelectedItem().toString());
+        entries.add(putEntry("Province", prov));
+        entryList.add(prov);
+
+        Spinner municipality = (Spinner) findViewById(R.id.municipality);
+        String munic = checkEmpty(municipality.getSelectedItem().toString());
+        entries.add(putEntry("Municipality", munic));
+        entryList.add(munic);
+
         boolean testFlag = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("test_data_flag", true);
         entryList.add(String.valueOf(testFlag));
 
@@ -676,6 +700,7 @@ public class NewReportActivity extends SherlockActivity {
         EditText editText2=(EditText )findViewById(R.id.password);
         USERNAME           =editText1.getText().toString().trim();
         PASSWORD           =editText2.getText().toString().trim();
+        USERNAME = USERNAME.toLowerCase();
         Log.v("write","USERNAME: " + USERNAME + " PASSWORD: " + PASSWORD);
         accountList.add(USERNAME);
         accountList.add(PASSWORD);
@@ -755,6 +780,8 @@ public class NewReportActivity extends SherlockActivity {
         EditText editText2=(EditText )findViewById(R.id.password);
         USERNAME           =editText1.getText().toString().trim();
         PASSWORD           =editText2.getText().toString().trim();
+
+        USERNAME = USERNAME.toLowerCase();
 
         DataBaseHelper helper = new DataBaseHelper(this);
         helper.openDataBase();
