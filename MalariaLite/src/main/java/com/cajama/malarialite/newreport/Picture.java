@@ -54,10 +54,9 @@ public class Picture extends SherlockActivity {
         path = ((Uri) intent.getParcelableExtra(android.provider.MediaStore.EXTRA_OUTPUT)).getPath();
         countdown = (TextView) findViewById(R.id.photocountdown);
         countdown.setVisibility(View.INVISIBLE);
-        zoomControls = (ZoomControls) findViewById(R.id.camerazoomControls);
     }
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
         getSupportActionBar().setBackgroundDrawable(null);
         if (camera == null) {
@@ -73,6 +72,7 @@ public class Picture extends SherlockActivity {
         initPreview(preview.getWidth(), preview.getHeight());
         startPreview();
         preview.setVisibility(View.VISIBLE);
+        zoomControls = (ZoomControls) findViewById(R.id.camerazoomControls);
 
         if (params.isZoomSupported()) {
             zoomControls.setVisibility(View.VISIBLE);
@@ -86,7 +86,9 @@ public class Picture extends SherlockActivity {
                     if(camera.getParameters().getZoom()+2 < maxZoomLevel){
                         //mCamera.startSmoothZoom(currentZoomLevel);
                         params.setZoom(camera.getParameters().getZoom()+2);
+                        camera.stopPreview();
                         camera.setParameters(params);
+                        camera.startPreview();
                     }
                 }
             });
@@ -103,8 +105,9 @@ public class Picture extends SherlockActivity {
         else
             zoomControls.setVisibility(View.GONE);
     }
+
     @Override
-    public void onPause() {
+    protected void onPause() {
         if (inPreview) {
             camera.stopPreview();
         }
