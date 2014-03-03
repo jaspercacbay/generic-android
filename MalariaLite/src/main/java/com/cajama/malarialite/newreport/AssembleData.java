@@ -119,32 +119,32 @@ public class AssembleData {
         PrintWriter writer = new PrintWriter(c.getExternalFilesDir(null).getPath() + "/" + fname + ".txt", "UTF-8");
 
         for(int destIx=1; destIx <=numSplits; destIx++) {
-            Files.touch(new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%03d", destIx)+".part"));
-            BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%03d", destIx)+".part"));
+            Files.touch(new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", destIx)+".part"));
+            BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", destIx)+".part"));
 
             readWrite(raf, bw, maxReadBufferSize);
             bw.close();
 
-            tobedisgested = new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%03d", destIx)+".part");
+            tobedisgested = new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", destIx)+".part");
             md5 = Files.hash(tobedisgested, Hashing.md5());
             md5Hex = md5.toString();
 
-            writer.println(fname+String.format("%03d", destIx)+".part"+" "+md5Hex);
-            parts[destIx-1] = fname+String.format("%03d", destIx)+".part";
+            writer.println(fname+String.format("%05d", destIx)+".part"+" "+md5Hex);
+            parts[destIx-1] = fname+String.format("%05d", destIx)+".part";
         }
 
         if(remainingBytes > 0) {
-            Files.touch(new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%03d", numSplits+1)+".part"));
-            BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%03d", numSplits+1)+".part"));
+            Files.touch(new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", numSplits+1)+".part"));
+            BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", numSplits+1)+".part"));
             readWrite(raf, bw, remainingBytes);
             bw.close();
 
-            tobedisgested = new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%03d", numSplits+1)+".part");
+            tobedisgested = new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", numSplits+1)+".part");
             md5 = Files.hash(tobedisgested, Hashing.md5());
             md5Hex = md5.toString();
 
-            writer.println(fname+String.format("%03d", numSplits+1)+".part"+" "+md5Hex);
-            parts[numSplits] = fname+String.format("%03d", numSplits+1)+".part";
+            writer.println(fname+String.format("%05d", numSplits+1)+".part"+" "+md5Hex);
+            parts[numSplits] = fname+String.format("%05d", numSplits+1)+".part";
         }
 
         raf.close();
