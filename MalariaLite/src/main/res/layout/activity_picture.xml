@@ -24,4 +24,12 @@
         android:visibility="invisible"
         android:textColor="#00FF00"
         android:alpha="0.8" />
+
+    <ZoomControls
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/camerazoomControls"
+        android:layout_below="@+id/photocountdown"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

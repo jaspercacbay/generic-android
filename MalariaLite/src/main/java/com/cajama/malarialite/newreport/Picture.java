@@ -1,4 +1,5 @@
 package com.cajama.malarialite.newreport;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -16,22 +17,29 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ZoomControls;
+
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
 import com.cajama.malarialite.R;
+import com.google.common.io.Files;
+
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class Picture extends SherlockActivity {
     private SurfaceView preview=null;
     private SurfaceHolder previewHolder=null;
     private Camera camera=null;
+    private Camera.Parameters params;
     private boolean inPreview=false;
     private boolean cameraConfigured=false;
     private String path;
     private TextView countdown;
+    private ZoomControls zoomControls;
     final Handler handler = new Handler();
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,7 @@ public class Picture extends SherlockActivity {
         path = ((Uri) intent.getParcelableExtra(android.provider.MediaStore.EXTRA_OUTPUT)).getPath();
         countdown = (TextView) findViewById(R.id.photocountdown);
         countdown.setVisibility(View.INVISIBLE);
+        zoomControls = (ZoomControls) findViewById(R.id.camerazoomControls);
     }
     @Override
     public void onResume() {
@@ -55,15 +64,44 @@ public class Picture extends SherlockActivity {
             camera=Camera.open();
         }
         setCameraDisplayOrientation(this, 0, camera);
-        Camera.Parameters parameters=camera.getParameters();
-        Camera.Size pictureSize= getBiggestPictureSize(parameters);
-        parameters.setPictureSize(pictureSize.width, pictureSize.height);
-        parameters.setJpegQuality(100);
-        parameters.setPictureFormat(ImageFormat.JPEG);
-        camera.setParameters(parameters);
+        params=camera.getParameters();
+        Camera.Size pictureSize= getBiggestPictureSize(params);
+        params.setPictureSize(pictureSize.width, pictureSize.height);
+        params.setJpegQuality(100);
+        params.setPictureFormat(ImageFormat.JPEG);
+        camera.setParameters(params);
         initPreview(preview.getWidth(), preview.getHeight());
         startPreview();
         preview.setVisibility(View.VISIBLE);
+
+        if (params.isZoomSupported()) {
+            zoomControls.setVisibility(View.VISIBLE);
+            final int maxZoomLevel = params.getMaxZoom();
+            Log.i("max ZOOM ", "is " + maxZoomLevel);
+            zoomControls.setIsZoomInEnabled(true);
+            zoomControls.setIsZoomOutEnabled(true);
+
+            zoomControls.setOnZoomInClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+                    if(camera.getParameters().getZoom()+2 < maxZoomLevel){
+                        //mCamera.startSmoothZoom(currentZoomLevel);
+                        params.setZoom(camera.getParameters().getZoom()+2);
+                        camera.setParameters(params);
+                    }
+                }
+            });
+
+            zoomControls.setOnZoomOutClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+                    if(camera.getParameters().getZoom()-2 > 0){
+                        params.setZoom(camera.getParameters().getZoom()-2);
+                        camera.setParameters(params);
+                    }
+                }
+            });
+        }
+        else
+            zoomControls.setVisibility(View.GONE);
     }
     @Override
     public void onPause() {
@@ -85,6 +123,7 @@ public class Picture extends SherlockActivity {
         if (item.getItemId() == R.id.camera) {
             if (inPreview) {
                 inPreview=false;
+                zoomControls.setVisibility(View.GONE);
                 countdown.setVisibility(View.VISIBLE);
                 countdown.setText("3");
                 handler.postDelayed(new Runnable() {
@@ -237,9 +276,30 @@ public class Picture extends SherlockActivity {
     };
     Camera.PictureCallback photoCallback=new Camera.PictureCallback() {
         public void onPictureTaken(byte[] data, Camera camera) {
-            new SavePhotoTask().execute(data);
+            //new SavePhotoTask().execute(data);
             //camera.startPreview();
             //inPreview=true;
+
+            File photo= new File(path);
+            try {
+                Files.createParentDirs(photo);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Log.d("PictureDemo", path);
+            try {
+                //FileOutputStream fos=new FileOutputStream(photo.getPath());
+                //fos.write(jpeg[0], 0, jpeg[0].length);
+                //fos.close();
+                Files.touch(photo);
+                Files.write(data, photo);
+                Log.d("PictureDemo", String.valueOf(data.length));
+            }
+            catch (java.io.IOException e) {
+                Log.e("PictureDemo", "Exception in photoCallback", e);
+            }
+
+
             Intent resultIntent = new Intent(getApplicationContext(), NewReportActivity.class);
             File imageFile = new File(path);
             Uri fileUri = Uri.fromFile(imageFile);
@@ -252,15 +312,18 @@ public class Picture extends SherlockActivity {
         @Override
         protected String doInBackground(byte[]... jpeg) {
             File photo= new File(path);
-            Log.d("PictureDemo", path);
-            if (photo.exists()) {
-                Log.d("PictureDemo", "photo exists");
-                photo.delete();
-            }
             try {
-                FileOutputStream fos=new FileOutputStream(photo.getPath());
-                fos.write(jpeg[0], 0, jpeg[0].length);
-                fos.close();
+                Files.createParentDirs(photo);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Log.d("PictureDemo", path);
+            try {
+                //FileOutputStream fos=new FileOutputStream(photo.getPath());
+                //fos.write(jpeg[0], 0, jpeg[0].length);
+                //fos.close();
+                Files.touch(photo);
+                Files.write(jpeg[0], photo);
                 Log.d("PictureDemo", String.valueOf(jpeg[0].length));
             }
             catch (java.io.IOException e) {
