@@ -40,6 +40,8 @@ public class AssembleData {
     String USERNAME;
     Context c;
     AES aes;
+    File AESFile;
+    String [] parts;
 
     public static final String BROADCAST_FINISH = "com.cajama.malarialite.newreport.NewReportActivity";
     private static final String PATIENT_TXT_FILENAME = "textData.xml";
@@ -106,6 +108,9 @@ public class AssembleData {
             remainingBytes = sourceSize;
             numSplits = 0;
         }
+
+        parts = new String[numSplits+1];
+
         File tobedisgested;
         HashCode md5;
         String md5Hex;
@@ -114,7 +119,7 @@ public class AssembleData {
         PrintWriter writer = new PrintWriter(c.getExternalFilesDir(null).getPath() + "/" + fname + ".txt", "UTF-8");
 
         for(int destIx=1; destIx <=numSplits; destIx++) {
-            Files.touch(new File(c.getExternalFilesDir(null), fname+ ".part"+destIx));
+            Files.touch(new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%03d", destIx)+".part"));
             BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%03d", destIx)+".part"));
 
             readWrite(raf, bw, maxReadBufferSize);
@@ -125,10 +130,11 @@ public class AssembleData {
             md5Hex = md5.toString();
 
             writer.println(fname+String.format("%03d", destIx)+".part"+" "+md5Hex);
+            parts[destIx-1] = fname+String.format("%03d", destIx)+".part";
         }
 
         if(remainingBytes > 0) {
-            Files.touch(new File(c.getExternalFilesDir(null), fname+ ".part"+numSplits+1));
+            Files.touch(new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%03d", numSplits+1)+".part"));
             BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%03d", numSplits+1)+".part"));
             readWrite(raf, bw, remainingBytes);
             bw.close();
@@ -138,6 +144,7 @@ public class AssembleData {
             md5Hex = md5.toString();
 
             writer.println(fname+String.format("%03d", numSplits+1)+".part"+" "+md5Hex);
+            parts[numSplits] = fname+String.format("%03d", numSplits+1)+".part";
         }
 
         raf.close();
@@ -187,7 +194,7 @@ public class AssembleData {
             //Log.v("AES","new AES");
             aes = new AES(secretKey);
             aes.setLayout(progressBar, textView);
-            File AESFile = new File(c.getExternalFilesDir(null),AES_FILENAME);
+            AESFile = new File(c.getExternalFilesDir(null),AES_FILENAME);
             aes.encryptAES(zipFile1,AESFile);
             Thread.sleep(1000);
             progressBar.setIndeterminate(true);
@@ -236,6 +243,14 @@ public class AssembleData {
         File zipFile3 = new File (c.getExternalFilesDir("ZipFiles"), nowname);
         Compress thirdZip = new Compress(getThirdZipArray(listahanname),zipFile3.getPath());
         thirdZip.zip();
+
+        entryFile.delete();
+        AESFile.delete();
+        zipFile1.delete();
+        zipFile2.delete();
+        accountFile.delete();
+        listahan.delete();
+        AESFile2.delete();
 
         handler.removeCallbacks(finish);
         handler.postDelayed(finish, 1000);
