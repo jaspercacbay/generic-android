@@ -1,12 +1,6 @@
 package com.cajama.background;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import org.apache.http.message.BasicNameValuePair;
-
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -14,21 +8,28 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
-import android.util.Log;
 
-public class DataBaseHelper extends SQLiteOpenHelper{
-	 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.HashMap;
+
+public class DiagnosisDataBaseHelper extends SQLiteOpenHelper{
+
     //The Android's default system path of your application database.
-	private static String TAG = "DatabaseHelper"; 
+	private static String TAG = "DatabaseHelper";
 	private static String DB_PATH = Environment.getExternalStorageDirectory() + "/Android/data/com.cajama.malarialite/files/";
-    private static String DB_NAME = "db.db";
-    private static String TABLE_NAME = "user";
+    private static String DB_NAME = "data.db";
+    private static String DATABASE_TABLE = "data";
+    private static String KEY_ROWID = "_id";
+    private static String KEY_DESC = "diagnosis";
     private static String USER_COLUMN = "username";
-    
+
     private SQLiteDatabase myDataBase;
     private final Context myContext;
- 
-    public DataBaseHelper(Context context) {
+
+    public DiagnosisDataBaseHelper(Context context) {
     	super(context, DB_NAME, null, 1);
         this.myContext = context;
     }	
@@ -88,6 +89,29 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         String myPath = DB_PATH + DB_NAME;
     	myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY | SQLiteDatabase.NO_LOCALIZED_COLLATORS);
     }
+
+    public void insert(HashMap<String, String> value) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("diagnosis", value.get("diagnosis"));
+        db.insert("data", null, values);
+        db.close();
+    }
+
+    public HashMap<String, String> getDiagnosis() {
+        HashMap<String, String> list = new HashMap<String, String>();
+        SQLiteDatabase database = this.getReadableDatabase();
+        String selectQuery = "SELECT * FROM diagnosis";
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                list.put("diagnosis", cursor.getString(1));
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        database.close();
+        return list;
+    }
  
     @Override
 	public synchronized void close() {
@@ -100,13 +124,37 @@ public class DataBaseHelper extends SQLiteOpenHelper{
  
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-
+        String CREATE_CONTACTS_TABLE = "CREATE TABLE IF NOT EXISTS " + DATABASE_TABLE + " ("
+                + KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_DESC + " TEXT)";
+        db.execSQL(CREATE_CONTACTS_TABLE);
 	}
  
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
  
 	}
+
+    public void storeDiagnosis(String dbName, String diagnosis) {
+        SQLiteDatabase checkDB = null;
+        try {
+            String myPath = DB_PATH + dbName;
+            checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+        } catch (SQLiteException e) {
+            e.printStackTrace();
+        }
+
+        if (checkDB != null) {
+            checkDB.close();
+        }
+        else {
+            this.getReadableDatabase();
+            try {
+                copyDataBase();
+            } catch (IOException e) {
+                throw new Error("Error copying database");
+            }
+        }
+    }
 
 	public Cursor getPair(String user) {
 		//SQLiteDatabase db = this.getReadableDatabase();

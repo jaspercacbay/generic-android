@@ -104,7 +104,7 @@ public class TestUploadAsyncTask extends AsyncTask<File, Integer, String> {
                         currentFile.delete();
                         onAsyncResult.onResult(-1, currentFile.getName());
                     }
-                    else if (sb.toString().equals("NO")) {
+                    else if (sb.toString().equals("EXISTS")) {
                         currentFile.delete();
                         onAsyncResult.onResult(2, currentFile.getName());
                     }
@@ -174,7 +174,7 @@ public class TestUploadAsyncTask extends AsyncTask<File, Integer, String> {
                         currentFile.delete();
                         onAsyncResult.onResult(-1, currentFile.getName());
                     }
-                    else if (sb.toString().trim().equals("NO")) {
+                    else if (sb.toString().equals("EXISTS")) {
                         currentFile.delete();
                         onAsyncResult.onResult(2, currentFile.getName());
                     }

@@ -55,6 +55,8 @@ public class Picture extends SherlockActivity {
         countdown = (TextView) findViewById(R.id.photocountdown);
         countdown.setVisibility(View.INVISIBLE);
 
+        //preview.onCl
+
         /*preview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,7 +82,8 @@ public class Picture extends SherlockActivity {
         params.setJpegQuality(100);
         params.setPictureFormat(ImageFormat.JPEG);
         if (Build.VERSION.SDK_INT >= 14) {
-            params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+            //params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+            params.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
         }
         camera.setParameters(params);
         initPreview(preview.getWidth(), preview.getHeight());
@@ -266,7 +269,8 @@ public class Picture extends SherlockActivity {
                 parameters.setJpegQuality(100);
                 parameters.setPictureFormat(ImageFormat.JPEG);
                 if (Build.VERSION.SDK_INT >= 14) {
-                    parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+                    //parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+                    parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
                 }
                 camera.setParameters(parameters);
                 cameraConfigured=true;

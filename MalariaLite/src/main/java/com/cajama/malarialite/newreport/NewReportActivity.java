@@ -35,10 +35,12 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.cajama.background.DataBaseHelper;
+import com.cajama.background.DiagnosisDataBaseHelper;
 import com.cajama.background.SyncService;
 import com.cajama.malarialite.R;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -343,15 +345,15 @@ public class NewReportActivity extends SherlockActivity {
 
     private boolean checkRequiredFields(int display) {
         switch (display) {
-            /*case 2:
-                EditText address = (EditText) findViewById(R.id.address);
-                if (address.getText().toString().trim().length() == 0) {
-                    requiredToast.setText("Address " + required);
+            case 1:
+                EditText diagnosis = (EditText) findViewById(R.id.parasite);
+                if (diagnosis.getText().toString()!=null &&  diagnosis.getText().toString().trim().length() == 0) {
+                    requiredToast.setText("Diagnosis " + required);
                     requiredToast.show();
                     return false;
                 }
-                return true;*/
-            case 2:
+                return true;
+            case 4:
                 EditText username = (EditText) findViewById(R.id.username);
                 EditText password = (EditText) findViewById(R.id.password);
                 File temp = new File(getExternalFilesDir(null), "db.db");
@@ -364,6 +366,7 @@ public class NewReportActivity extends SherlockActivity {
                 else if (!temp.exists()) {
                     Intent intent = new Intent(this, SyncService.class);
                     startService(intent);
+                    requiredToast.setText("Waiting to sync with server...");
                 }
                 else return true;
                 requiredToast.show();
@@ -653,9 +656,25 @@ public class NewReportActivity extends SherlockActivity {
 
         //parasite
         EditText editText2 = (EditText) findViewById(R.id.parasite);
-        parasite = checkEmpty(editText2.getText().toString());
+        parasite = checkEmpty(editText2.getText().toString().trim());
         entries.add(putEntry("Diagnosis", parasite));
         entryList.add(parasite);
+
+        /*DiagnosisDataBaseHelper helper = new DiagnosisDataBaseHelper(this);
+        try {
+            helper.createDataBase();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        helper.openDataBase();
+        HashMap<String, String> hash = new HashMap<String, String>();
+        hash.put("diagnosis", parasite);
+        helper.insert(hash);
+
+        hash = helper.getDiagnosis();
+        for (Object str : hash.values().toArray()) {
+            System.out.println(str.toString());
+        }*/
 
         //description
         EditText editText = (EditText) findViewById(R.id.description);

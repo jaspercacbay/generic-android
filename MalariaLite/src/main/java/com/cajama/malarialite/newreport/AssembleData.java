@@ -79,9 +79,9 @@ public class AssembleData {
 
     private String[] getThirdZipArray(String asdf) {
         String[] travelData = new String[3];
-        travelData[0] = c.getExternalFilesDir(null).getPath() + "/" + asdf;
-        travelData[1] = c.getExternalFilesDir(null).getPath() + "/" + ACCOUNT_TXT_FILENAME;
-        travelData[2] = c.getExternalFilesDir(null).getPath() + "/" + "cipher_listahan";
+        //travelData[0] = c.getExternalFilesDir(null).getPath() + "/" + asdf;
+        travelData[0] = c.getExternalFilesDir(null).getPath() + "/" + ACCOUNT_TXT_FILENAME;
+        travelData[1] = c.getExternalFilesDir(null).getPath() + "/" + "cipher_listahan";
         return travelData;
     }
 
