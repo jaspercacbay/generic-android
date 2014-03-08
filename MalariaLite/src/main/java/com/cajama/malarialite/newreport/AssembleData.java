@@ -42,6 +42,7 @@ public class AssembleData {
     AES aes;
     File AESFile;
     String [] parts;
+    Time today;
 
     public static final String BROADCAST_FINISH = "com.cajama.malarialite.newreport.NewReportActivity";
     private static final String PATIENT_TXT_FILENAME = "textData.xml";
@@ -49,12 +50,13 @@ public class AssembleData {
     private static final String PATIENT_ZIP_FILENAME = "entryData.zip";
     private static final String AES_FILENAME = "cipherZipFile.zip";
 
-    public AssembleData(Context c,ArrayList<String> entryList ,ArrayList<String> fileList, ArrayList<String> accountData, String USERNAME){
+    public AssembleData(Context c,ArrayList<String> entryList ,ArrayList<String> fileList, ArrayList<String> accountData, String USERNAME, Time created){
         this.c = c;
         this.entryList=entryList;
         this.fileList = fileList;
         this.accountData = accountData;
         this.USERNAME = USERNAME.toLowerCase();
+        this.today = created;
         intentFinish = new Intent(BROADCAST_FINISH);
     }
     private String[] getFirstZipArray(){
@@ -225,8 +227,6 @@ public class AssembleData {
         account.writeTextFile();
 
         //compress patient zip file and private key text file to a 2nd zip file
-        Time today = new Time(Time.getCurrentTimezone());
-        today.setToNow();
 
         String nowname = today.format("%m%d%Y_%H%M%S")+"_"+ USERNAME + ".zip";
 

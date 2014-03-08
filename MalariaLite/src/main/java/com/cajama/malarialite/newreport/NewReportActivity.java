@@ -35,12 +35,10 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.cajama.background.DataBaseHelper;
-import com.cajama.background.DiagnosisDataBaseHelper;
 import com.cajama.background.SyncService;
 import com.cajama.malarialite.R;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -71,6 +69,7 @@ public class NewReportActivity extends SherlockActivity {
     boolean isCancelDialogOpen = false, isDeleteDialogOpen = false;
     GetLocation getLoc;
     ProgressDialog pd;
+    Time today;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -626,7 +625,7 @@ public class NewReportActivity extends SherlockActivity {
         Location location = getLoc.getLocation();
 
         //date & time
-        Time today = new Time(Time.getCurrentTimezone());
+        today = new Time(Time.getCurrentTimezone());
         today.setToNow();
         entries.clear();
         entryList.clear();
@@ -735,7 +734,7 @@ public class NewReportActivity extends SherlockActivity {
 
         String USERNAME = getAccountData();
 
-        assembleData = new AssembleData(getApplicationContext(),entryList,imageList,accountList,USERNAME);
+        assembleData = new AssembleData(getApplicationContext(),entryList,imageList,accountList,USERNAME, today);
         TextView textView = (TextView) findViewById(R.id.progressText);
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressbar_Horizontal);
         assembleData.setView(progressBar, textView);
