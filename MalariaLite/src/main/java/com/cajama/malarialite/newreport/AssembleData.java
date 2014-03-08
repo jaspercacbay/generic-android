@@ -86,41 +86,38 @@ public class AssembleData {
 
     public File splitFile(File o) throws Exception {
         File chunkfile;
+        ByteSink chunk;
         HashCode md5;
+        byte[] buf;
 
         ByteSource orig = Files.asByteSource(o);
-        long sourceSize = orig.size();
-
-        long remainingBytes;
 
         int maxReadBufferSize = 128 * 1024; //128KB chunks
-        int numSplits = (int) (Math.floor(sourceSize / maxReadBufferSize));
-
-        if (numSplits > 0) {
-            remainingBytes = sourceSize % numSplits;
-        } else {
-            remainingBytes = sourceSize;
-        }
-
-        if (remainingBytes > 0) {
-            numSplits += 1;
-        }
 
         File chunklist = new File(o.getParent(), o.getName() + ".txt");
         Files.touch(chunklist);
         PrintWriter writer = new PrintWriter(chunklist, "UTF-8");
 
-        for(int destIx=1; destIx<=numSplits; destIx++) {
-            chunkfile = new File(o.getParent()+"/ZipFiles", o.getName() +String.format("%05d", destIx)+".part");
-            Files.touch(chunkfile);
+        int destIx=1;
 
-            ByteSink chunk = Files.asByteSink(chunkfile);
-            chunk.write(orig.slice((destIx-1)*maxReadBufferSize,maxReadBufferSize).read());
+        do {
+            buf = orig.slice((destIx-1)*maxReadBufferSize,maxReadBufferSize).read();
 
-            md5 = Files.hash(chunkfile, Hashing.md5());
+            if (buf.length > 0) {
+                chunkfile = new File(o.getParent()+"/ZipFiles", o.getName() +String.format(".%05d.part", destIx));
+                Files.touch(chunkfile);
 
-            writer.println(chunkfile.getName()+" "+md5.toString());
-        }
+                chunk = Files.asByteSink(chunkfile);
+                chunk.write(buf);
+
+                md5 = Files.hash(chunkfile, Hashing.md5());
+                writer.println(chunkfile.getName()+" "+md5.toString());
+
+                destIx++;
+            }
+
+        } while (buf.length > 0);
+
         writer.close();
         return chunklist;
     }
