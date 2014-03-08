@@ -43,6 +43,7 @@ public class AssembleData {
     File AESFile;
     String [] parts;
     Time today;
+    String reportRoot;
 
     public static final String BROADCAST_FINISH = "com.cajama.malarialite.newreport.NewReportActivity";
     private static final String PATIENT_TXT_FILENAME = "textData.xml";
@@ -161,6 +162,8 @@ public class AssembleData {
 
     public void start() throws Exception {
 
+        reportRoot = c.getExternalFilesDir("Reports").getPath() + "/" + today.format("%m%d%Y_%H%M%S")+"_"+ USERNAME;
+
         //create patient details file
         File entryFile = new File (c.getExternalFilesDir(null), PATIENT_TXT_FILENAME);
         MakeTextFile patient = new MakeTextFile(entryFile,entryList, false);
@@ -170,6 +173,23 @@ public class AssembleData {
         File zipFile1 = new File (c.getExternalFilesDir(null), PATIENT_ZIP_FILENAME);
         Compress firstZip = new Compress(getFirstZipArray(),zipFile1.getPath());
         firstZip.zip();
+
+        String [] reportfiles = fileList.toArray(new String[fileList.size()]);
+
+        for (int cnt = 0; cnt< fileList.size(); cnt++) {
+            File from = new File(reportfiles[cnt]);
+            File to;
+            if (from.getName().endsWith(".jpg")) {
+                to = new File(reportRoot+"/Pictures/"+from.getName());
+            } else {
+                to = new File(reportRoot+"/"+from.getName());
+            }
+
+            Files.createParentDirs(to);
+
+            Files.touch(to);
+            Files.copy(from, to);
+        }
 
         //hash secret key
         try {
