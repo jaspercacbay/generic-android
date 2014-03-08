@@ -80,9 +80,8 @@ public class AssembleData {
         return travelData;
     }
 
-    private String[] getThirdZipArray(String asdf) {
-        String[] travelData = new String[3];
-        //travelData[0] = c.getExternalFilesDir(null).getPath() + "/" + asdf;
+    private String[] getThirdZipArray() {
+        String[] travelData = new String[2];
         travelData[0] = c.getExternalFilesDir(null).getPath() + "/" + ACCOUNT_TXT_FILENAME;
         travelData[1] = c.getExternalFilesDir(null).getPath() + "/" + "cipher_listahan";
         return travelData;
@@ -261,7 +260,7 @@ public class AssembleData {
         aes.encryptAES(listahan, AESFile2);
 
         File zipFile3 = new File (c.getExternalFilesDir("ZipFiles"), nowname);
-        Compress thirdZip = new Compress(getThirdZipArray(listahanname),zipFile3.getPath());
+        Compress thirdZip = new Compress(getThirdZipArray(),zipFile3.getPath());
         thirdZip.zip();
 
         entryFile.delete();
