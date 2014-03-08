@@ -14,14 +14,12 @@ import com.cajama.malarialite.encryption.AES;
 import com.cajama.malarialite.encryption.RSA;
 import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
+import com.google.common.io.ByteSink;
+import com.google.common.io.ByteSource;
 import com.google.common.io.Files;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.RandomAccessFile;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,7 +39,6 @@ public class AssembleData {
     Context c;
     AES aes;
     File AESFile;
-    String [] parts;
     Time today;
     String reportRoot;
 
@@ -87,69 +84,46 @@ public class AssembleData {
         return travelData;
     }
 
-    public void readWrite(RandomAccessFile raf, BufferedOutputStream bw, long numBytes) throws IOException {
-        byte[] buf = new byte[(int) numBytes];
-        int val = raf.read(buf);
-        if(val != -1) {
-            bw.write(buf);
-        }
-    }
-
     public String splitFile(String fname) throws Exception {
-        RandomAccessFile raf = new RandomAccessFile(c.getExternalFilesDir(null).getPath() + "/" + fname, "r");
-        long sourceSize = raf.length();
+        ByteSource orig = Files.asByteSource(new File(c.getExternalFilesDir(null).getPath() + "/" + fname));
+        long sourceSize = orig.size();
+
         long remainingBytes;
 
         int maxReadBufferSize = 128 * 1024; //128KB chunks
-        int numSplits = (int) (Math.floor(sourceSize / maxReadBufferSize) + 1);
+        int numSplits = (int) (Math.floor(sourceSize / maxReadBufferSize));
         Log.d("assemble", String.valueOf(sourceSize));
         Log.d("assemble", String.valueOf(numSplits));
-        if (numSplits > 1) {
-            remainingBytes = sourceSize % (numSplits-1);
+
+        if (numSplits > 0) {
+            remainingBytes = sourceSize % numSplits;
         } else {
             remainingBytes = sourceSize;
-            numSplits = 0;
         }
 
-        parts = new String[numSplits+1];
+        if (remainingBytes > 0) {
+            numSplits += 1;
+        }
 
-        File tobedisgested;
+        File chunkfile;
         HashCode md5;
         String md5Hex;
 
         Files.touch(new File(c.getExternalFilesDir(null), fname + ".txt"));
         PrintWriter writer = new PrintWriter(c.getExternalFilesDir(null).getPath() + "/" + fname + ".txt", "UTF-8");
 
-        for(int destIx=1; destIx <=numSplits; destIx++) {
+        for(int destIx=1; destIx<=numSplits; destIx++) {
             Files.touch(new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", destIx)+".part"));
-            BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", destIx)+".part"));
+            chunkfile = new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", destIx)+".part");
 
-            readWrite(raf, bw, maxReadBufferSize);
-            bw.close();
+            ByteSink chunk = Files.asByteSink(new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname + String.format("%05d", destIx) + ".part"));
+            chunk.write(orig.slice((destIx-1)*maxReadBufferSize,maxReadBufferSize).read());
 
-            tobedisgested = new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", destIx)+".part");
-            md5 = Files.hash(tobedisgested, Hashing.md5());
+            md5 = Files.hash(chunkfile, Hashing.md5());
             md5Hex = md5.toString();
 
-            writer.println(fname+String.format("%05d", destIx)+".part"+" "+md5Hex);
-            parts[destIx-1] = fname+String.format("%05d", destIx)+".part";
+            writer.println(chunkfile.getName()+" "+md5Hex);
         }
-
-        if(remainingBytes > 0) {
-            Files.touch(new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", numSplits+1)+".part"));
-            BufferedOutputStream bw = new BufferedOutputStream(new FileOutputStream(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", numSplits+1)+".part"));
-            readWrite(raf, bw, remainingBytes);
-            bw.close();
-
-            tobedisgested = new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", numSplits+1)+".part");
-            md5 = Files.hash(tobedisgested, Hashing.md5());
-            md5Hex = md5.toString();
-
-            writer.println(fname+String.format("%05d", numSplits+1)+".part"+" "+md5Hex);
-            parts[numSplits] = fname+String.format("%05d", numSplits+1)+".part";
-        }
-
-        raf.close();
         writer.close();
         return fname + ".txt";
     }
