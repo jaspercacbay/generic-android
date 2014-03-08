@@ -7,6 +7,9 @@ import android.os.AsyncTask;
 import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
+import com.google.common.hash.Hashing;
+import com.google.common.io.Files;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
@@ -78,6 +81,7 @@ public class TestUploadAsyncTask extends AsyncTask<File, Integer, String> {
                     custom.addPart("name", cbName);
                     custom.addPart("filename", cbFilename);
                     custom.addPart("file", cbFile);
+                    custom.addPart("checksum", new StringBody(Files.hash(currentFile, Hashing.md5()).toString()));
 
                     totalSize = custom.getContentLength();
                     System.out.println(totalSize);
