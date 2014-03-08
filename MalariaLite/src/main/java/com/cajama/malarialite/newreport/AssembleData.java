@@ -84,16 +84,17 @@ public class AssembleData {
         return travelData;
     }
 
-    public String splitFile(String fname) throws Exception {
-        ByteSource orig = Files.asByteSource(new File(c.getExternalFilesDir(null).getPath() + "/" + fname));
+    public File splitFile(File o) throws Exception {
+        File chunkfile;
+        HashCode md5;
+
+        ByteSource orig = Files.asByteSource(o);
         long sourceSize = orig.size();
 
         long remainingBytes;
 
         int maxReadBufferSize = 128 * 1024; //128KB chunks
         int numSplits = (int) (Math.floor(sourceSize / maxReadBufferSize));
-        Log.d("assemble", String.valueOf(sourceSize));
-        Log.d("assemble", String.valueOf(numSplits));
 
         if (numSplits > 0) {
             remainingBytes = sourceSize % numSplits;
@@ -105,27 +106,23 @@ public class AssembleData {
             numSplits += 1;
         }
 
-        File chunkfile;
-        HashCode md5;
-        String md5Hex;
-
-        Files.touch(new File(c.getExternalFilesDir(null), fname + ".txt"));
-        PrintWriter writer = new PrintWriter(c.getExternalFilesDir(null).getPath() + "/" + fname + ".txt", "UTF-8");
+        File chunklist = new File(o.getParent(), o.getName() + ".txt");
+        Files.touch(chunklist);
+        PrintWriter writer = new PrintWriter(chunklist, "UTF-8");
 
         for(int destIx=1; destIx<=numSplits; destIx++) {
-            Files.touch(new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", destIx)+".part"));
-            chunkfile = new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname+String.format("%05d", destIx)+".part");
+            chunkfile = new File(o.getParent()+"/ZipFiles", o.getName() +String.format("%05d", destIx)+".part");
+            Files.touch(chunkfile);
 
-            ByteSink chunk = Files.asByteSink(new File(c.getExternalFilesDir("ZipFiles").getPath() + "/" + fname + String.format("%05d", destIx) + ".part"));
+            ByteSink chunk = Files.asByteSink(chunkfile);
             chunk.write(orig.slice((destIx-1)*maxReadBufferSize,maxReadBufferSize).read());
 
             md5 = Files.hash(chunkfile, Hashing.md5());
-            md5Hex = md5.toString();
 
-            writer.println(chunkfile.getName()+" "+md5Hex);
+            writer.println(chunkfile.getName()+" "+md5.toString());
         }
         writer.close();
-        return fname + ".txt";
+        return chunklist;
     }
 
     public void setView (ProgressBar progressBar, TextView textView) {
@@ -227,9 +224,7 @@ public class AssembleData {
         Compress secondZip = new Compress(getSecondZipArray(),zipFile2.getPath());
         secondZip.zip();
 
-        String listahanname = splitFile(nowname);
-
-        File listahan = new File(c.getExternalFilesDir(null), listahanname);
+        File listahan = splitFile(zipFile2);
         File AESFile2 = new File(c.getExternalFilesDir(null),"cipher_listahan");
         aes.encryptAES(listahan, AESFile2);
 
