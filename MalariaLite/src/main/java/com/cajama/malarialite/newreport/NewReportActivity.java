@@ -70,6 +70,7 @@ public class NewReportActivity extends SherlockActivity {
     GetLocation getLoc;
     ProgressDialog pd;
     Time today;
+    Boolean submitting = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,6 +204,16 @@ public class NewReportActivity extends SherlockActivity {
             case 3: menu.findItem(R.id.action_prev).setTitle(R.string.back);
                     menu.findItem(R.id.action_photo).setVisible(false);
                     menu.findItem(R.id.action_next).setTitle(R.string.next);
+                    if (submitting) {
+                        menu.findItem(R.id.action_prev).setEnabled(false);
+                    }
+                    break;
+            case 4: menu.findItem(R.id.action_prev).setTitle(R.string.back);
+                    menu.findItem(R.id.action_photo).setVisible(false);
+                    menu.findItem(R.id.action_next).setTitle(R.string.submit);
+                    if (submitting){
+                        menu.findItem(R.id.action_next).setEnabled(false);
+                    }
                     break;
             default: break;
         }
@@ -270,11 +281,17 @@ public class NewReportActivity extends SherlockActivity {
                     }
                 }
                 else if(VF.getDisplayedChild() != VF.getChildCount()-1) {
-                    VF.showNext();
+                    if (checkRequiredFields(VF.getDisplayedChild())) VF.showNext();
                     //return false;
                 }
                 else if(VF.getDisplayedChild() == VF.getChildCount()-1){
-                    if (checkRequiredFields(VF.getDisplayedChild()) && checkCredentials()) submitFinishedReport();
+                    if (!submitting && checkRequiredFields(VF.getDisplayedChild()) && checkCredentials()) {
+                        EditText user = (EditText) findViewById(R.id.username);
+                        EditText pass = (EditText) findViewById(R.id.password);
+                        user.setEnabled(false);
+                        pass.setEnabled(false);
+                        submitFinishedReport();
+                    }
                 }
                 invalidateOptionsMenu();
                 return true;
@@ -665,14 +682,15 @@ public class NewReportActivity extends SherlockActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        helper.openDataBase();
         HashMap<String, String> hash = new HashMap<String, String>();
         hash.put("diagnosis", parasite);
         helper.insert(hash);
 
         hash = helper.getDiagnosis();
-        for (Object str : hash.values().toArray()) {
-            System.out.println(str.toString());
+        if (hash != null) {
+            for (Object str : hash.values().toArray()) {
+                System.out.println(str.toString());
+            }
         }*/
 
         //description
@@ -728,6 +746,9 @@ public class NewReportActivity extends SherlockActivity {
     }
 
     private void submitFinishedReport() {
+
+        submitting = true;
+        Log.d(TAG, "submitting!");
 
         ArrayList<String> imageList = new ArrayList<String>();
         for (int i=0; i < images.getCount();i++ ) imageList.add(i,images.getItem(i).path);

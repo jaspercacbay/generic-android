@@ -44,7 +44,7 @@ public class DiagnosisDataBaseHelper extends SQLiteOpenHelper{
         	try {
     			copyDataBase();
     		} catch (IOException e) {
-        		throw new Error("Error copying database");
+        		e.printStackTrace();
         	}
     	}
  
@@ -101,16 +101,20 @@ public class DiagnosisDataBaseHelper extends SQLiteOpenHelper{
     public HashMap<String, String> getDiagnosis() {
         HashMap<String, String> list = new HashMap<String, String>();
         SQLiteDatabase database = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM diagnosis";
-        Cursor cursor = database.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
+        String[] tableColumns = new String[] {"diagnosis"};
+        Cursor cursor = myDataBase.query("data", tableColumns, null, null,
+                null, null, null, null);
+        if (cursor.getCount()!=0 && cursor.moveToFirst()) {
             do {
                 list.put("diagnosis", cursor.getString(1));
             } while (cursor.moveToNext());
             cursor.close();
+            database.close();
+            return list;
         }
-        database.close();
-        return list;
+        else {
+            return null;
+        }
     }
  
     @Override
@@ -124,9 +128,7 @@ public class DiagnosisDataBaseHelper extends SQLiteOpenHelper{
  
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-        String CREATE_CONTACTS_TABLE = "CREATE TABLE IF NOT EXISTS " + DATABASE_TABLE + " ("
-                + KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_DESC + " TEXT)";
-        db.execSQL(CREATE_CONTACTS_TABLE);
+
 	}
  
 	@Override
@@ -171,6 +173,14 @@ public class DiagnosisDataBaseHelper extends SQLiteOpenHelper{
 		if (cursor.getCount()==0) return null;
 		return cursor;
 	}
+
+    public void createTable() {
+        SQLiteDatabase db = getWritableDatabase();
+        String CREATE_CONTACTS_TABLE = "CREATE TABLE IF NOT EXISTS " + DATABASE_TABLE + " ("
+                + KEY_ROWID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_DESC + " TEXT)";
+        db.execSQL(CREATE_CONTACTS_TABLE);
+        db.close();
+    }
 	
 	public Cursor showAllTables() {
         String mySql = " SELECT name FROM sqlite_master " + " WHERE type='table'             ";

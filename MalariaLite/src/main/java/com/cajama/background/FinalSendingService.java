@@ -104,9 +104,10 @@ public class FinalSendingService extends Service {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             Intent resultIntent = new Intent(this, QueueLogActivity.class);
             TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
-            stackBuilder.addParentStack(QueueLogActivity.class);
+            //stackBuilder.addParentStack(QueueLogActivity.class);
+            stackBuilder.addNextIntentWithParentStack(resultIntent);
 
-            stackBuilder.addNextIntent(resultIntent);
+            //stackBuilder.addNextIntent(resultIntent);
             PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
             mBuilder.setContentIntent(resultPendingIntent);
         }

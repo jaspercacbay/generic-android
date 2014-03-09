@@ -30,7 +30,8 @@
         </activity>
         <activity android:label="@string/title_activity_fullscreen_photo" android:name=".newreport.FullscreenPhotoActivity">
         </activity>
-        <activity android:label="@string/title_activity_queue_log" android:name=".entryLogs.QueueLogActivity">
+        <activity android:label="@string/title_activity_queue_log" android:name=".entryLogs.QueueLogActivity" android:parentActivityName=".MainActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.cajama.malarialite.MainActivity" />
         </activity>
         <activity android:label="@string/title_activity_sent_log" android:name=".entryLogs.SentLogActivity">
         </activity>
