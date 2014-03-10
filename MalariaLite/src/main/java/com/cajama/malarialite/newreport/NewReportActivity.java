@@ -647,7 +647,7 @@ public class NewReportActivity extends SherlockActivity {
         entries.clear();
         entryList.clear();
         //date
-        dateCreated = today.format("%m/%d/%Y");
+        dateCreated = today.format("%Y/%m/%d");
         entries.add(putEntry(getString(R.string.date_created), dateCreated));
         entryList.add(dateCreated);
         //time

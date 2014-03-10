@@ -129,7 +129,7 @@ public class AssembleData {
 
     public void start() throws Exception {
 
-        reportRoot = c.getExternalFilesDir("Reports").getPath() + "/" + today.format("%m%d%Y_%H%M%S")+"_"+ USERNAME;
+        reportRoot = c.getExternalFilesDir("Reports").getPath() + "/" + today.format("%Y%m%d_%H%M%S")+"_"+ USERNAME;
 
         //create patient details file
         File entryFile = new File (c.getExternalFilesDir(null), PATIENT_TXT_FILENAME);
@@ -215,7 +215,7 @@ public class AssembleData {
 
         //compress patient zip file and private key text file to a 2nd zip file
 
-        String nowname = today.format("%m%d%Y_%H%M%S")+"_"+ USERNAME + ".zip";
+        String nowname = today.format("%Y%m%d_%H%M%S")+"_"+ USERNAME + ".zip";
 
         File zipFile2 = new File (c.getExternalFilesDir(null), nowname);
         Compress secondZip = new Compress(getSecondZipArray(),zipFile2.getPath());
