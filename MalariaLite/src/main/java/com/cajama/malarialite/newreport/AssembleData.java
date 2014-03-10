@@ -109,7 +109,7 @@ public class AssembleData {
             buf = orig.slice((destIx-1)*maxReadBufferSize,maxReadBufferSize).read();
 
             if (buf.length > 0) {
-                chunkfile = new File(o.getParent()+"/ZipFiles", o.getName().replaceAll(".zip", "")+ String.format(".%06d.part", destIx));
+                chunkfile = new File(o.getParent()+"/ZipFiles", o.getName().replaceAll(".zip", "")+ "_" + fsize + "_" + kbsize+ String.format(".zip.%06d.part", destIx));
                 Files.touch(chunkfile);
 
                 chunk = Files.asByteSink(chunkfile);
@@ -220,7 +220,7 @@ public class AssembleData {
 
         //compress patient zip file and private key text file to a 2nd zip file
 
-        String nowname = today.format("%Y%m%d_%H%M%S")+"_"+ USERNAME+ "_" + fsize + "_" + kbsize+".zip";
+        String nowname = today.format("%Y%m%d_%H%M%S")+"_"+ USERNAME+".zip";
 
         File zipFile2 = new File (c.getExternalFilesDir(null), nowname);
         Compress secondZip = new Compress(getSecondZipArray(),zipFile2.getPath());
@@ -230,6 +230,7 @@ public class AssembleData {
         File AESFile2 = new File(c.getExternalFilesDir(null),"cipher_listahan");
         aes.encryptAES(listahan, AESFile2);
 
+        nowname = today.format("%Y%m%d_%H%M%S")+"_"+ USERNAME+ "_" + fsize + "_" + kbsize+".zip";
         File zipFile3 = new File (c.getExternalFilesDir("ZipFiles"), nowname);
         Compress thirdZip = new Compress(getThirdZipArray(),zipFile3.getPath());
         thirdZip.zip();
