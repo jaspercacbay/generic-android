@@ -41,6 +41,8 @@ public class AssembleData {
     File AESFile;
     Time today;
     String reportRoot;
+    long fsize;
+    int kbsize;
 
     public static final String BROADCAST_FINISH = "com.cajama.malarialite.newreport.NewReportActivity";
     private static final String PATIENT_TXT_FILENAME = "textData.xml";
@@ -92,7 +94,10 @@ public class AssembleData {
 
         ByteSource orig = Files.asByteSource(o);
 
-        int maxReadBufferSize = 128 * 1024; //128KB chunks
+        fsize = o.length();
+
+        kbsize = 32;
+        int maxReadBufferSize = kbsize * 1024; //32KB chunks
 
         File chunklist = new File(o.getParent(), o.getName() + ".txt");
         Files.touch(chunklist);
@@ -104,7 +109,7 @@ public class AssembleData {
             buf = orig.slice((destIx-1)*maxReadBufferSize,maxReadBufferSize).read();
 
             if (buf.length > 0) {
-                chunkfile = new File(o.getParent()+"/ZipFiles", o.getName() +String.format(".%05d.part", destIx));
+                chunkfile = new File(o.getParent()+"/ZipFiles", o.getName().replaceAll(".zip", "")+ String.format(".%06d.part", destIx));
                 Files.touch(chunkfile);
 
                 chunk = Files.asByteSink(chunkfile);
@@ -215,7 +220,7 @@ public class AssembleData {
 
         //compress patient zip file and private key text file to a 2nd zip file
 
-        String nowname = today.format("%Y%m%d_%H%M%S")+"_"+ USERNAME + ".zip";
+        String nowname = today.format("%Y%m%d_%H%M%S")+"_"+ USERNAME+ "_" + fsize + "_" + kbsize+".zip";
 
         File zipFile2 = new File (c.getExternalFilesDir(null), nowname);
         Compress secondZip = new Compress(getSecondZipArray(),zipFile2.getPath());
