@@ -37,6 +37,15 @@ public class TestUploadAsyncTask extends AsyncTask<File, Integer, String> {
     NotificationCompat.Builder nc;
     File currentFile;
 
+    public boolean checkIfInitSent(File chunk, File... files) {
+        for (int i = 0; i<files.length; i++){
+            if(files[i].getName().endsWith(".zip") && files[i].getName().startsWith(chunk.getName().replaceAll(".%06d.part", "")) && files[i].exists()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public TestUploadAsyncTask(String server, Context context) {
         this.server = NetworkUtil.checkWebAddress(server);
         System.out.println(server);
@@ -127,7 +136,7 @@ public class TestUploadAsyncTask extends AsyncTask<File, Integer, String> {
         }
 
         for (int i = 0; i < reportsToSend; i++) {
-            if (files[i].getName().endsWith("part") && files[i].exists()) {
+            if (files[i].getName().endsWith("part") && files[i].exists() && checkIfInitSent(files[i], files)) {
                 lastPercent = 0;
                 currentFile = files[i];
                 post = new HttpPost(this.server.concat("api/chunk/"));

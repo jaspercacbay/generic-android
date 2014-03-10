@@ -216,7 +216,7 @@ public class FinalSendingService extends Service {
         if (reportsDirectory.listFiles().length > 0) {
             Log.d(TAG, "# of files to send: " + String.valueOf(reportsDirectory.listFiles().length));
             if (asyncTask.getStatus() == AsyncTask.Status.PENDING) {
-                FilenameFilter filter = new FilenameFilter() {
+                /*FilenameFilter filter = new FilenameFilter() {
                     public boolean accept(File directory, String fileName) {
                         return fileName.endsWith(".zip");
                     }
@@ -224,7 +224,10 @@ public class FinalSendingService extends Service {
                 reports = reportsDirectory.listFiles(filter);
                 if (reports.length == 0) {
                     reports = reportsDirectory.listFiles();
-                }
+                }*/
+
+                reports = reportsDirectory.listFiles();
+
                 asyncTask.execute(reports);
             }
             else if (asyncTask.getStatus() == AsyncTask.Status.RUNNING) {
