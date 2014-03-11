@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.cajama.background.FinalSendingService;
 import com.cajama.malarialite.R;
@@ -22,16 +24,32 @@ import java.util.HashMap;
 
 public class QueueLogActivity extends ListActivity {
     private ArrayList<HashMap> list;
-    private Intent intent;
+    private Intent intent, intentViewer;
+    AdapterView.OnItemClickListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_queuelog);
         intent = new Intent(this, FinalSendingService.class);
+        intentViewer = new Intent(this, ReportViewerActivity.class);
 
         File dir = new File(String.valueOf(getExternalFilesDir("ZipFiles")));
         if (!dir.exists()) dir.mkdirs();
+
+        listener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                HashMap value = (HashMap) adapterView.getItemAtPosition(i);
+                Bundle bundle = new Bundle();
+                bundle.putString("from", "queue");
+                bundle.putString("date", (String) value.get("date"));
+                bundle.putString("time", (String) value.get("time"));
+                bundle.putString("name", (String) value.get("name"));
+                intentViewer.putExtras(bundle);
+                startActivity(intentViewer);
+            }
+        };
 
         updateListView();
     }
@@ -59,6 +77,7 @@ public class QueueLogActivity extends ListActivity {
 
             ListView lview = (ListView) findViewById(android.R.id.list);
             entryAdapter adapter = new entryAdapter(this, logSet);
+            lview.setOnItemClickListener(listener);
             lview.setAdapter(adapter);
         }
         catch (Exception e){
@@ -77,8 +96,8 @@ public class QueueLogActivity extends ListActivity {
     private ArrayList<HashMap> getLogSet(ArrayList<String[]> split, ArrayList<HashMap> logSet){
         for (int i=0; i<split.size(); i++) {
             HashMap map = new HashMap();
-            map.put("date", format(split.get(i)[0], "/"));
-            map.put("time", format(split.get(i)[1], ":"));
+            map.put("date", formatDate(split.get(i)[0], "/"));
+            map.put("time", formatTime(split.get(i)[1], ":"));
             map.put("name", split.get(i)[2].replace(".zip", ""));
             logSet.add(map);
         }
@@ -99,8 +118,12 @@ public class QueueLogActivity extends ListActivity {
         stopService(intent);
     }
 
-    public String format(String str, String item) { // inserts / and : in date and time
-    	return str.substring(0, 2) + item + str.substring(2, 4) + item + str.substring(4, str.length());
+    public String formatDate(String str, String item) { // inserts / and : in date and time
+        return str.substring(0, 4) + item + str.substring(4, 6) + item + str.substring(6, str.length());
+    }
+
+    public String formatTime(String str, String item) { // inserts / and : in date and time
+        return str.substring(0, 2) + item + str.substring(2, 4) + item + str.substring(4, str.length());
     }
 
     @Override

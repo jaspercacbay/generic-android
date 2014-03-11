@@ -26,7 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/title_activity_new_report" android:name=".newreport.NewReportActivity" android:uiOptions="splitActionBarWhenNarrow">
+        <activity android:screenOrientation="portrait" android:configChanges="keyboardHidden|orientation|screenSize" android:label="@string/title_activity_new_report" android:name=".newreport.NewReportActivity" android:uiOptions="splitActionBarWhenNarrow">
         </activity>
         <activity android:label="@string/title_activity_fullscreen_photo" android:name=".newreport.FullscreenPhotoActivity">
         </activity>
@@ -35,13 +35,14 @@
         </activity>
         <activity android:label="@string/title_activity_sent_log" android:name=".entryLogs.SentLogActivity">
         </activity>
-        <activity
+        <activity android:screenOrientation="portrait"
             android:name=".newreport.Picture"
             android:label="@string/title_activity_picture" >
         </activity>
         <activity android:label="InputDialog" android:name="com.cajama.background.DialogActivity" android:theme="@android:style/Theme.Dialog"/>
         <activity android:label="Settings" android:name=".SettingsActivity" />
         <activity android:label="Initiate" android:name=".Initialize" />
+        <activity android:label="ReportViewer" android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.cajama.malarialite.entryLogs.ReportViewerActivity" android:uiOptions="splitActionBarWhenNarrow"/>
         <service android:name="com.cajama.background.FinalSendingService"/>
         <service android:name="com.cajama.background.SyncService" />
         <receiver android:name="com.cajama.background.ConnectionBroadcastReceiver" android:label="ConnectionBroadcastReceiver">

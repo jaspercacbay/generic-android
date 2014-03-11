@@ -12,10 +12,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
+import android.text.format.Time;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.cajama.malarialite.R;
 import com.cajama.malarialite.entryLogs.QueueLogActivity;
@@ -36,6 +39,8 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.MessageDigest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Jasper on 8/4/13.
@@ -67,11 +72,11 @@ public class FinalSendingService extends Service {
 
     TestUploadAsyncTask.OnAsyncResult onAsyncResult = new TestUploadAsyncTask.OnAsyncResult() {
         @Override
-        public void onResult(int resultCode, String message) {
+        public void onResult(int resultCode, String message, String response) {
             try {
                 handler1.removeCallbacks(sendUpdatesToQueue);
                 handler1.postDelayed(sendUpdatesToQueue, 1000);
-                append_report(resultCode, message);
+                append_report(resultCode, message, response);
             } catch (Exception e) {
                 Log.d(TAG, "error!");
                 e.printStackTrace();
@@ -288,12 +293,12 @@ public class FinalSendingService extends Service {
         //}
     }*/
 
-    public void append_report(int resultCode, String message) throws IOException {
+    public void append_report(int resultCode, String message, String message2) throws IOException {
         if (resultCode == 1 || resultCode == 2) {
             FileWriter fileWriter = new FileWriter(sentList, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             String[] split = message.split("_");
-            bufferedWriter.write(split[2].substring(0, split[2].length()-4)+"\n");
+            bufferedWriter.write(split[2]+"\n");
             bufferedWriter.write(split[1]+"\n");
             bufferedWriter.write(split[0]+"\n");
             bufferedWriter.close();
@@ -310,6 +315,10 @@ public class FinalSendingService extends Service {
             Log.d(TAG, message + " not added to sent list");
             //sendNext();
         }
+        File f = new File(getExternalFilesDir(null), "log.txt");
+        FileWriter fw = new FileWriter(f, true);
+        fw.append(new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()) + "\n" +  message + ": " + message2 + "\n-------------\n");
+        fw.close();
     }
 
     public void startDialog(int tries) {

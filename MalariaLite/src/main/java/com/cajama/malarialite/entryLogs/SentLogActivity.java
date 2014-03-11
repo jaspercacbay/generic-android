@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cajama.background.FinalSendingService;
@@ -24,12 +26,28 @@ import java.util.HashMap;
 
 public class SentLogActivity extends Activity {
     final String TAG = "SentLogActivity";
+    AdapterView.OnItemClickListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sentlog);
         //intent = new Intent(this, FinalSendingService.class);
+        final Intent intent = new Intent(this, ReportViewerActivity.class);
+
+        listener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                HashMap value = (HashMap) adapterView.getItemAtPosition(i);
+                Bundle bundle = new Bundle();
+                bundle.putString("from", "sent");
+                bundle.putString("date", (String) value.get("date"));
+                bundle.putString("time", (String) value.get("time"));
+                bundle.putString("name", (String) value.get("name"));
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        };
 
         updateListView();
     }
@@ -60,6 +78,7 @@ public class SentLogActivity extends Activity {
 
             ListView lview = (ListView) findViewById(android.R.id.list);
             entryAdapter adapter = new entryAdapter(this, logSet);
+            lview.setOnItemClickListener(listener);
             lview.setAdapter(adapter);
 
         } catch (FileNotFoundException e) {
@@ -115,15 +134,19 @@ public class SentLogActivity extends Activity {
     public ArrayList<HashMap> getLogSet(ArrayList<String> logs, ArrayList<HashMap> logSet) {
         for(int i=0;i<logs.size();i=i+3){
             HashMap map = new HashMap();
-            map.put("date", format(logs.get(i), "/"));
-            map.put("time", format(logs.get(i+1), ":"));
+            map.put("date", formatDate(logs.get(i), "/"));
+            map.put("time", formatTime(logs.get(i + 1), ":"));
             map.put("name", logs.get(i+2));
             logSet.add(map);
         }
         return logSet;
     }
-    
-    public String format(String str, String item) { // inserts / and : in date and time
-    	return str.substring(0, 2) + item + str.substring(2, 4) + item + str.substring(4, str.length());
+
+    public String formatDate(String str, String item) { // inserts / and : in date and time
+        return str.substring(0, 4) + item + str.substring(4, 6) + item + str.substring(6, str.length());
+    }
+
+    public String formatTime(String str, String item) { // inserts / and : in date and time
+        return str.substring(0, 2) + item + str.substring(2, 4) + item + str.substring(4, str.length());
     }
 }

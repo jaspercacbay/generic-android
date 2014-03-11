@@ -21,6 +21,7 @@ public class FullscreenPhotoActivity extends SherlockActivity {
     int pos;
     private String path;
     boolean isDeleteDialogOpen = false;
+    private boolean viewOnly;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +53,21 @@ public class FullscreenPhotoActivity extends SherlockActivity {
             ImageView image = (ImageView) findViewById(R.id.fullscreen_imageView);
             image.setImageBitmap(decodeSampledBitmapFromResource(path, width, height));
         }
+
+        if (intent.getStringExtra("view") != null) viewOnly = true;
+        else viewOnly = false;
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getSupportMenuInflater().inflate(R.menu.fullscreen_photo, menu);
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (viewOnly) menu.findItem(R.id.action_delete_photo).setVisible(false);
+        return super.onPrepareOptionsMenu(menu);
     }
 
     @Override

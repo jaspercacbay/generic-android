@@ -130,6 +130,7 @@
     <string name="settings_summary">Buksan ang System Settings at baguhin ang locale</string>
     <string name="upload_notification_message">Uploading...</string>
     <string name="info_label">Information</string>
+    <string name="empty_image_viewer">No images in report.</string>
 
     <string-array name="language">
         <item>Ingles (United States)</item>

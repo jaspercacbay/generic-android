@@ -55,7 +55,6 @@ public class TestUploadAsyncTask extends AsyncTask<File, Integer, String> {
     @Override
     protected void onPreExecute() {
         System.out.println("pre-execute");
-        Toast.makeText(context, "Starting upload...", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -111,25 +110,26 @@ public class TestUploadAsyncTask extends AsyncTask<File, Integer, String> {
 
                     if (serverResponse.equals("OK") ) {
                         currentFile.delete();
-                        onAsyncResult.onResult(1, currentFile.getName());
+                        onAsyncResult.onResult(1, currentFile.getName(), serverResponse);
                     }
                     else if (sb.toString().trim().startsWith("RETYPE")) {
                         currentFile.delete();
-                        onAsyncResult.onResult(-1, currentFile.getName());
+                        onAsyncResult.onResult(-1, currentFile.getName(), serverResponse);
                     }
                     else if (sb.toString().equals("EXISTS")) {
                         currentFile.delete();
-                        onAsyncResult.onResult(2, currentFile.getName());
+                        onAsyncResult.onResult(2, currentFile.getName(), serverResponse);
                     }
                     else {
                         System.out.println("failed: " + currentFile.getName());
-                        onAsyncResult.onResult(0, "failed");
+                        onAsyncResult.onResult(0, currentFile.getName(), serverResponse);
                     }
                     inputStream.close();
                     r.close();
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                    onAsyncResult.onResult(0, currentFile.getName(), e.toString());
                     continue;
                 }
             }
@@ -181,25 +181,26 @@ public class TestUploadAsyncTask extends AsyncTask<File, Integer, String> {
 
                     if (serverResponse.equals("OK") ) {
                         currentFile.delete();
-                        onAsyncResult.onResult(1, currentFile.getName());
+                        onAsyncResult.onResult(1, currentFile.getName(), serverResponse);
                     }
                     else if (sb.toString().trim().startsWith("RETYPE")) {
                         currentFile.delete();
-                        onAsyncResult.onResult(-1, currentFile.getName());
+                        onAsyncResult.onResult(-1, currentFile.getName(), serverResponse);
                     }
                     else if (sb.toString().equals("EXISTS")) {
                         currentFile.delete();
-                        onAsyncResult.onResult(2, currentFile.getName());
+                        onAsyncResult.onResult(2, currentFile.getName(), serverResponse);
                     }
                     else {
                         System.out.println("failed: " + currentFile.getName());
-                        onAsyncResult.onResult(0, "failed");
+                        onAsyncResult.onResult(0, currentFile.getName(), serverResponse);
                     }
                     inputStream.close();
                     r.close();
 
                 } catch (Exception e) {
                     e.printStackTrace();
+                    onAsyncResult.onResult(0, currentFile.getName(), e.toString());
                     continue;
                 }
             }
@@ -259,7 +260,7 @@ public class TestUploadAsyncTask extends AsyncTask<File, Integer, String> {
     }
 
     public interface OnAsyncResult {
-        public abstract void onResult(int resultCode, String message);
+        public abstract void onResult(int resultCode, String message, String response);
     }
 
     public void setOnResultListener(OnAsyncResult onAsyncResult) {

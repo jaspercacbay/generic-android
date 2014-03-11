@@ -1,0 +1,47 @@
+<ViewFlipper
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/reportViewer"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    tools:context=".NewReportActivity">
+
+    <RelativeLayout android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:id="@+id/flip_images">
+
+        <GridView
+            android:id="@+id/grid_images"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:verticalSpacing="5dp"
+            android:horizontalSpacing="5dp"
+            android:stretchMode="columnWidth"
+            android:numColumns="3"
+            />
+
+        <TextView
+            android:id="@+id/empty_list_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_image_viewer"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:gravity="center"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <ListView
+            android:id="@+id/summary_report_viewer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+</ViewFlipper>
