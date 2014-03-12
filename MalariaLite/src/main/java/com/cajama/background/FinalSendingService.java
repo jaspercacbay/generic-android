@@ -232,7 +232,6 @@ public class FinalSendingService extends Service {
                 }*/
 
                 reports = reportsDirectory.listFiles();
-
                 asyncTask.execute(reports);
             }
             else if (asyncTask.getStatus() == AsyncTask.Status.RUNNING) {
@@ -244,7 +243,7 @@ public class FinalSendingService extends Service {
                 asyncTask.setNotificationManager(notificationManager);
                 asyncTask.setBuilder(mBuilder);
                 asyncTask.setOnResultListener(onAsyncResult);
-                FilenameFilter filter = new FilenameFilter() {
+                /*FilenameFilter filter = new FilenameFilter() {
                     public boolean accept(File directory, String fileName) {
                         return fileName.endsWith(".zip");
                     }
@@ -252,7 +251,8 @@ public class FinalSendingService extends Service {
                 reports = reportsDirectory.listFiles(filter);
                 if (reports.length == 0) {
                     reports = reportsDirectory.listFiles();
-                }
+                }*/
+                reports = reportsDirectory.listFiles();
                 asyncTask.execute(reports);
             }
         }
@@ -293,31 +293,43 @@ public class FinalSendingService extends Service {
         //}
     }*/
 
-    public void append_report(int resultCode, String message, String message2) throws IOException {
+    public void append_report(int resultCode, String filename, String message2) throws IOException {
         if (resultCode == 1 || resultCode == 2) {
+
             FileWriter fileWriter = new FileWriter(sentList, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            String[] split = message.split("_");
-            bufferedWriter.write(split[2]+"\n");
-            bufferedWriter.write(split[1]+"\n");
-            bufferedWriter.write(split[0]+"\n");
-            bufferedWriter.close();
-            Log.d(TAG, message + " added to sent list");
-            handler2.removeCallbacks(sendUpdatesToSent);
-            handler2.postDelayed(sendUpdatesToSent, 1000);
+            final String str = filename.split("\\.zip")[0];
+            File root = new File(getExternalFilesDir(null), "ZipFiles");
+            System.out.println("Checking if send report is the last part: " + root.getPath());
+
+            if (root.listFiles(new FilenameFilter() {
+                @Override
+                public boolean accept(File file, String s) {
+                    return s.startsWith(str);
+                }
+            }).length == 0) {
+                String[] split = str.split("_");
+                bufferedWriter.write(split[2]+"\n");
+                bufferedWriter.write(split[1]+"\n");
+                bufferedWriter.write(split[0]+"\n");
+                bufferedWriter.close();
+                Log.d(TAG, split[0] + "_" + split[1] + "_" + split[2] + " added to sent list");
+                handler2.removeCallbacks(sendUpdatesToSent);
+                handler2.postDelayed(sendUpdatesToSent, 1000);
+            }
             //sendNext();
-            if (resultCode == 2) System.out.println(message + " was received before, di mo lang nakuha OK ni server!");
+            if (resultCode == 2) System.out.println(filename + " was received before, di mo lang nakuha OK ni server!");
         }
         else if (resultCode == -1) {
             startDialog(-1);
         }
         else {
-            Log.d(TAG, message + " not added to sent list");
+            Log.d(TAG, filename + " not added to sent list");
             //sendNext();
         }
         File f = new File(getExternalFilesDir(null), "log.txt");
         FileWriter fw = new FileWriter(f, true);
-        fw.append(new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()) + "\n" +  message + ": " + message2 + "\n-------------\n");
+        fw.append(new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date()) + "\n" +  filename + ": " + message2 + "\n-------------\n");
         fw.close();
     }
 

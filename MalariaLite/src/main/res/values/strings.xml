@@ -130,7 +130,7 @@
     <string name="settings_title">Settings</string>
     <string name="settings_summary">Open System Settings and change locale</string>
     <string name="upload_notification_message">Uploading...</string>
-    <string name="empty_image_viewer">No images in report.</string>
+    <string name="empty_image_viewer">No images in report.\n(Walang images sa report.)</string>
 
     <string-array name="language">
         <item>English (United States)</item>

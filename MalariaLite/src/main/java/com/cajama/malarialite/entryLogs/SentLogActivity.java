@@ -77,7 +77,7 @@ public class SentLogActivity extends Activity {
             logSet = getLogSet(logs, logSet);
 
             ListView lview = (ListView) findViewById(android.R.id.list);
-            entryAdapter adapter = new entryAdapter(this, logSet);
+            entryAdapter adapter = new entryAdapter(this, logSet, R.layout.entry_row_sent);
             lview.setOnItemClickListener(listener);
             lview.setAdapter(adapter);
 

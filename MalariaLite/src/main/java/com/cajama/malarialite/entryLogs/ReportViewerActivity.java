@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
@@ -65,9 +66,7 @@ public class ReportViewerActivity extends SherlockActivity {
         String name = bundle.getString("name");
 
         File root = new File(getExternalFilesDir(null), "Reports");
-        System.out.println(root.getPath());
 
-        System.out.println(date +" " + time + " " + name);
         folder = new File(root, date + "_" + time + "_" + name);
         System.out.println(folder.getPath());
         if (!root.exists() || !folder.exists()) {
@@ -83,7 +82,6 @@ public class ReportViewerActivity extends SherlockActivity {
         images = new ImageAdapter(this);
         File reportImages = new File(folder, "Pictures");
         if (reportImages.exists()) {
-            System.out.println("images exist!");
             for (File image : reportImages.listFiles()) {
                 Bitmap bmp = null;
                 while (bmp == null) {
@@ -99,6 +97,8 @@ public class ReportViewerActivity extends SherlockActivity {
         }
         else {
             System.out.println("no images!");
+            TextView tv = (TextView) findViewById(R.id.empty_list_reportviewer);
+            tv.setVisibility(View.VISIBLE);
         }
         gridViewImages = (GridView) findViewById(R.id.grid_images);
         gridViewImages.setAdapter(images);
@@ -175,21 +175,6 @@ public class ReportViewerActivity extends SherlockActivity {
         }
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == PHOTO_REQUEST && resultCode == RESULT_OK) {
-            Log.d(TAG, "photo request");
-            int pos = data.getIntExtra("pos", -1);
-
-            if (pos != -1 ){
-                File file = new File(images.getItem(pos).path);
-                file.delete();
-
-                images.remove(pos);
-                images.notifyDataSetChanged();
-            }
-        } else Log.d(TAG, "wala sa cases");
-    }
-
     @Override
     public void onBackPressed() {
         invalidateOptionsMenu();
@@ -240,7 +225,6 @@ public class ReportViewerActivity extends SherlockActivity {
         String[] from = {"label","value"};
         int[] to = {R.id.label, R.id.value};
         ListView lView = (ListView) findViewById(R.id.summary_report_viewer);
-        //summaryAdapter adapter = new summaryAdapter(this, list);
         SimpleAdapter adapter = new SimpleAdapter(this,list,R.layout.summary_row, from, to);
         lView.setAdapter(adapter);
     }
@@ -277,7 +261,6 @@ public class ReportViewerActivity extends SherlockActivity {
         list.clear();
 
         Document doc = getDomElement(xml);
-        System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
 
         NodeList nl = doc.getElementsByTagName("entry");
         Node n = nl.item(0);
@@ -315,7 +298,6 @@ public class ReportViewerActivity extends SherlockActivity {
             Log.e("Error: ", e.getMessage());
             return null;
         }
-        // return DOM
         return doc;
     }
 }

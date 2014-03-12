@@ -19,11 +19,13 @@ public class entryAdapter extends BaseAdapter
 {
     public ArrayList<HashMap> list;
     Activity activity;
+    int layoutId;
 
-    public entryAdapter(Activity activity, ArrayList<HashMap> list) {
+    public entryAdapter(Activity activity, ArrayList<HashMap> list, int layoutId) {
         super();
         this.activity = activity;
         this.list = list;
+        this.layoutId = layoutId;
     }
 
     @Override
@@ -45,6 +47,7 @@ public class entryAdapter extends BaseAdapter
         TextView txtDate;
         TextView txtTime;
         TextView txtName;
+        TextView txtParts;
     }
 
     @Override
@@ -57,22 +60,37 @@ public class entryAdapter extends BaseAdapter
 
         if (convertView == null)
         {
-            convertView = inflater.inflate(R.layout.entry_row, null);
+            //convertView = inflater.inflate(R.layout.entry_row_queue, null);
+            convertView = inflater.inflate(layoutId, null);
             holder = new ViewHolder();
             holder.txtDate = (TextView) convertView.findViewById(R.id.date);
             holder.txtTime = (TextView) convertView.findViewById(R.id.time);
             holder.txtName = (TextView) convertView.findViewById(R.id.name);
             convertView.setTag(holder);
+
+            HashMap map = list.get(position);
+            holder.txtDate.setText(map.get("date").toString());
+            holder.txtTime.setText(map.get("time").toString());
+            holder.txtName.setText(map.get("name").toString());
+
+            if (map.containsKey("filesize")) {
+                int fileSize = Integer.parseInt(map.get("filesize").toString());
+                float partSize = Float.parseFloat(map.get("partsize").toString());
+                Double temp = Math.ceil(fileSize/(partSize*1000));
+                int total = new Double(Math.ceil(fileSize/(partSize*1000))).intValue() + 1;
+                int current = Integer.parseInt(map.get("current").toString());
+
+                holder.txtParts = (TextView) convertView.findViewById(R.id.parts);
+                holder.txtParts.setText(String.valueOf(total-current) + "/" + String.valueOf(total));
+            }
+
         }
         else
         {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        HashMap map = list.get(position);
-        holder.txtDate.setText(map.get("date").toString());
-        holder.txtTime.setText(map.get("time").toString());
-        holder.txtName.setText(map.get("name").toString());
+
 
         return convertView;
     }
