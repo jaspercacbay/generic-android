@@ -76,8 +76,7 @@ public class entryAdapter extends BaseAdapter
             if (map.containsKey("filesize")) {
                 int fileSize = Integer.parseInt(map.get("filesize").toString());
                 float partSize = Float.parseFloat(map.get("partsize").toString());
-                Double temp = Math.ceil(fileSize/(partSize*1000));
-                int total = new Double(Math.ceil(fileSize/(partSize*1000))).intValue() + 1;
+                int total = new Double(Math.ceil(fileSize/(partSize*1024))).intValue() + 1;
                 int current = Integer.parseInt(map.get("current").toString());
 
                 holder.txtParts = (TextView) convertView.findViewById(R.id.parts);
