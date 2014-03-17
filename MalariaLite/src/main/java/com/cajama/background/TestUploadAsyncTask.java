@@ -5,7 +5,6 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.app.NotificationCompat;
-import android.widget.Toast;
 
 import com.google.common.hash.Hashing;
 import com.google.common.io.Files;
@@ -22,6 +21,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Jasper on 1/24/14.
@@ -279,5 +281,16 @@ public class TestUploadAsyncTask extends AsyncTask<File, Integer, String> {
         this.nc = builder;
         nc.setTicker("Uploading reports");
         this.notif = builder.build();
+    }
+
+    public void deleteOneWeek (File o) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+        Date filedate = format.parse(o.getName().split("_")[0]+o.getName().split("_")[1]);
+        Date now = new Date();
+        int daysDiff = (int) (now.getTime() - filedate.getTime()) / (24 * 60 * 60 * 1000);
+
+        if (daysDiff >= 7 && o.exists()) {
+            o.delete();
+        }
     }
 }

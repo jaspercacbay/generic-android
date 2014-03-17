@@ -28,7 +28,7 @@
             android:defaultValue="@string/server_address" />
         <CheckBoxPreference
             android:title="Enable Test Flag"
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:summary="Toggle for test data flag"
             android:key="test_data_flag" />
     </PreferenceCategory>

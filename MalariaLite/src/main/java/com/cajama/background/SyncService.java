@@ -95,7 +95,7 @@ public class SyncService extends Service {
     public void onCreate() {
     	
     	Log.d(TAG, "SyncService onCreate()");
-    	asyncTask = new SyncDBAsyncTask(PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)), getString(R.string.api_db));
+    	asyncTask = new SyncDBAsyncTask(getString(R.string.server_address), getString(R.string.api_db));//PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)), getString(R.string.api_db));
     	asyncTask.setOnResultListener(onAsyncResult);
     }
 
@@ -140,7 +140,7 @@ public class SyncService extends Service {
 	        else if(asyncTask.getStatus() == AsyncTask.Status.FINISHED){
 	        	Log.d(TAG, "asyncTask finished");
                 Log.d(TAG, "Date Modified: " + dateModified);
-                asyncTask = new SyncDBAsyncTask(PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)), getString(R.string.api_db));
+                asyncTask = new SyncDBAsyncTask(getString(R.string.server_address), getString(R.string.api_db));//PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)), getString(R.string.api_db));
                 asyncTask.setOnResultListener(onAsyncResult);
                 asyncTask.execute(dateModified);
 	        }

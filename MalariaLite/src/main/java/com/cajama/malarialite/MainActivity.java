@@ -102,7 +102,7 @@ public class MainActivity extends Activity {
         return true;
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
+    /*public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.action_settings:
                 Intent settings = new Intent(this, SettingsActivity.class);
@@ -111,7 +111,7 @@ public class MainActivity extends Activity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
+    }*/
 
     public void submitNewReport(View view) {
         //turnGPSOn();
@@ -182,8 +182,8 @@ public class MainActivity extends Activity {
 
     @Override
     public void onActivityResult(int request, int result, Intent data) {
-        /*if (request == UPDATE_SETTINGS)*/ messageHandler.postDelayed(recreate, 0);
-        /*else if (request == INIT_SETTINGS) {
+        /*if (request == UPDATE_SETTINGS) messageHandler.postDelayed(recreate, 0);
+        else if (request == INIT_SETTINGS) {
             if (result == 1) {
                 SharedPreferences.Editor editor = firstTimePref.edit();
                 editor.putBoolean("firstTime", false);

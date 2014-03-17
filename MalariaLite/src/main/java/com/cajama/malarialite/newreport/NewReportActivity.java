@@ -15,7 +15,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
@@ -58,7 +58,7 @@ public class NewReportActivity extends SherlockActivity {
     private static final int GPS_RESULT = 477;
     private static final int SYNC_RESULT = 7962;
 	private static final String TAG = "NewReportActivity";
-	private Uri fileUri;
+	private Uri fileUri, imageUri;
     private String imageFilePath, required = "is a required field.";
     private Resources res;
     private String[] step_subtitles;
@@ -297,12 +297,14 @@ public class NewReportActivity extends SherlockActivity {
                 return true;
             case R.id.action_photo:
                 System.out.println("asdfasdf");
-            	Intent cameraIntent = new Intent(this, Picture.class);
-                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-                imageFilePath = getExternalFilesDir(Environment.DIRECTORY_PICTURES) +  "/" + timeStamp + "_slide.jpg";
-                System.out.println("action photo: " + imageFilePath);
+            	//Intent cameraIntent = new Intent(this, Picture.class);
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                //String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+                //imageFilePath = getExternalFilesDir(Environment.DIRECTORY_PICTURES) +  "/" + timeStamp + "_slide.jpg";
+                imageUri = getOutputMediaFileUri();
+                System.out.println("action photo: " + imageUri.getPath());
 
-                cameraIntent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, Uri.fromFile(new File(imageFilePath)));
+                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
                 startActivityForResult(cameraIntent, CAMERA_REQUEST);
 
                 return true;
@@ -422,9 +424,42 @@ public class NewReportActivity extends SherlockActivity {
         return inSampleSize;
     }
 
+    /** Create a file Uri for saving an image or video */
+    private static Uri getOutputMediaFileUri(){
+        return Uri.fromFile(getOutputMediaFile());
+    }
+
+    /** Create a File for saving an image or video */
+    private static File getOutputMediaFile(){
+        // To be safe, you should check that the SDCard is mounted
+        // using Environment.getExternalStorageState() before doing this.
+
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory() + "/Android/data/com.cajama.malarialite/files/", "Pictures");
+        System.out.println(mediaStorageDir.getPath());
+        // This location works best if you want the created images to be shared
+        // between applications and persist after your app has been uninstalled.
+
+        // Create the storage directory if it does not exist
+        if (! mediaStorageDir.exists()){
+            if (! mediaStorageDir.mkdirs()){
+                Log.d("MyCameraApp", "failed to create directory");
+                return null;
+            }
+        }
+
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        File mediaFile = new File(mediaStorageDir.getPath() + File.separator + timeStamp + "_slide.jpg");
+
+        return mediaFile;
+    }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
-        	String newimagepath = ((Uri) data.getParcelableExtra(android.provider.MediaStore.EXTRA_OUTPUT)).getPath();
+            String newimagepath;
+        	//String newimagepath = ((Uri) data.getParcelableExtra(android.provider.MediaStore.EXTRA_OUTPUT)).getPath();
+            if (data == null) newimagepath = imageUri.getPath();
+            else newimagepath = data.getData().getPath();
             Log.d(TAG, newimagepath);
             File f = new File(newimagepath);
             if(f.exists()) {
@@ -714,7 +749,7 @@ public class NewReportActivity extends SherlockActivity {
         entries.add(putEntry("Municipality", munic));
         entryList.add(munic);
 
-        boolean testFlag = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("test_data_flag", true);
+        boolean testFlag = false;//PreferenceManager.getDefaultSharedPreferences(this).getBoolean("test_data_flag", false);
         entryList.add(String.valueOf(testFlag));
 
         return entries;
