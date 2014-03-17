@@ -78,9 +78,10 @@ public class entryAdapter extends BaseAdapter
                 float partSize = Float.parseFloat(map.get("partsize").toString());
                 int total = new Double(Math.ceil(fileSize/(partSize*1024))).intValue() + 1;
                 int current = Integer.parseInt(map.get("current").toString());
+                int percent = ((total-current)*100) / total;
 
                 holder.txtParts = (TextView) convertView.findViewById(R.id.parts);
-                holder.txtParts.setText(String.valueOf(total-current) + "/" + String.valueOf(total));
+                holder.txtParts.setText(String.valueOf(percent)+"%");
             }
 
         }
