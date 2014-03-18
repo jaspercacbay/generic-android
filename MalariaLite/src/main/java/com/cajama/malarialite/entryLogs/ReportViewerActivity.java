@@ -237,6 +237,7 @@ public class ReportViewerActivity extends SherlockActivity {
                 "Time Created",
                 "Latitude",
                 "Longitude",
+                "Priority",
                 "Diagnosis",
                 "Remarks",
                 "Region",
@@ -254,7 +255,8 @@ public class ReportViewerActivity extends SherlockActivity {
                 "region",
                 "province",
                 "municipality",
-                "flags"
+                "flags",
+                "priority"
         };
 
         if (!xml.exists()) return list;

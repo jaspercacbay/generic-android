@@ -8,7 +8,7 @@
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"
         android:orientation="vertical"
-        android:id="@+id/region_flip"
+        android:id="@+id/second_flip"
         android:fillViewport="true">
 
         <LinearLayout android:layout_width="fill_parent"
@@ -19,31 +19,49 @@
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_vertical_margin"
             android:paddingBottom="@dimen/activity_vertical_margin"
-            android:weightSum="6">
+            android:weightSum="8">
 
-            <Spinner
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/region"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="2"
-                android:spinnerMode="dialog" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textView"
+                android:layout_weight="1"
+                android:textSize="50dp"
+                android:gravity="center"
+                android:text="@string/info_label" />
 
-            <Spinner
-                android:layout_width="match_parent"
+            <CheckBox
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/province"
+                android:text="High Priority"
+                android:id="@+id/priority"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="2"
-                android:spinnerMode="dialog" />
+                android:layout_weight="1"
+                android:textSize="30dp" />
 
-            <Spinner
-                android:layout_width="match_parent"
+            <EditText
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/municipality"
-                android:layout_gravity="center_horizontal"
+                android:ems="10"
+                android:id="@+id/parasite"
                 android:layout_weight="2"
-                android:spinnerMode="dialog" />
+                android:textSize="30dp"
+                android:hint="@string/diagnosis" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text|textImeMultiLine|textMultiLine|textLongMessage"
+                android:ems="10"
+                android:id="@+id/description"
+                android:layout_weight="4"
+                android:textSize="30dp"
+                android:hint="@string/description"
+                android:scrollbars="vertical"
+                android:lines="3"
+                android:maxLines="4"
+                android:minLines="2"/>
         </LinearLayout>
 
     </ScrollView>

@@ -253,6 +253,15 @@
                 android:gravity="center"
                 android:text="@string/info_label" />
 
+            <CheckBox
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="High Priority"
+                android:id="@+id/priority"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:textSize="30dp" />
+
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -268,7 +277,7 @@
                 android:inputType="text|textImeMultiLine|textMultiLine|textLongMessage"
                 android:ems="10"
                 android:id="@+id/description"
-                android:layout_weight="5"
+                android:layout_weight="4"
                 android:textSize="30dp"
                 android:hint="@string/description"
                 android:scrollbars="vertical"

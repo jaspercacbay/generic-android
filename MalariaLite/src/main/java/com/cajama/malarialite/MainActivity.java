@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -26,6 +28,7 @@ import com.cajama.malarialite.entryLogs.SentLogActivity;
 import com.cajama.malarialite.newreport.NewReportActivity;
 
 import android.os.Handler;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -52,6 +55,18 @@ public class MainActivity extends Activity {
             Log.d("main", "not exists");
             f.mkdirs();
         }
+
+        TextView tv = (TextView) findViewById(R.id.version);
+        try {
+            //tv.setText(getPackageManager().getPackageInfo(getPackageName(), 0).versionCode);
+            PackageManager pManager = getApplicationContext().getPackageManager();
+            PackageInfo pInfo = pManager.getPackageInfo(getApplicationContext().getPackageName(), 0);
+            System.out.println("adsfasdf: "+pInfo.versionCode);
+            tv.setText("v" + String.valueOf(pInfo.versionCode));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         pd = new ProgressDialog(this);
         pd.setMessage("Connecting...");
         pd.setCancelable(false);

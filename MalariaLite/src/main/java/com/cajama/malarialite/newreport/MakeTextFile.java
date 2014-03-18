@@ -47,7 +47,8 @@ public class MakeTextFile {
                     "region",
                     "province",
                     "municipality",
-                    "flags"
+                    "flags",
+                    "priority"
             };
         } else {
             tags = new String[] {

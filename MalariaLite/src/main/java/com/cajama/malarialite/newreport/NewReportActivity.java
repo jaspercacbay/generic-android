@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
@@ -704,6 +705,11 @@ public class NewReportActivity extends SherlockActivity {
 
         entries.add(putEntry(getString(R.string.longitude),longitude));
         entryList.add(longitude);
+
+        CheckBox priority = (CheckBox) findViewById(R.id.priority);
+        boolean prior = priority.isChecked();
+        entryList.add(String.valueOf(prior));
+        entries.add(putEntry("Priority", String.valueOf(prior)));
 
         //parasite
         EditText editText2 = (EditText) findViewById(R.id.parasite);

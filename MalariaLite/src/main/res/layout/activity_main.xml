@@ -118,9 +118,19 @@
         <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight=".5"
                 android:id="@+id/relativeLayout5"
                 />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/version"
+            android:layout_weight=".5"
+            android:layout_gravity="center"
+            android:gravity="bottom"
+            android:textSize="15dp" />
     </LinearLayout>
 
     <RelativeLayout
