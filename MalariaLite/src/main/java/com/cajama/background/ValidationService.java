@@ -115,9 +115,9 @@ public class ValidationService extends Service {
 
     private void sendQuery() {
         root = new File(getExternalFilesDir(null), "Reports");
+        if (!root.exists()) root.mkdirs();
         query = root.listFiles();
         System.out.println("query.length = " + query.length);
-
         if (query.length > 0) {
             list = new ArrayList<String>();
             String all = "";
@@ -205,22 +205,24 @@ public class ValidationService extends Service {
             try {
                 JSONObject reports = new JSONObject(message);
                 for (int i=0; i<list.size(); i++) {
-                    JSONArray jsonArray = reports.getJSONArray(list.get(i));
-                    XMLBuilder builder = XMLBuilder.create("validation");
-                    builder.element(tags[0]).text(jsonArray.getString(0));
-                    builder.element(tags[1]).text(jsonArray.getString(1));
-                    Properties outputProperties = new Properties();
-                    outputProperties.put(javax.xml.transform.OutputKeys.METHOD, "xml");
-                    outputProperties.put(javax.xml.transform.OutputKeys.INDENT, "yes");
-                    outputProperties.put("{http://xml.apache.org/xslt}indent-amount", "2");
-                    outputProperties.put(javax.xml.transform.OutputKeys.OMIT_XML_DECLARATION, "yes");
+                    if (reports.has(list.get(i))) {
+                        JSONArray jsonArray = reports.getJSONArray(list.get(i));
+                        XMLBuilder builder = XMLBuilder.create("validation");
+                        builder.element(tags[0]).text(jsonArray.getString(0));
+                        builder.element(tags[1]).text(jsonArray.getString(1));
+                        Properties outputProperties = new Properties();
+                        outputProperties.put(javax.xml.transform.OutputKeys.METHOD, "xml");
+                        outputProperties.put(javax.xml.transform.OutputKeys.INDENT, "yes");
+                        outputProperties.put("{http://xml.apache.org/xslt}indent-amount", "2");
+                        outputProperties.put(javax.xml.transform.OutputKeys.OMIT_XML_DECLARATION, "yes");
 
-                    content = builder.asString(outputProperties);
+                        content = builder.asString(outputProperties);
 
-                    File report = new File(root, "/" + list.get(i) + "/validation.xml");
-                    OutputStream os = new FileOutputStream(report, false);
-                    os.write(content.getBytes());
-                    os.close();
+                        File report = new File(root, "/" + list.get(i) + "/validation.xml");
+                        OutputStream os = new FileOutputStream(report, false);
+                        os.write(content.getBytes());
+                        os.close();
+                    }
                 }
             } catch (JSONException e) {
                 e.printStackTrace();

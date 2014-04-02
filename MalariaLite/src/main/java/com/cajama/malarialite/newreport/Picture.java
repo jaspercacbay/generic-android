@@ -30,6 +30,7 @@ import com.google.common.io.Files;
 import java.io.File;
 import java.io.IOException;
 
+// DEPRECATED
 public class Picture extends SherlockActivity {
     private SurfaceView preview=null;
     private SurfaceHolder previewHolder=null;
@@ -255,7 +256,7 @@ public class Picture extends SherlockActivity {
             catch (Throwable t) {
                 Log.e("PreviewDemo-surfaceCallback",
                         "Exception in setPreviewDisplay()", t);
-                Toast.makeText(Picture.this, t.getMessage(),
+                Toast.makeText(this, t.getMessage(),
                         Toast.LENGTH_LONG).show();
             }
             Camera.Parameters parameters=camera.getParameters();

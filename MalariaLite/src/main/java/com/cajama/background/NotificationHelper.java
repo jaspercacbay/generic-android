@@ -9,6 +9,7 @@ import android.support.v4.app.NotificationCompat;
 
 import com.cajama.malarialite.R;
 
+// DEPRECATED
 public class NotificationHelper {
     private Context mContext;
     private int NOTIFICATION_ID = 1;

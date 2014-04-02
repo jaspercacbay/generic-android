@@ -257,12 +257,12 @@ public class MainActivity extends Activity {
             Intent startUpload = new Intent(this, FinalSendingService.class);
             startService(startUpload);
         }*/
-        Intent startSyncDB = new Intent(this, SyncService.class);
-        startService(startSyncDB);
+        Intent startValidate = new Intent(this, ValidationService.class);
+        startService(startValidate);
         Intent startUpload = new Intent(this, FinalSendingService.class);
         startService(startUpload);
-        /*Intent startValidate = new Intent(this, ValidationService.class);
-        startService(startValidate);*/
+        Intent startSyncDB = new Intent(this, SyncService.class);
+        startService(startSyncDB);
     }
 
     private boolean checkGps() {

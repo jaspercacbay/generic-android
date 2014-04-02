@@ -9,6 +9,8 @@ import android.view.View;
 import com.cajama.malarialite.MainActivity;
 import com.cajama.malarialite.R;
 
+
+// DEPRECATED
 public class LoginActivity extends Activity {
 
     @Override

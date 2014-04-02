@@ -20,6 +20,8 @@ import java.io.UnsupportedEncodingException;
 /**
  * Created by Jasper on 8/4/13.
  */
+
+// DEPRECATED
 public class SendFileAsyncTask extends AsyncTask<File, Void, String> {
     OnAsyncResult onAsyncResult;
     private final String TAG = SendFileAsyncTask.class.getSimpleName();

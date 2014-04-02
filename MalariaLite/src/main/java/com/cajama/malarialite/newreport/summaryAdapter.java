@@ -15,6 +15,9 @@ import java.util.Map;
 /**
  * Created by GMGA on 8/7/13.
  */
+
+// DEPRECATED
+
 public class summaryAdapter extends BaseAdapter{
 
     public ArrayList<Map<String, String>> list;

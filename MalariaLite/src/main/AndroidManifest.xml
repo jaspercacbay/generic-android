@@ -34,10 +34,6 @@
         </activity>
         <activity android:label="@string/title_activity_sent_log" android:name=".entryLogs.SentLogActivity">
         </activity>
-        <activity android:screenOrientation="portrait"
-            android:name=".newreport.Picture"
-            android:label="@string/title_activity_picture" >
-        </activity>
         <activity android:label="InputDialog" android:name="com.cajama.background.DialogActivity" android:theme="@android:style/Theme.Dialog"/>
         <activity android:label="Settings" android:name=".SettingsActivity" />
         <activity android:label="Initiate" android:name=".Initialize" />

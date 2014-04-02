@@ -16,6 +16,9 @@ import java.io.InputStreamReader;
 /**
  * Created by Jasper on 8/8/13.
  */
+
+// DEPRECATED
+
 public class GetPublicKeyTask extends AsyncTask<String, Void, String> {
     String url = "http://10.40.93.115/api/key";
     String TAG = "GetPublicKeyTask";

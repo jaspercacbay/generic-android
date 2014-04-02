@@ -21,6 +21,9 @@ import java.io.File;
 /**
  * Created by Jasper on 2/20/14.
  */
+
+// to continue or not?
+
 public class Initialize extends Activity {
     ProgressDialog pd;
     Context context;

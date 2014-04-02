@@ -13,6 +13,8 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.cajama.malarialite.newreport.NewReportActivity;
 
+// to remove (copy exists in newreport module)
+
 public class FullscreenPhotoActivity extends SherlockActivity {
     int pos;
 

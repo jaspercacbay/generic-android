@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// DEPRECATED
+
 public class test extends ListActivity {
     private ArrayList<HashMap> list;
     @Override

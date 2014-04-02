@@ -144,6 +144,11 @@ public class ReportViewerActivity extends SherlockActivity {
                 menu.findItem(R.id.action_next).setTitle(R.string.next);
                 break;
             case 1:
+                menu.findItem(R.id.action_prev).setTitle(R.string.cancel);
+                menu.findItem(R.id.action_photo).setVisible(false);
+                menu.findItem(R.id.action_next).setTitle(R.string.next);
+                break;
+            case 2:
                 menu.findItem(R.id.action_prev).setTitle(R.string.back);
                 menu.findItem(R.id.action_photo).setVisible(false);
                 menu.findItem(R.id.action_next).setTitle(R.string.ok);
@@ -172,11 +177,14 @@ public class ReportViewerActivity extends SherlockActivity {
                 invalidateOptionsMenu();
                 return true;
             case R.id.action_next:
-                if(VF.getDisplayedChild() == VF.getChildCount()-1){
+                if (VF.getDisplayedChild() == VF.getChildCount()-1){
                     finish();
                 }
-                else {
+                else if (VF.getDisplayedChild() == VF.getChildCount()-2) {
                     generateSummary("textData.xml");
+                    VF.showNext();
+                }
+                else {
                     VF.showNext();
                 }
                 invalidateOptionsMenu();
