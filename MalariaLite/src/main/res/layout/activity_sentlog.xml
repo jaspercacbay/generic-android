@@ -23,7 +23,7 @@
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/date_sent"
+                    android:text="@string/date_time_sent"
                     android:id="@+id/textView2"
                     android:layout_column="0"/>
 
@@ -31,7 +31,7 @@
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/time_sent"
+                    android:text="@string/validation"
                     android:id="@+id/textView3"
                     android:layout_column="1"/>
 

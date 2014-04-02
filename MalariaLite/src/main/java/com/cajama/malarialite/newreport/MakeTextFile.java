@@ -42,13 +42,13 @@ public class MakeTextFile {
                     "time-created",
                     "latitude",
                     "longitude",
+                    "priority",
                     "species",
                     "description",
                     "region",
                     "province",
                     "municipality",
-                    "flags",
-                    "priority"
+                    "flags"
             };
         } else {
             tags = new String[] {

@@ -7,6 +7,28 @@
     android:orientation="horizontal"
     tools:context=".NewReportActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <ListView
+            android:id="@+id/diagnosis_report_viewer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/empty_validation_reportviewer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/empty_validation_viewer"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:gravity="center"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
     <RelativeLayout android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"

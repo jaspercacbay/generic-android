@@ -124,7 +124,7 @@ public class FinalSendingService extends Service {
 
         notificationManager = (NotificationManager) getApplicationContext().getSystemService(getApplicationContext().NOTIFICATION_SERVICE);
 
-        asyncTask = new TestUploadAsyncTask(getString(R.string.server_address) ,getApplicationContext());//PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)), getApplicationContext());
+        asyncTask = new TestUploadAsyncTask(/*getString(R.string.server_address) ,getApplicationContext());*/PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)), getApplicationContext());
         asyncTask.setNotificationManager(notificationManager);
         asyncTask.setBuilder(mBuilder);
         asyncTask.setOnResultListener(onAsyncResult);
@@ -239,7 +239,7 @@ public class FinalSendingService extends Service {
             }
             else if (asyncTask.getStatus() == AsyncTask.Status.FINISHED) {
                 Log.d(TAG, "task finished!");
-                asyncTask = new TestUploadAsyncTask(getString(R.string.server_address), getApplicationContext());//PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)), getApplicationContext());
+                asyncTask = new TestUploadAsyncTask(/*getString(R.string.server_address), getApplicationContext());//*/PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.connection_pref), getString(R.string.server_address)), getApplicationContext());
                 asyncTask.setNotificationManager(notificationManager);
                 asyncTask.setBuilder(mBuilder);
                 asyncTask.setOnResultListener(onAsyncResult);
@@ -357,7 +357,7 @@ public class FinalSendingService extends Service {
     }
 
     public class PostStringAsyncTask extends AsyncTask<String, Void, String> {
-        String url = getString(R.string.server_address).concat(getString(R.string.api_retry)); //PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString(getString(R.string.connection_pref), getString(R.string.server_address)).concat(getString(R.string.api_retry));
+        String url = /*getString(R.string.server_address).concat(getString(R.string.api_retry)); //*/PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString(getString(R.string.connection_pref), getString(R.string.server_address)).concat(getString(R.string.api_retry));
 
         @Override
         protected String doInBackground(String... strings) {

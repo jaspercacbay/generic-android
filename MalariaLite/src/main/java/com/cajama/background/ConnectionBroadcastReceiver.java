@@ -44,8 +44,10 @@ public class ConnectionBroadcastReceiver extends BroadcastReceiver {
         if (!hashSet.contains(key)) {
             hashSet.add(key);
             if (NetworkUtil.getConnectivityStatus(context) != 0) {
+                Intent validationService = new Intent(context, ValidationService.class);
                 Intent sendService = new Intent(context, FinalSendingService.class);
                 Intent syncService = new Intent(context, SyncService.class);
+                context.startService(validationService);
                 context.startService(sendService);
                 context.startService(syncService);
             }

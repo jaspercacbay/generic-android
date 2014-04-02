@@ -17,4 +17,10 @@ public class SettingsActivity extends PreferenceActivity {
         else
             addPreferencesFromResource(R.xml.preferences);
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        setResult(1);
+    }
 }

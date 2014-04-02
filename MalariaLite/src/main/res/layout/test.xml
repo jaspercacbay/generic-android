@@ -4,66 +4,17 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <ScrollView
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent"
-        android:orientation="vertical"
-        android:id="@+id/second_flip"
-        android:fillViewport="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
-        <LinearLayout android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/first_flip3"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:weightSum="8">
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/textView"
-                android:layout_weight="1"
-                android:textSize="50dp"
-                android:gravity="center"
-                android:text="@string/info_label" />
+        <ListView
+            android:id="@+id/diagnosis_report_viewer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-            <CheckBox
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="High Priority"
-                android:id="@+id/priority"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:textSize="30dp" />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:id="@+id/parasite"
-                android:layout_weight="2"
-                android:textSize="30dp"
-                android:hint="@string/diagnosis" />
-
-            <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text|textImeMultiLine|textMultiLine|textLongMessage"
-                android:ems="10"
-                android:id="@+id/description"
-                android:layout_weight="4"
-                android:textSize="30dp"
-                android:hint="@string/description"
-                android:scrollbars="vertical"
-                android:lines="3"
-                android:maxLines="4"
-                android:minLines="2"/>
-        </LinearLayout>
-
-    </ScrollView>
+    </RelativeLayout>
 
 </LinearLayout>

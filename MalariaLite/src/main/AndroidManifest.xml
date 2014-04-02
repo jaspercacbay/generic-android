@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="7" android:versionName="0.0.1" package="com.cajama.malarialite">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="9" android:versionName="0.9.0" package="com.cajama.malarialite">
 
     <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="17"/>
     <uses-permission android:name="android.permission.INSTALL_PACKAGES" xmlns:tools="http://schemas.android.com/tools" tools:ignore="ProtectedPermissions"/>
@@ -18,7 +18,7 @@
 
     <application android:allowBackup="true" android:icon="@drawable/icon" android:label="@string/app_name" android:theme="@style/Theme.Sherlock.Light">
 
-        <activity android:label="@string/app_name" android:name=".MainActivity">
+        <activity android:label="@string/app_name" android:configChanges="screenSize|orientation|keyboardHidden" android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -39,11 +39,12 @@
             android:label="@string/title_activity_picture" >
         </activity>
         <activity android:label="InputDialog" android:name="com.cajama.background.DialogActivity" android:theme="@android:style/Theme.Dialog"/>
-        <!--<activity android:label="Settings" android:name=".SettingsActivity" />-->
+        <activity android:label="Settings" android:name=".SettingsActivity" />
         <activity android:label="Initiate" android:name=".Initialize" />
         <activity android:label="ReportViewer" android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.cajama.malarialite.entryLogs.ReportViewerActivity" android:uiOptions="splitActionBarWhenNarrow"/>
         <service android:name="com.cajama.background.FinalSendingService"/>
         <service android:name="com.cajama.background.SyncService" />
+        <service android:name="com.cajama.background.ValidationService" />
         <receiver android:name="com.cajama.background.ConnectionBroadcastReceiver" android:label="ConnectionBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"></action>

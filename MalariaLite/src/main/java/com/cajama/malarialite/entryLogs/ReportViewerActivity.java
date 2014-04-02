@@ -79,6 +79,16 @@ public class ReportViewerActivity extends SherlockActivity {
         VF = (ViewFlipper) findViewById(R.id.reportViewer);
         getSupportActionBar().setSubtitle("Page 1 of " + VF.getChildCount());
 
+        File validation = new File(folder, "validation.xml");
+        if (validation.exists()) {
+            generateSummary("validation.xml");
+        }
+        else {
+            System.out.println("no validation yet!");
+            TextView tv = (TextView) findViewById(R.id.empty_validation_reportviewer);
+            tv.setVisibility(View.VISIBLE);
+        }
+
         images = new ImageAdapter(this);
         File reportImages = new File(folder, "Pictures");
         if (reportImages.exists()) {
@@ -116,6 +126,7 @@ public class ReportViewerActivity extends SherlockActivity {
         });
 
         step_subtitles = new String[]{
+                "Validation",
                 "Slide Photos",
                 "Summary"
         };
@@ -165,7 +176,7 @@ public class ReportViewerActivity extends SherlockActivity {
                     finish();
                 }
                 else {
-                    generateSummary();
+                    generateSummary("textData.xml");
                     VF.showNext();
                 }
                 invalidateOptionsMenu();
@@ -220,18 +231,27 @@ public class ReportViewerActivity extends SherlockActivity {
         return inSampleSize;
     }
 
-    private void generateSummary() {
-        ArrayList<Map<String,String>> list = getSummary();
+    private void generateSummary(String str) {
+        ArrayList<Map<String,String>> list = getSummary(str);
         String[] from = {"label","value"};
         int[] to = {R.id.label, R.id.value};
         ListView lView = (ListView) findViewById(R.id.summary_report_viewer);
+        if (str.equalsIgnoreCase("validation.xml")) lView = (ListView) findViewById(R.id.diagnosis_report_viewer);
         SimpleAdapter adapter = new SimpleAdapter(this,list,R.layout.summary_row, from, to);
         lView.setAdapter(adapter);
     }
 
-    private ArrayList<Map<String,String>> getSummary() {
+    private ArrayList<Map<String,String>> getSummary(String str) {
         ArrayList<Map<String,String>> list = new ArrayList<Map<String, String>>();
-        File xml = new File(folder, "textData.xml");
+        File xml = new File(folder, str);
+        String[] label2 = new String[] {
+                "Diagnosis",
+                "Remarks"
+        };
+        String[] tags2 = new String[] {
+                "diagnosis",
+                "remarks"
+        };
         String[] label = new String[]{
                 "Date Created",
                 "Time Created",
@@ -250,26 +270,35 @@ public class ReportViewerActivity extends SherlockActivity {
                 "time-created",
                 "latitude",
                 "longitude",
+                "priority",
                 "species",
                 "description",
                 "region",
                 "province",
                 "municipality",
-                "flags",
-                "priority"
+                "flags"
         };
+
+        String[] finalLabel = label, finalTags = tags;
+        String finalTagName = "entry";
+
+        if (str.equalsIgnoreCase("validation.xml")) {
+            finalLabel = label2;
+            finalTags = tags2;
+            finalTagName = "validation";
+        }
 
         if (!xml.exists()) return list;
         list.clear();
 
         Document doc = getDomElement(xml);
 
-        NodeList nl = doc.getElementsByTagName("entry");
+        NodeList nl = doc.getElementsByTagName(finalTagName);
         Node n = nl.item(0);
         Element eElement = (Element)n;
 
-        for (int i=0; i<tags.length; i++) {
-            list.add(putEntry(label[i], eElement.getElementsByTagName(tags[i]).item(0).getTextContent()));
+        for (int i=0; i< finalTags.length; i++) {
+            list.add(putEntry(finalLabel[i], eElement.getElementsByTagName(finalTags[i]).item(0).getTextContent()));
         }
 
         return list;

@@ -88,6 +88,8 @@
     <string name="entry_name">Ngalan ng Ulat</string>
     <string name="date_created">Petsa ng Pagkakagawa</string>
     <string name="time_created">Oras ng Pagkakagawa</string>
+    <string name="date_time_sent">Date/Time Sent</string>
+    <string name="validation">Validation</string>
     <string name="date_sent">Petsa ng Pagpapadala</string>
     <string name="time_sent">Oras ng Pagpapadala</string>
     <string name="title_activity_log_in">LogInActivity</string>
@@ -109,6 +111,7 @@
     <string name="api_db">api/db/</string>
     <string name="api_apk">api/apk/</string>
     <string name="api_retry">api/retype/</string>
+    <string name="api_validate">api/validation/</string>
     <string name="Username">Username</string>
     <string name="Password">Password</string>
     <string name="progressBarText">Pinoproseso… </string>

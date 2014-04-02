@@ -88,6 +88,8 @@
     <string name="entry_name">Entry Name</string>
     <string name="date_created">Date Created</string>
     <string name="time_created">Time Created</string>
+    <string name="date_time_sent">Date/Time Sent</string>
+    <string name="validation">Validation</string>
     <string name="date_sent">Date Sent</string>
     <string name="time_sent">Time Sent</string>
     <string name="title_activity_log_in">LogInActivity</string>
@@ -110,6 +112,7 @@
     <string name="api_db">api/db/</string>
     <string name="api_apk">api/apk/</string>
     <string name="api_retry">api/retype/</string>
+    <string name="api_validate">api/validation/</string>
     <string name="Username">Username</string>
     <string name="Password">Password</string>
     <string name="progressBarText">Processing... </string>
@@ -131,6 +134,7 @@
     <string name="settings_summary">Open System Settings and change locale</string>
     <string name="upload_notification_message">Uploading...</string>
     <string name="empty_image_viewer">No images in report.\n(Walang images sa report.)</string>
+    <string name="empty_validation_viewer">Final validation pending.</string>
 
     <string-array name="language">
         <item>English (United States)</item>

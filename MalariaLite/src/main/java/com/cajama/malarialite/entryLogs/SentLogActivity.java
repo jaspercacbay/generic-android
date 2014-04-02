@@ -40,9 +40,11 @@ public class SentLogActivity extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 HashMap value = (HashMap) adapterView.getItemAtPosition(i);
                 Bundle bundle = new Bundle();
+                String[] str = ((String) value.get("date")).split("\n");
+
                 bundle.putString("from", "sent");
-                bundle.putString("date", (String) value.get("date"));
-                bundle.putString("time", (String) value.get("time"));
+                bundle.putString("date", str[0]);
+                bundle.putString("time", str[1]);
                 bundle.putString("name", (String) value.get("name"));
                 intent.putExtras(bundle);
                 startActivity(intent);
@@ -127,15 +129,17 @@ public class SentLogActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         Log.v("stop","onDESTROY");
-        finish();
-        Log.v("stop","finish");
+        //finish();
+        //Log.v("stop","finish");
     }
 
     public ArrayList<HashMap> getLogSet(ArrayList<String> logs, ArrayList<HashMap> logSet) {
         for(int i=0;i<logs.size();i=i+3){
             HashMap map = new HashMap();
-            map.put("date", formatDate(logs.get(i), "/"));
-            map.put("time", formatTime(logs.get(i + 1), ":"));
+            String str = logs.get(i) + "_" + logs.get(i+1) + "_" + logs.get(i + 2);
+            File file = new File(getExternalFilesDir(null), "Reports/"+str+"/validation.xml");
+            map.put("date", formatDate(logs.get(i), "/") + "\n" + formatTime(logs.get(i + 1), ":"));
+            map.put("time", file.exists() ? "Available" : "Pending");
             map.put("name", logs.get(i+2));
             logSet.add(map);
         }

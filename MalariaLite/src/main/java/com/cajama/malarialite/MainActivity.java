@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -23,6 +24,7 @@ import android.view.View;
 import com.cajama.background.FinalSendingService;
 import com.cajama.background.NetworkUtil;
 import com.cajama.background.SyncService;
+import com.cajama.background.ValidationService;
 import com.cajama.malarialite.entryLogs.QueueLogActivity;
 import com.cajama.malarialite.entryLogs.SentLogActivity;
 import com.cajama.malarialite.newreport.NewReportActivity;
@@ -117,7 +119,7 @@ public class MainActivity extends Activity {
         return true;
     }
 
-    /*public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.action_settings:
                 Intent settings = new Intent(this, SettingsActivity.class);
@@ -126,7 +128,7 @@ public class MainActivity extends Activity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }*/
+    }
 
     public void submitNewReport(View view) {
         //turnGPSOn();
@@ -193,12 +195,14 @@ public class MainActivity extends Activity {
     public void viewSentLog(View view) {
         Intent intent = new Intent(this, SentLogActivity.class);
         startActivity(intent);
+        Intent intent2 = new Intent(this, ValidationService.class);
+        startService(intent2);
     }
 
     @Override
     public void onActivityResult(int request, int result, Intent data) {
-        /*if (request == UPDATE_SETTINGS) messageHandler.postDelayed(recreate, 0);
-        else if (request == INIT_SETTINGS) {
+        if (request == UPDATE_SETTINGS) messageHandler.postDelayed(recreate, 0);
+        /*else if (request == INIT_SETTINGS) {
             if (result == 1) {
                 SharedPreferences.Editor editor = firstTimePref.edit();
                 editor.putBoolean("firstTime", false);
@@ -224,6 +228,19 @@ public class MainActivity extends Activity {
     };
 
     @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            //Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+            setContentView(R.layout.activity_main_landscape);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            //Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+            setContentView(R.layout.activity_main);
+        }
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         /*firstTimePref = getSharedPreferences("firstTime", Context.MODE_PRIVATE);
@@ -244,6 +261,8 @@ public class MainActivity extends Activity {
         startService(startSyncDB);
         Intent startUpload = new Intent(this, FinalSendingService.class);
         startService(startUpload);
+        /*Intent startValidate = new Intent(this, ValidationService.class);
+        startService(startValidate);*/
     }
 
     private boolean checkGps() {

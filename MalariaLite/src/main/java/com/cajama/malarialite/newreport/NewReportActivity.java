@@ -26,6 +26,8 @@ import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -706,10 +708,11 @@ public class NewReportActivity extends SherlockActivity {
         entries.add(putEntry(getString(R.string.longitude),longitude));
         entryList.add(longitude);
 
-        CheckBox priority = (CheckBox) findViewById(R.id.priority);
-        boolean prior = priority.isChecked();
-        entryList.add(String.valueOf(prior));
-        entries.add(putEntry("Priority", String.valueOf(prior)));
+        //CheckBox priority = (CheckBox) findViewById(R.id.priority);
+        RadioGroup priority = (RadioGroup) findViewById(R.id.priorityRadioGroup);
+        String prior = String.valueOf(((RadioButton) findViewById(priority.getCheckedRadioButtonId())).getText());
+        entryList.add(prior);
+        entries.add(putEntry("Priority", prior));
 
         //parasite
         EditText editText2 = (EditText) findViewById(R.id.parasite);
