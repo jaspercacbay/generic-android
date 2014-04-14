@@ -121,10 +121,10 @@ public class MainActivity extends Activity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
-            case R.id.action_settings:
+            /*case R.id.action_settings:
                 Intent settings = new Intent(this, SettingsActivity.class);
                 startActivityForResult(settings, UPDATE_SETTINGS);
-                return true;
+                return true;*/
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -201,7 +201,7 @@ public class MainActivity extends Activity {
 
     @Override
     public void onActivityResult(int request, int result, Intent data) {
-        if (request == UPDATE_SETTINGS) messageHandler.postDelayed(recreate, 0);
+        //if (request == UPDATE_SETTINGS) messageHandler.postDelayed(recreate, 0);
         /*else if (request == INIT_SETTINGS) {
             if (result == 1) {
                 SharedPreferences.Editor editor = firstTimePref.edit();

@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="9" android:versionName="0.9.0" package="com.cajama.malarialite">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="10" android:versionName="1.0.0" package="com.cajama.malarialite">
 
     <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="17"/>
     <uses-permission android:name="android.permission.INSTALL_PACKAGES" xmlns:tools="http://schemas.android.com/tools" tools:ignore="ProtectedPermissions"/>
@@ -16,7 +16,7 @@
     <uses-feature android:name="android.hardware.camera"/>
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
-    <application android:allowBackup="true" android:icon="@drawable/icon" android:label="@string/app_name" android:theme="@style/Theme.Sherlock.Light">
+    <application android:debuggable="false" android:allowBackup="true" android:icon="@drawable/icon" android:label="@string/app_name" android:theme="@style/Theme.Sherlock.Light">
 
         <activity android:label="@string/app_name" android:configChanges="screenSize|orientation|keyboardHidden" android:name=".MainActivity">
             <intent-filter>
@@ -36,7 +36,6 @@
         </activity>
         <activity android:label="InputDialog" android:name="com.cajama.background.DialogActivity" android:theme="@android:style/Theme.Dialog"/>
         <activity android:label="Settings" android:name=".SettingsActivity" />
-        <activity android:label="Initiate" android:name=".Initialize" />
         <activity android:label="ReportViewer" android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.cajama.malarialite.entryLogs.ReportViewerActivity" android:uiOptions="splitActionBarWhenNarrow"/>
         <service android:name="com.cajama.background.FinalSendingService"/>
         <service android:name="com.cajama.background.SyncService" />

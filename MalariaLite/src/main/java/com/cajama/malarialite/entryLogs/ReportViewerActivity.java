@@ -144,7 +144,7 @@ public class ReportViewerActivity extends SherlockActivity {
                 menu.findItem(R.id.action_next).setTitle(R.string.next);
                 break;
             case 1:
-                menu.findItem(R.id.action_prev).setTitle(R.string.cancel);
+                menu.findItem(R.id.action_prev).setTitle(R.string.back);
                 menu.findItem(R.id.action_photo).setVisible(false);
                 menu.findItem(R.id.action_next).setTitle(R.string.next);
                 break;
@@ -270,8 +270,7 @@ public class ReportViewerActivity extends SherlockActivity {
                 "Remarks",
                 "Region",
                 "Province",
-                "Municipality",
-                "Flags"
+                "Municipality"
         };
         String[] tags = new String[]{
                 "date-created",
@@ -283,8 +282,7 @@ public class ReportViewerActivity extends SherlockActivity {
                 "description",
                 "region",
                 "province",
-                "municipality",
-                "flags"
+                "municipality"
         };
 
         String[] finalLabel = label, finalTags = tags;
@@ -303,10 +301,13 @@ public class ReportViewerActivity extends SherlockActivity {
 
         NodeList nl = doc.getElementsByTagName(finalTagName);
         Node n = nl.item(0);
+        System.out.println(n.getAttributes().getLength());
         Element eElement = (Element)n;
 
         for (int i=0; i< finalTags.length; i++) {
-            list.add(putEntry(finalLabel[i], eElement.getElementsByTagName(finalTags[i]).item(0).getTextContent()));
+            Node item = eElement.getElementsByTagName(finalTags[i]).item(0);
+            if (item==null) list.add(putEntry(finalLabel[i], "No entry"));
+            else list.add(putEntry(finalLabel[i], eElement.getElementsByTagName(finalTags[i]).item(0).getTextContent()));
         }
 
         return list;
